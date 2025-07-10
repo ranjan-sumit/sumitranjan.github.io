@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sumit Ranjan - AI Leader & Responsible AI Expert</title>
-    <meta name="description" content="Sumit Ranjan: Head of Responsible AI, PhD Scholar, Author, and AI Security Expert with 10+ years of experience in Data Science, Machine Learning, and Generative AI.">
-    <meta name="keywords" content="Sumit Ranjan, Responsible AI, Generative AI, AI Security, AI Researcher, Applied Deep Learning, Enterprise Agentic AI">
+    <meta name="description" content="Sumit Ranjan: Head of Responsible AI, PhD Scholar, Author, and AI Researcher with 10+ years of experience in Data Science, Machine Learning, and Generative AI.">
+    <meta name="keywords" content="Sumit Ranjan, Responsible AI, Generative AI, AI Researcher, Applied Deep Learning, Enterprise Agentic AI, AI Governance">
     <meta name="author" content="Sumit Ranjan">
     
     <!-- Fonts -->
@@ -214,7 +214,7 @@
         
         .hero-title {
             font-size: 3.5rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 1rem;
             color: var(--primary-dark);
             line-height: 1.1;
         }
@@ -546,12 +546,12 @@
             box-shadow: var(--shadow);
             overflow: hidden;
             transition: var(--transition);
+            border: 1px solid var(--light-gray);
             position: relative;
             z-index: 1;
             display: flex;
             flex-direction: column;
             height: 100%;
-            border: 1px solid var(--light-gray);
         }
         
         .publication-card:hover {
@@ -559,26 +559,14 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         
-        .publication-header {
-            padding: 1.5rem 1.5rem 1rem;
-            background: linear-gradient(135deg, #f8fafc 0%, #e6f7ff 100%);
-            border-bottom: 1px solid var(--light-gray);
-        }
-        
-        .publication-type {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
         .publication-image {
-            height: 180px;
+            height: 220px;
             background-size: cover;
             background-position: center;
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .publication-image:after {
@@ -601,30 +589,18 @@
         
         .paper1 {
             background: linear-gradient(135deg, #8b5cf6 0%, #2563eb 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
         .paper2 {
             background: linear-gradient(135deg, #10b981 0%, #0d9488 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
         .paper3 {
             background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
         .paper4 {
             background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
         
         .paper-icon {
@@ -664,19 +640,6 @@
             margin-top: 0.5rem;
         }
         
-        .publisher-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            font-weight: 600;
-        }
-        
         /* Achievements Section */
         .achievements {
             background-color: white;
@@ -711,66 +674,185 @@
             margin-bottom: 1.5rem;
         }
         
-        /* Skills Section */
-        .skills {
-            background-color: #f8fafc;
+        /* Podcast Section */
+        .podcast {
+            background: linear-gradient(135deg, #f8fafc 0%, #e6f7ff 100%);
+            padding: 6rem 0;
             position: relative;
+            overflow: hidden;
         }
         
-        .skills-grid {
+        .podcast:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: var(--accent-light);
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.2;
+            z-index: 0;
+        }
+        
+        .podcast-container {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .podcast-content {
+            flex: 1;
+        }
+        
+        .podcast-thumbnail {
+            flex: 1;
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 350px;
+            background: linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.5s ease;
+        }
+        
+        .podcast-thumbnail:hover {
+            transform: scale(1.03);
+        }
+        
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 80px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 2;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .play-button:hover {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: white;
+        }
+        
+        .play-button i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-left: 5px;
+        }
+        
+        .podcast-thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .podcast-title {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .podcast-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+        
+        .podcast-description {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            color: var(--secondary);
+            line-height: 1.7;
+        }
+        
+        .podcast-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+            font-size: 1rem;
+        }
+        
+        .podcast-meta i {
+            color: var(--primary);
+        }
+        
+        /* Additional Sections */
+        .additional-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2.5rem;
         }
         
-        .skill-category {
+        .additional-card {
             background: white;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
             padding: 2rem;
+            transition: var(--transition);
             position: relative;
             z-index: 1;
-            transition: var(--transition);
+            border-top: 4px solid var(--accent);
         }
         
-        .skill-category:hover {
+        .additional-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
         }
         
-        .skill-category h3 {
-            font-size: 1.3rem;
-            color: var(--primary);
+        .additional-card h3 {
+            font-size: 1.4rem;
+            color: var(--accent);
             margin-bottom: 1.5rem;
             display: flex;
             align-items: center;
             gap: 0.8rem;
         }
         
-        .skill-list {
+        .additional-list {
             list-style: none;
         }
         
-        .skill-item {
-            padding: 0.9rem 0;
+        .additional-item {
+            padding: 0.8rem 0;
             border-bottom: 1px solid var(--light-gray);
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 0.8rem;
-            font-size: 1.05rem;
         }
         
-        .skill-item:last-child {
+        .additional-item:last-child {
             border-bottom: none;
         }
         
-        .skill-badge {
-            display: inline-block;
-            background: rgba(37, 99, 235, 0.1);
+        .additional-item i {
             color: var(--primary);
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
             margin-top: 0.3rem;
         }
         
@@ -891,6 +973,10 @@
             .timeline-item:nth-child(even) .timeline-content:before {
                 left: -52px;
             }
+            
+            .podcast-container {
+                flex-direction: column;
+            }
         }
         
         @media (max-width: 768px) {
@@ -949,8 +1035,9 @@
                 <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
                 <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
                 <li class="nav-item"><a href="#publications" class="nav-link">Publications</a></li>
-                <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
                 <li class="nav-item"><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li class="nav-item"><a href="#podcast" class="nav-link">Podcast</a></li>
+                <li class="nav-item"><a href="#additional" class="nav-link">More</a></li>
                 <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
             </ul>
         </div>
@@ -962,9 +1049,10 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title">Sumit Ranjan</h1>
-                    <h2 class="hero-subtitle">Head - Responsible AI | PhD Scholar | Author | AI Security Expert</h2>
+                    <h2 class="hero-subtitle">Head - Responsible AI | PhD Scholar</h2>
                     <p class="hero-description">
-                        I am a results-driven AI leader with over a decade of experience at the intersection of AI innovation, security, and governance. My career spans designing and deploying cutting-edge AI systems across healthcare, retail, finance, and autonomous systems—transforming ideas into scalable, responsible solutions. As the Head of Responsible AI at Forcespot, I lead initiatives focused on trust, safety, and accountability in AI, driving secure adoption for enterprises and government.
+                        I am a results-driven AI leader with over a decade of experience at the intersection of AI innovation, security, and governance. 
+                        As the Head of Responsible AI at Forcespot, I lead initiatives focused on trust, safety, and accountability in AI, driving secure adoption for enterprises and government.
                     </p>
                     
                     <div class="hero-contact">
@@ -973,19 +1061,15 @@
                             <span>Dubai, UAE</span>
                         </div>
                         <div class="contact-item">
-                            <i class="fab fa-linkedin"></i>
-                            <span>LinkedIn</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub</span>
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>PhD in Responsible Generative AI</span>
                         </div>
                     </div>
                     
                     <div class="hero-btns">
                         <a href="https://linkedin.com/in/sumit-ranjan-33015b22" target="_blank" class="btn btn-primary">Get In Touch</a>
-                        <a href="https://github.com/ranjan-sumit" target="_blank" class="btn btn-outline">
-                            <i class="fab fa-github"></i> View Projects
+                        <a href="#publications" class="btn btn-outline">
+                            <i class="fas fa-book"></i> View Publications
                         </a>
                     </div>
                 </div>
@@ -1017,16 +1101,16 @@
                 <div class="about-text">
                     <h2>Professional Profile</h2>
                     <p>
-                        I'm Sumit Ranjan — a seasoned AI researcher, author, and security strategist with over a decade of experience driving innovation at the intersection of AI development and AI security. I specialize in building secure, scalable, and responsible AI systems using state-of-the-art models like GPT-4, LLaMA, and Falcon, with deep expertise in agentic AI, LLM safety, and AI governance.
+                        I'm Sumit Ranjan — a seasoned AI researcher, author, and security strategist with over a decade of experience driving innovation at the intersection of AI development and security. 
+                        I specialize in building secure, scalable, and responsible AI systems using state-of-the-art models with deep expertise in agentic AI, LLM safety, and AI governance.
                     </p>
                     <p>
-                        Currently, I serve as Head of Responsible AI at Forcespot, where I lead cross-functional initiatives to embed ethics, transparency, and risk mitigation into enterprise AI adoption. I'm also a PhD scholar in Responsible Generative AI at BITS Pilani, researching how to build trustworthy agent-based systems.
+                        Currently, I serve as Head of Responsible AI at Forcespot, where I lead cross-functional initiatives to embed ethics, transparency, and risk mitigation into enterprise AI adoption. 
+                        I'm also a PhD scholar in Responsible Generative AI at BITS Pilani, researching how to build trustworthy agent-based systems.
                     </p>
                     <p>
-                        As a contributor to the OWASP Agentic Security Initiative, I'm actively shaping global standards in AI safety. I've led high-impact AI initiatives across global enterprises in healthcare, retail, and finance—translating complex models into real-world value and authored the bestselling book, "Applied Deep Learning and Computer Vision for Self-Driving Cars". My upcoming book, "Enterprise Agentic AI", explores the secure deployment of autonomous AI systems in modern enterprises.
-                    </p>
-                    <p>
-                        At the core, I'm driven by one mission: to build AI that's not just powerful, but also safe, ethical, and accountable.
+                        As a contributor to the OWASP Agentic Security Initiative, I'm actively shaping global standards in AI safety. 
+                        I've led high-impact AI initiatives across global enterprises in healthcare, retail, and finance—translating complex models into real-world value.
                     </p>
                 </div>
             </div>
@@ -1098,170 +1182,56 @@
             
             <div class="publications-grid">
                 <div class="publication-card">
-                    <div class="publication-header">
-                        <div class="publication-type">Bestselling Book</div>
-                    </div>
                     <div class="publication-image book1"></div>
                     <div class="publication-content">
                         <h3 class="publication-title">Applied Deep Learning and Computer Vision for Self-Driving Cars</h3>
                         <div class="publication-meta">
-                            Comprehensive guide to building autonomous vehicles using deep learning techniques and computer vision systems.
+                            <strong>Packt Publications</strong> | Bestseller<br>
+                            Comprehensive guide to building autonomous vehicles using deep learning
                         </div>
-                        <div class="publisher-badge">
-                            <i class="fas fa-book"></i> Packt Publications
-                        </div>
-                        <a href="https://www.amazon.com/Applied-Learning-Computer-Vision-Self-Driving/dp/1838646302" target="_blank" class="btn btn-outline" style="margin-top: 1.5rem;">View on Amazon</a>
+                        <a href="https://www.amazon.com/Applied-Learning-Computer-Vision-Self-Driving/dp/1838646302" target="_blank" class="btn btn-outline" style="margin-top: 1rem;">View on Amazon</a>
                     </div>
                 </div>
                 
                 <div class="publication-card">
-                    <div class="publication-header">
-                        <div class="publication-type">Upcoming Book</div>
-                    </div>
                     <div class="publication-image book2"></div>
                     <div class="publication-content">
                         <h3 class="publication-title">Enterprise Agentic AI: Harnessing AI Transformation</h3>
                         <div class="publication-meta">
-                            Practical guide to implementing agentic AI systems in enterprise environments with a focus on security and governance.
+                            <strong>Upcoming Release: July 2025</strong><br>
+                            Practical guide to implementing agentic AI in enterprise environments
                         </div>
-                        <div class="publisher-badge">
-                            <i class="fas fa-book"></i> Packt Publications
-                        </div>
-                        <a href="https://www.amazon.com/Agentic-AI-Enterprise-Harnessing-Transformation/dp/B0F44VF26B" target="_blank" class="btn btn-outline" style="margin-top: 1.5rem;">View on Amazon</a>
+                        <a href="https://www.amazon.com/Agentic-AI-Enterprise-Harnessing-Transformation/dp/B0F44VF26B" target="_blank" class="btn btn-outline" style="margin-top: 1rem;">View on Amazon</a>
                     </div>
                 </div>
                 
                 <div class="publication-card">
-                    <div class="publication-header">
-                        <div class="publication-type">Research Paper</div>
-                    </div>
                     <div class="publication-image paper1">
                         <i class="fas fa-pills paper-icon"></i>
                     </div>
                     <div class="publication-content">
                         <h3 class="publication-title">Text summarization for pharmaceutical sciences using hierarchical clustering</h3>
                         <div class="publication-meta">
-                            Novel approach to pharmaceutical text summarization using hierarchical clustering techniques for enhanced information extraction.
+                            <span class="conference-highlight">Nature Springer International Journal</span><br>
+                            August 2024<br>
+                            Novel approach to pharmaceutical text summarization
                         </div>
-                        <div class="publisher-badge">
-                            <i class="fas fa-book-open"></i> Nature Springer International Journal
-                        </div>
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/39209906/" target="_blank" class="btn btn-outline" style="margin-top: 1.5rem;">View Paper</a>
+                        <a href="https://pubmed.ncbi.nlm.nih.gov/39209906/" target="_blank" class="btn btn-outline" style="margin-top: 1rem;">View Paper</a>
                     </div>
                 </div>
                 
                 <div class="publication-card">
-                    <div class="publication-header">
-                        <div class="publication-type">Conference Paper</div>
-                    </div>
                     <div class="publication-image paper2">
                         <i class="fas fa-home paper-icon"></i>
                     </div>
                     <div class="publication-content">
                         <h3 class="publication-title">LLM-Powered Generative AI for Enhanced Real Estate Property Search</h3>
                         <div class="publication-meta">
-                            Innovative AI approach to real estate search using generative AI and large language models for personalized property recommendations.
-                        </div>
-                        <div class="publisher-badge">
-                            <i class="fas fa-university"></i> IIM Bangalore
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="publication-card">
-                    <div class="publication-header">
-                        <div class="publication-type">Conference Paper</div>
-                    </div>
-                    <div class="publication-image paper3">
-                        <i class="fas fa-robot paper-icon"></i>
-                    </div>
-                    <div class="publication-content">
-                        <h3 class="publication-title">UI Automation Test Element Search Using Machine Learning</h3>
-                        <div class="publication-meta">
-                            Advanced techniques for UI automation testing using machine learning to improve element identification and testing efficiency.
-                        </div>
-                        <div class="publisher-badge">
-                            <i class="fas fa-university"></i> IIM Bangalore
+                            <span class="conference-highlight">National Conference on ML & AI</span><br>
+                            IIM Bangalore | October 2023<br>
+                            Innovative AI approach to real estate search
                         </div>
                     </div>
-                </div>
-                
-                <div class="publication-card">
-                    <div class="publication-header">
-                        <div class="publication-type">Research Paper</div>
-                    </div>
-                    <div class="publication-image paper4">
-                        <i class="fas fa-shield-alt paper-icon"></i>
-                    </div>
-                    <div class="publication-content">
-                        <h3 class="publication-title">SecuregenAI: A Lifecycle Framework For Securing Large Language Models In Healthcare</h3>
-                        <div class="publication-meta">
-                            Comprehensive framework for securing LLMs in healthcare applications through AI red teaming, federated learning and advanced security protocols.
-                        </div>
-                        <div class="publisher-badge">
-                            <i class="fas fa-book-open"></i> Springer Nature
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="section skills" id="skills">
-        <div class="container">
-            <div class="section-header">
-                <h2>Technical Skills</h2>
-                <p>Expertise across the AI development lifecycle</p>
-            </div>
-            
-            <div class="skills-grid">
-                <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Languages</h3>
-                    <ul class="skill-list">
-                        <li class="skill-item"><i class="fab fa-python"></i> Python</li>
-                        <li class="skill-item"><i class="fas fa-database"></i> SQL</li>
-                        <li class="skill-item"><i class="fas fa-chart-line"></i> R Programming</li>
-                    </ul>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><i class="fas fa-brain"></i> LLM/GenAI</h3>
-                    <ul class="skill-list">
-                        <li class="skill-item"><i class="fas fa-robot"></i> OpenAI</li>
-                        <li class="skill-item"><i class="fas fa-link"></i> LangChain</li>
-                        <li class="skill-item"><i class="fas fa-search"></i> LamaIndex</li>
-                        <li class="skill-item"><i class="fas fa-server"></i> Enterprise LLMs</li>
-                        <li class="skill-item"><i class="fas fa-cube"></i> Multimodels</li>
-                    </ul>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><i class="fas fa-cogs"></i> AI Agent Frameworks</h3>
-                    <ul class="skill-list">
-                        <li class="skill-item">Crew.ai</li>
-                        <li class="skill-item">LangGraph</li>
-                        <li class="skill-item">LangFlow</li>
-                        <li class="skill-item">Autogen</li>
-                        <li class="skill-item">n8n</li>
-                        <li class="skill-item">MS Copilot Studio</li>
-                        <li class="skill-item">MindPal</li>
-                    </ul>
-                </div>
-                
-                <div class="skill-category">
-                    <h3><i class="fas fa-shield-alt"></i> AI Security</h3>
-                    <ul class="skill-list">
-                        <li class="skill-item">AI Governance</li>
-                        <li class="skill-item">AI Model & Application Scan</li>
-                        <li class="skill-item">AI Red Teaming</li>
-                        <li class="skill-item">AI Firewall & Guardrails</li>
-                        <li class="skill-item">Model Safety & Evaluation</li>
-                        <li class="skill-item">Low-code/No-code Security</li>
-                        <li class="skill-item">ChatGPT Security</li>
-                        <li class="skill-item">MS Copilot 365/Studio Security</li>
-                        <li class="skill-item">Agentic AI Security</li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -1305,7 +1275,7 @@
                         <i class="fas fa-chalkboard-teacher"></i>
                     </div>
                     <h3>Invited Workshop at University of Birmingham</h3>
-                    <p>Conducted "Developing AI Agent" workshop for the prestigious University of Birmingham in Dubai, February 2025.</p>
+                    <p>Conducted "Developing AI Agent" workshop at the prestigious University of Birmingham Dubai Campus, February 2025.</p>
                 </div>
                 
                 <div class="achievement-card">
@@ -1345,14 +1315,128 @@
         </div>
     </section>
 
+    <!-- Podcast Section -->
+    <section class="podcast" id="podcast">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Podcast</h2>
+                <p>Insights on AI, cybersecurity and responsible innovation</p>
+            </div>
+            
+            <div class="podcast-container">
+                <div class="podcast-content">
+                    <h3 class="podcast-title">Cyber Security, Human Brains and Responsible AI</h3>
+                    <div class="podcast-meta">
+                        <span><i class="fas fa-calendar"></i> March 2025</span>
+                        <span><i class="fas fa-clock"></i> 45 min</span>
+                        <span><i class="fas fa-headphones"></i> SharafDG AI Podcast</span>
+                    </div>
+                    <div class="podcast-description">
+                        <p>I was honored to be invited by the SharafDG AI Group to speak on their popular podcast about the critical intersection of cybersecurity, human cognition, and responsible AI practices.</p>
+                        <p>In this engaging discussion, we explore the challenges and opportunities in developing secure AI systems that align with human values and ethical principles. We dive deep into strategies for building AI that not only advances technology but also protects users and maintains trust.</p>
+                        <p>Key topics include balancing innovation with security, implementing ethical AI frameworks, and preparing organizations for the next generation of AI governance.</p>
+                    </div>
+                    <a href="https://www.youtube.com/watch?v=320Ze0ZSS7M&t=139s" target="_blank" class="btn btn-primary">
+                        <i class="fas fa-play-circle"></i> Watch Full Podcast
+                    </a>
+                </div>
+                
+                <div class="podcast-thumbnail">
+                    <img src="https://img.youtube.com/vi/320Ze0ZSS7M/maxresdefault.jpg" alt="SharafDG AI Podcast">
+                    <div class="play-button">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Sections -->
+    <section class="section" id="additional" style="background-color: #f8fafc;">
+        <div class="container">
+            <div class="section-header">
+                <h2>More Highlights</h2>
+                <p>Additional accomplishments and contributions</p>
+            </div>
+            
+            <div class="additional-grid">
+                <div class="additional-card">
+                    <h3><i class="fas fa-certificate"></i> Certifications</h3>
+                    <ul class="additional-list">
+                        <li class="additional-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>Deep Learning for coders using Fastai from Queensland University, Australia</div>
+                        </li>
+                        <li class="additional-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>Deep Learning Nanodegree by Udacity</div>
+                        </li>
+                        <li class="additional-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>Deep Learning for Self Driving Cars Scholarship by KPIT Technologies</div>
+                        </li>
+                        <li class="additional-item">
+                            <i class="fas fa-check-circle"></i>
+                            <div>Certification on AWS-MLOPS 2022</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="additional-card">
+                    <h3><i class="fas fa-trophy"></i> Hackathons</h3>
+                    <ul class="additional-list">
+                        <li class="additional-item">
+                            <i class="fas fa-medal"></i>
+                            <div>NLP News Classification Machinehack Aug 2024 - Solution Ranked 3rd</div>
+                        </li>
+                        <li class="additional-item">
+                            <i class="fas fa-medal"></i>
+                            <div>Solar Power Sustainability Challenge by Wipro 2022 - Top 5%</div>
+                        </li>
+                        <li class="additional-item">
+                            <i class="fas fa-medal"></i>
+                            <div>Ugam Sentiment Analysis Challenge 2022 - Top 1%</div>
+                        </li>
+                        <li class="additional-item">
+                            <i class="fas fa-medal"></i>
+                            <div>Trident Hackathon 2022 - Top 9%</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="additional-card">
+                    <h3><i class="fas fa-microphone"></i> Talks & Workshops</h3>
+                    <ul class="additional-list">
+                        <li class="additional-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <div>Workshop on "Agentic AI in Industry" at BITS Pilani Dubai, May 2025</div>
+                        </li>
+                        <li class="additional-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <div>Bootcamp on "Decoding AI Agents" for DDS Community Dubai, June 2025</div>
+                        </li>
+                        <li class="additional-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <div>Session on Generative AI in Industry at Manipal University, Dubai, July 2024</div>
+                        </li>
+                        <li class="additional-item">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <div>Workshop on "Deep Learning for Computer Vision" for faculty development program 2020</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-col">
                     <h3>Sumit Ranjan</h3>
-                    <p>Head - Responsible AI | PhD Scholar | Author</p>
-                    <p>AI Security Expert with 10+ years of experience in cutting-edge AI technologies.</p>
+                    <p>Head - Responsible AI | PhD Scholar</p>
+                    <p>AI Researcher & Author with 10+ years of experience in cutting-edge AI technologies.</p>
                     
                     <div class="social-links">
                         <a href="https://linkedin.com/in/sumit-ranjan-33015b22" target="_blank" class="social-link">
@@ -1373,7 +1457,7 @@
                         <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
                         <li><a href="#experience"><i class="fas fa-chevron-right"></i> Experience</a></li>
                         <li><a href="#publications"><i class="fas fa-chevron-right"></i> Publications</a></li>
-                        <li><a href="#skills"><i class="fas fa-chevron-right"></i> Skills</a></li>
+                        <li><a href="#podcast"><i class="fas fa-chevron-right"></i> Podcast</a></li>
                     </ul>
                 </div>
                 
@@ -1421,6 +1505,14 @@
             header.classList.toggle('sticky', window.scrollY > 0);
         });
         
+        // YouTube video play functionality
+        const playButton = document.querySelector('.play-button');
+        if(playButton) {
+            playButton.addEventListener('click', () => {
+                window.open('https://www.youtube.com/watch?v=320Ze0ZSS7M&t=139s', '_blank');
+            });
+        }
+        
         // Animate elements on scroll
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -1432,7 +1524,7 @@
             threshold: 0.1
         });
         
-        document.querySelectorAll('.timeline-content, .publication-card, .achievement-card').forEach(el => {
+        document.querySelectorAll('.timeline-content, .publication-card, .achievement-card, .additional-card').forEach(el => {
             el.classList.add('hide');
             observer.observe(el);
         });
