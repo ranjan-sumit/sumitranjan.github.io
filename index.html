@@ -327,78 +327,6 @@
             z-index: 1;
         }
         
-        /* About Section */
-        .about {
-            background-color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .about:before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: 0;
-            width: 300px;
-            height: 300px;
-            background: var(--accent-light);
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.1;
-            z-index: 0;
-        }
-        
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem; /* space between image and text */
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .about-image {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .profile-card {
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            padding: 3rem 2rem;
-            text-align: center;
-            max-width: 350px;
-            border-top: 4px solid var(--primary);
-            position: relative;
-            overflow: hidden;
-            width: 100%;
-        }
-        
-        .profile-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--gradient);
-        }
-        
-        .profile-icon {
-            font-size: 5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1rem;
-        }
-        
-        .about-text h2 {
-            margin-bottom: 1.5rem;
-        }
-        
         /* Experience Section */
         .experience {
             background-color: #f8fafc;
@@ -1054,6 +982,198 @@
             font-size: 1rem;
         }
         
+        /* About Section - Redesigned - MOVED OUTSIDE MEDIA QUERY */
+        .about {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-top: 4px solid var(--accent);
+        }
+        
+        .about-header {
+            text-align: center;
+            padding: 3rem 2rem 0;
+        }
+        
+        .about-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+        
+        .about-header:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+        
+        .profile-highlight {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin: 3rem 0;
+            padding: 0 2rem;
+        }
+        
+        .profile-badge {
+            background: linear-gradient(135deg, #f8fafc 0%, #e6f7ff 100%);
+            border-radius: var(--border-radius);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            min-width: 300px;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--light-gray);
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+        }
+        
+        .profile-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .profile-badge i {
+            font-size: 3.5rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.5rem;
+        }
+        
+        .profile-badge h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .profile-badge p {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        .about-content {
+            background: white;
+            padding: 2.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-content p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--secondary);
+        }
+        
+        .about-content strong {
+            color: var(--primary);
+            font-weight: 600;
+        }
+        
+        .about-divider {
+            height: 1px;
+            background: var(--light-gray);
+            margin: 2rem 0;
+            position: relative;
+        }
+        
+        .about-divider:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .core-mission {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            margin-top: 2rem;
+        }
+        
+        .core-mission h4 {
+            font-size: 1.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .core-mission p {
+            font-style: italic;
+            color: var(--secondary);
+            margin-bottom: 0;
+        }
+        
+        /* Skills Cards */
+        .skills-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .skill-card {
+            background: #ffffff;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-card ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .skill-card li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+            gap: 10px;
+        }
+
+        .skill-card li i {
+            color: var(--accent);
+        }
+        
         /* Responsive */
         @media (max-width: 992px) {
             .hero-content {
@@ -1129,228 +1249,8 @@
             .hero {
                 padding: 10rem 0 4rem;
             }
-            .skills-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.skill-card {
-  background: #ffffff;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.skill-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-}
-
-.skill-card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  color: var(--primary-color); /* Customize with your theme */
-}
-
-.skill-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.skill-card li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.6rem;
-  font-size: 0.95rem;
-}
-
-.skill-card li i {
-  margin-right: 0.5rem;
-  color: var(--secondary-color); /* Adjust as per your brand */
-}
-.about-text p {
-  margin-bottom: 1.5rem;
-  line-height: 1.7;
-  font-size: 1.05rem;
-}
-
-.about-text strong {
-  color: var(--primary-color);
-  font-weight: 600;
-}
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-        
-        /* About Section - Redesigned */
-        .about {
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            padding: 4rem 2rem;
-            position: relative;
-            overflow: hidden;
-            margin: 4rem auto;
-            max-width: 1000px;
-            border-top: 4px solid var(--accent);
-        }
-        
-        .about:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 200px;
-            height: 200px;
-            background: var(--accent-light);
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.1;
-            z-index: 0;
-        }
-        
-        .about-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
-        
-        .about-header h2 {
-            font-size: 2.5rem;
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
-        }
-        
-        .about-header:after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--gradient);
-            border-radius: 2px;
-        }
-        
-        .profile-highlight {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .profile-badge {
-            background: linear-gradient(135deg, #f8fafc 0%, #e6f7ff 100%);
-            border-radius: var(--border-radius);
-            padding: 2.5rem 2rem;
-            text-align: center;
-            min-width: 300px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--light-gray);
-            position: relative;
-            z-index: 1;
-            transition: var(--transition);
-        }
-        
-        .profile-badge:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .profile-badge i {
-            font-size: 3.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
-        }
-        
-        .profile-badge h3 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .profile-badge p {
-            font-size: 1.2rem;
-            color: var(--secondary);
-            font-weight: 500;
-        }
-        
-        .about-content {
-            background: white;
-            padding: 2.5rem;
-            border-radius: var(--border-radius);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            position: relative;
-            z-index: 1;
-        }
-        
-        .about-content p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--secondary);
-        }
-        
-        .about-content strong {
-            color: var(--primary);
-            font-weight: 600;
-        }
-        
-        .about-divider {
-            height: 1px;
-            background: var(--light-gray);
-            margin: 2rem 0;
-            position: relative;
-        }
-        
-        .about-divider:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--accent);
-        }
-        
-        .core-mission {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
-            border-left: 4px solid var(--primary);
-            padding: 1.5rem;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-            margin-top: 2rem;
-        }
-        
-        .core-mission h4 {
-            font-size: 1.3rem;
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-        
-        .core-mission p {
-            font-style: italic;
-            color: var(--secondary);
-            margin-bottom: 0;
-        }
-        
-        @media (max-width: 768px) {
+            
+            /* Mobile adjustments for About section */
             .profile-highlight {
                 flex-direction: column;
                 align-items: center;
@@ -1362,8 +1262,7 @@
             
             .about-content {
                 padding: 1.5rem;
-
-
+            }
         }
     </style>
 </head>
@@ -1426,8 +1325,9 @@
         </div>
     </section>
 
-   <!-- About Section - Redesigned -->
-        <section class="about" id="about">
+    <!-- Fixed About Section -->
+    <section class="section about" id="about">
+        <div class="container">
             <div class="about-header">
                 <h2>About Me</h2>
             </div>
@@ -1470,7 +1370,9 @@
                     <p>
                         To build AI that's not just powerful, but also safe, ethical, and accountable.
                     </p>
-                </div>        </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Experience Section -->
@@ -1523,43 +1425,32 @@
                         <div class="timeline-company">VMWare, Bengaluru</div>
                         <div class="timeline-badge">Customer Journey Optimization</div>
                     </div>
-
-
-                    
                 </div>
                 
-                  <div class="timeline-item">
-                      <div class="timeline-content">
-                          <div class="timeline-date"><i class="fas fa-calendar"></i> Jun 2018 - Feb 2019</div>
-                          <h3 class="timeline-title">Data Scientist</h3>
-                          <div class="timeline-company">Affine Analytics, Bengaluru</div>
-                          <div class="timeline-badge">Computer Vision for Automobile</div>
-                      </div>
-
-
-                    </div>
-                </div>
-                
-               <div class="timeline-item">
-                <div class="timeline-content">
-                    <div class="timeline-date"><i class="fas fa-calendar"></i> Mar 2017 - May 2018</div>
-                    <h3 class="timeline-title">Software Consultant</h3>
-                    <div class="timeline-company">KPIT Technologies, Bengaluru</div>
-                    <div class="timeline-badge">Risk Modeling & AI Scholarship</div>
-                
-            
-
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date"><i class="fas fa-calendar"></i> Jun 2018 - Feb 2019</div>
+                        <h3 class="timeline-title">Data Scientist</h3>
+                        <div class="timeline-company">Affine Analytics, Bengaluru</div>
+                        <div class="timeline-badge">Computer Vision for Automobile</div>
                     </div>
                 </div>
                 
                 <div class="timeline-item">
-    <div class="timeline-content">
-        <div class="timeline-date"><i class="fas fa-calendar"></i> Jul 2014 - Dec 2016</div>
-        <h3 class="timeline-title">Software Consultant</h3>
-        <div class="timeline-company">Oak Systems, Bengaluru</div>
-        <div class="timeline-badge">Semiconductor Analytics</div>
-
-
+                    <div class="timeline-content">
+                        <div class="timeline-date"><i class="fas fa-calendar"></i> Mar 2017 - May 2018</div>
+                        <h3 class="timeline-title">Software Consultant</h3>
+                        <div class="timeline-company">KPIT Technologies, Bengaluru</div>
+                        <div class="timeline-badge">Risk Modeling & AI Scholarship</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date"><i class="fas fa-calendar"></i> Jul 2014 - Dec 2016</div>
+                        <h3 class="timeline-title">Software Consultant</h3>
+                        <div class="timeline-company">Oak Systems, Bengaluru</div>
+                        <div class="timeline-badge">Semiconductor Analytics</div>
                     </div>
                 </div>
             </div>
@@ -1567,63 +1458,59 @@
     </section>
 
     <!-- Skills Section -->
-  <!-- Skills Section -->
-<section class="section skills" id="skills">
-  <div class="container">
-    <div class="section-header">
-      <h2>Technical Expertise</h2>
-      <p>Specialized skills across the AI development lifecycle</p>
-    </div>
+    <section class="section skills" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Expertise</h2>
+                <p>Specialized skills across the AI development lifecycle</p>
+            </div>
 
-    <div class="skills-cards">
+            <div class="skills-cards">
+                <!-- AI Specializations -->
+                <div class="skill-card">
+                    <h3><i class="fas fa-brain"></i> AI Specializations</h3>
+                    <ul>
+                        <li><i class="fas fa-cogs"></i> Custom Language Model Development</li>
+                        <li><i class="fas fa-eye"></i> Computer Vision Solutions</li>
+                        <li><i class="fas fa-robot"></i> Generative & Agentic AI</li>
+                        <li><i class="fas fa-shield-alt"></i> AI Security & Compliance</li>
+                        <li><i class="fas fa-balance-scale"></i> AI Governance</li>
+                        <li><i class="fas fa-handshake"></i> Responsible AI</li>
+                        <li><i class="fab fa-microsoft"></i> MS Copilot Security</li>
+                        <li><i class="fas fa-comment-dots"></i> ChatGPT Security</li>
+                        <li><i class="fas fa-chart-line"></i> Model Evaluation</li>
+                    </ul>
+                </div>
 
-      <!-- AI Specializations -->
-      <div class="skill-card">
-        <h3><i class="fas fa-brain"></i> AI Specializations</h3>
-        <ul>
-          <li><i class="fas fa-cogs"></i> Custom Language Model Development</li>
-          <li><i class="fas fa-eye"></i> Computer Vision Solutions</li>
-          <li><i class="fas fa-robot"></i> Generative & Agentic AI</li>
-          <li><i class="fas fa-shield-alt"></i> AI Security & Compliance</li>
-          <li><i class="fas fa-balance-scale"></i> AI Governance</li>
-          <li><i class="fas fa-handshake"></i> Responsible AI</li>
-          <li><i class="fab fa-microsoft"></i> MS Copilot Security</li>
-          <li><i class="fas fa-comment-dots"></i> ChatGPT Security</li>
-          <li><i class="fas fa-chart-line"></i> Model Evaluation</li>
-        </ul>
-      </div>
+                <!-- Languages & Frameworks -->
+                <div class="skill-card">
+                    <h3><i class="fas fa-code"></i> Languages & Frameworks</h3>
+                    <ul>
+                        <li><i class="fab fa-python"></i> Python</li>
+                        <li><i class="fas fa-database"></i> SQL</li>
+                        <li><i class="fas fa-chart-line"></i> R Programming</li>
+                        <li><i class="fas fa-robot"></i> OpenAI</li>
+                        <li><i class="fas fa-link"></i> LangChain</li>
+                        <li><i class="fas fa-search"></i> LlamaIndex</li>
+                    </ul>
+                </div>
 
-      <!-- Languages & Frameworks -->
-      <div class="skill-card">
-        <h3><i class="fas fa-code"></i> Languages & Frameworks</h3>
-        <ul>
-          <li><i class="fab fa-python"></i> Python</li>
-          <li><i class="fas fa-database"></i> SQL</li>
-          <li><i class="fas fa-chart-line"></i> R Programming</li>
-          <li><i class="fas fa-robot"></i> OpenAI</li>
-          <li><i class="fas fa-link"></i> LangChain</li>
-          <li><i class="fas fa-search"></i> LlamaIndex</li>
-        </ul>
-      </div>
-
-      <!-- Agent Frameworks -->
-      <div class="skill-card">
-        <h3><i class="fas fa-cogs"></i> AI Agent Frameworks</h3>
-        <ul>
-          <li><i class="fas fa-users-cog"></i> Crew.ai</li>
-          <li><i class="fas fa-project-diagram"></i> LangGraph</li>
-          <li><i class="fas fa-stream"></i> LangFlow</li>
-          <li><i class="fas fa-bolt"></i> Autogen</li>
-          <li><i class="fas fa-random"></i> n8n</li>
-          <li><i class="fab fa-microsoft"></i> MS Copilot Studio</li>
-          <li><i class="fas fa-lightbulb"></i> MindPal</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+                <!-- Agent Frameworks -->
+                <div class="skill-card">
+                    <h3><i class="fas fa-cogs"></i> AI Agent Frameworks</h3>
+                    <ul>
+                        <li><i class="fas fa-users-cog"></i> Crew.ai</li>
+                        <li><i class="fas fa-project-diagram"></i> LangGraph</li>
+                        <li><i class="fas fa-stream"></i> LangFlow</li>
+                        <li><i class="fas fa-bolt"></i> Autogen</li>
+                        <li><i class="fas fa-random"></i> n8n</li>
+                        <li><i class="fab fa-microsoft"></i> MS Copilot Studio</li>
+                        <li><i class="fas fa-lightbulb"></i> MindPal</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Publications Section -->
     <section class="section publications" id="publications">
