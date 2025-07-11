@@ -128,12 +128,12 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
             text-decoration: none;
-            padding-left: 10px; /* adds space to the left */
+            padding-left: 10px;
         }
         
         .logo span {
-                color: var(--secondary);
-    			margin-left: 5px; /* adds space between Sumit and Ranjan */
+            color: var(--secondary);
+            margin-left: 5px;
         }
         
         .nav-menu {
@@ -351,8 +351,8 @@
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem; /* space between image and text */
-            align-items: center;
+            gap: 4rem;
+            align-items: flex-start;
             position: relative;
             z-index: 1;
         }
@@ -395,8 +395,25 @@
             margin-bottom: 1rem;
         }
         
+        .about-text {
+            padding: 1rem;
+        }
+        
         .about-text h2 {
             margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+        
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--secondary);
+        }
+        
+        .about-text strong {
+            color: var(--primary);
+            font-weight: 600;
         }
         
         /* Experience Section */
@@ -536,7 +553,7 @@
             color: var(--gray);
         }
         
-             /* Publications Section */
+        /* Publications Section */
         .publications {
             background-color: white;
             position: relative;
@@ -685,6 +702,68 @@
             font-weight: 600;
         }
         
+        /* Skills Section */
+        .skills {
+            background-color: #f8fafc;
+            position: relative;
+        }
+        
+        .skills-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .skills-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid var(--accent);
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .skill-card ul {
+            list-style: none;
+        }
+        
+        .skill-card li {
+            display: flex;
+            align-items: center;
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--light-gray);
+            gap: 0.8rem;
+            font-size: 1rem;
+        }
+        
+        .skill-card li:last-child {
+            border-bottom: none;
+        }
+        
+        .skill-card i {
+            color: var(--primary);
+        }
+        
         /* Achievements Section */
         .achievements {
             background-color: white;
@@ -717,70 +796,6 @@
             font-size: 2.8rem;
             color: var(--primary);
             margin-bottom: 1.5rem;
-        }
-        
-        /* Skills Section */
-        .skills {
-            background-color: #f8fafc;
-            position: relative;
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
-        
-        .skill-category {
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-            transition: var(--transition);
-            border-top: 4px solid var(--accent);
-        }
-        
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .skill-category h3 {
-            font-size: 1.4rem;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-        
-        .skill-list {
-            list-style: none;
-        }
-        
-        .skill-item {
-            padding: 0.9rem 0;
-            border-bottom: 1px solid var(--light-gray);
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-size: 1.05rem;
-        }
-        
-        .skill-item:last-child {
-            border-bottom: none;
-        }
-        
-        .skill-badge {
-            display: inline-block;
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            margin-top: 0.3rem;
         }
         
         /* Podcast Section */
@@ -1008,7 +1023,7 @@
         }
         
         .footer-col ul li a {
-            color: #cbd5e1;
+            color: #cbd5e1";
             text-decoration: none;
             transition: var(--transition);
             display: flex;
@@ -1050,7 +1065,7 @@
             text-align: center;
             padding-top: 2.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #94a3b8;
+            color: #94a3b8";
             font-size: 1rem;
         }
         
@@ -1129,62 +1144,6 @@
             .hero {
                 padding: 10rem 0 4rem;
             }
-            .skills-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.skill-card {
-  background: #ffffff;
-  border-radius: 1rem;
-  padding: 1.5rem;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.skill-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-}
-
-.skill-card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 1rem;
-  color: var(--primary-color); /* Customize with your theme */
-}
-
-.skill-card ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.skill-card li {
-  display: flex;
-  align-items: center;
-  margin-bottom: 0.6rem;
-  font-size: 0.95rem;
-}
-
-.skill-card li i {
-  margin-right: 0.5rem;
-  color: var(--secondary-color); /* Adjust as per your brand */
-}
-.about-text p {
-  margin-bottom: 1.5rem;
-  line-height: 1.7;
-  font-size: 1.05rem;
-}
-
-.about-text strong {
-  color: var(--primary-color);
-  font-weight: 600;
-}
-
-
         }
     </style>
 </head>
@@ -1263,20 +1222,21 @@
                         <p>PhD scholar in AgenticAI Security</p>
                     </div>
                 </div>
+                <div class="about-text">
+                    <h2>Professional Profile</h2>
+                    <p>
+                        I'm <strong>Sumit Ranjan</strong> — AI researcher, author, and security strategist with a decade of experience at the forefront of <strong>AI innovation and safety</strong>. My focus lies in building secure, scalable, and ethical AI systems with deep specialization in <strong>Agentic AI</strong>, <strong>LLM security</strong>, and <strong>AI governance</strong>.
+                    </p>
+                    <p>
+                        Currently, I serve as the <strong>Head of Responsible AI at Forcespot</strong>, leading cross-functional initiatives to integrate ethics, transparency, and risk mitigation into enterprise AI deployments. Alongside, I'm pursuing a <strong>PhD in Agentic AI Security at BITS Pilani</strong>, researching trustworthy agent-based systems.
+                    </p>
+                    <p>
+                        I contribute to the <strong>OWASP Agentic Security Initiative</strong>, helping define global standards in GenAI safety. My past roles span healthcare, retail, and finance—delivering real-world impact by translating complex models into meaningful business outcomes.
+                    </p>
+                    <p>
+                        As an author, I've written the bestselling book <strong>"Applied Deep Learning and Computer Vision for Self-Driving Cars"</strong> and am currently working on <strong>"Enterprise Agentic AI"</strong> which explores secure deployment of autonomous AI systems in enterprises.
+                    </p>
                 </div>
-<div class="about-text">
-  <h2>Professional Profile</h2>
-  <p>
-    I'm <strong>Sumit Ranjan</strong> — AI researcher, author, and security strategist with decade of experience at the forefront of <strong>AI innovation and safety</strong>. My focus lies in building secure, scalable, and ethical AI systems with deep specialization in <strong>Agentic AI</strong>, <strong>LLM security</strong>, and <strong>AI governance</strong>.
-  </p>
-  <p>
-    Currently, I serve as the <strong>Head of Responsible AI at Forcespot</strong>, leading cross-functional initiatives to integrate ethics, transparency, and risk mitigation into enterprise AI deployments. Alongside, I’m pursuing a <strong>PhD in Agentic AI Security at BITS Pilani</strong>, researching trustworthy agent-based systems.
-  </p>
-  <p>
-    I contribute to the <strong>OWASP Agentic Security Initiative</strong>, helping define global standards in GenAI safety. My past roles span healthcare, retail, and finance—delivering real-world impact by translating complex models into meaningful business outcomes.
-  </p>
-</div>
-
             </div>
         </div>
     </section>
@@ -1331,43 +1291,32 @@
                         <div class="timeline-company">VMWare, Bengaluru</div>
                         <div class="timeline-badge">Customer Journey Optimization</div>
                     </div>
-
-
-                    
                 </div>
                 
-                  <div class="timeline-item">
-                      <div class="timeline-content">
-                          <div class="timeline-date"><i class="fas fa-calendar"></i> Jun 2018 - Feb 2019</div>
-                          <h3 class="timeline-title">Data Scientist</h3>
-                          <div class="timeline-company">Affine Analytics, Bengaluru</div>
-                          <div class="timeline-badge">Computer Vision for Automobile</div>
-                      </div>
-
-
-                    </div>
-                </div>
-                
-               <div class="timeline-item">
-                <div class="timeline-content">
-                    <div class="timeline-date"><i class="fas fa-calendar"></i> Mar 2017 - May 2018</div>
-                    <h3 class="timeline-title">Software Consultant</h3>
-                    <div class="timeline-company">KPIT Technologies, Bengaluru</div>
-                    <div class="timeline-badge">Risk Modeling & AI Scholarship</div>
-                
-            
-
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date"><i class="fas fa-calendar"></i> Jun 2018 - Feb 2019</div>
+                        <h3 class="timeline-title">Data Scientist</h3>
+                        <div class="timeline-company">Affine Analytics, Bengaluru</div>
+                        <div class="timeline-badge">Computer Vision for Automobile</div>
                     </div>
                 </div>
                 
                 <div class="timeline-item">
-    <div class="timeline-content">
-        <div class="timeline-date"><i class="fas fa-calendar"></i> Jul 2014 - Dec 2016</div>
-        <h3 class="timeline-title">Software Consultant</h3>
-        <div class="timeline-company">Oak Systems, Bengaluru</div>
-        <div class="timeline-badge">Semiconductor Analytics</div>
-
-
+                    <div class="timeline-content">
+                        <div class="timeline-date"><i class="fas fa-calendar"></i> Mar 2017 - May 2018</div>
+                        <h3 class="timeline-title">Software Consultant</h3>
+                        <div class="timeline-company">KPIT Technologies, Bengaluru</div>
+                        <div class="timeline-badge">Risk Modeling & AI Scholarship</div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="timeline-date"><i class="fas fa-calendar"></i> Jul 2014 - Dec 2016</div>
+                        <h3 class="timeline-title">Software Consultant</h3>
+                        <div class="timeline-company">Oak Systems, Bengaluru</div>
+                        <div class="timeline-badge">Semiconductor Analytics</div>
                     </div>
                 </div>
             </div>
@@ -1375,63 +1324,59 @@
     </section>
 
     <!-- Skills Section -->
-  <!-- Skills Section -->
-<section class="section skills" id="skills">
-  <div class="container">
-    <div class="section-header">
-      <h2>Technical Expertise</h2>
-      <p>Specialized skills across the AI development lifecycle</p>
-    </div>
-
-    <div class="skills-cards">
-
-      <!-- AI Specializations -->
-      <div class="skill-card">
-        <h3><i class="fas fa-brain"></i> AI Specializations</h3>
-        <ul>
-          <li><i class="fas fa-cogs"></i> Custom Language Model Development</li>
-          <li><i class="fas fa-eye"></i> Computer Vision Solutions</li>
-          <li><i class="fas fa-robot"></i> Generative & Agentic AI</li>
-          <li><i class="fas fa-shield-alt"></i> AI Security & Compliance</li>
-          <li><i class="fas fa-balance-scale"></i> AI Governance</li>
-          <li><i class="fas fa-handshake"></i> Responsible AI</li>
-          <li><i class="fab fa-microsoft"></i> MS Copilot Security</li>
-          <li><i class="fas fa-comment-dots"></i> ChatGPT Security</li>
-          <li><i class="fas fa-chart-line"></i> Model Evaluation</li>
-        </ul>
-      </div>
-
-      <!-- Languages & Frameworks -->
-      <div class="skill-card">
-        <h3><i class="fas fa-code"></i> Languages & Frameworks</h3>
-        <ul>
-          <li><i class="fab fa-python"></i> Python</li>
-          <li><i class="fas fa-database"></i> SQL</li>
-          <li><i class="fas fa-chart-line"></i> R Programming</li>
-          <li><i class="fas fa-robot"></i> OpenAI</li>
-          <li><i class="fas fa-link"></i> LangChain</li>
-          <li><i class="fas fa-search"></i> LlamaIndex</li>
-        </ul>
-      </div>
-
-      <!-- Agent Frameworks -->
-      <div class="skill-card">
-        <h3><i class="fas fa-cogs"></i> AI Agent Frameworks</h3>
-        <ul>
-          <li><i class="fas fa-users-cog"></i> Crew.ai</li>
-          <li><i class="fas fa-project-diagram"></i> LangGraph</li>
-          <li><i class="fas fa-stream"></i> LangFlow</li>
-          <li><i class="fas fa-bolt"></i> Autogen</li>
-          <li><i class="fas fa-random"></i> n8n</li>
-          <li><i class="fab fa-microsoft"></i> MS Copilot Studio</li>
-          <li><i class="fas fa-lightbulb"></i> MindPal</li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+    <section class="section skills" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>Technical Expertise</h2>
+                <p>Specialized skills across the AI development lifecycle</p>
+            </div>
+            
+            <div class="skills-cards">
+                <!-- AI Specializations -->
+                <div class="skill-card">
+                    <h3><i class="fas fa-brain"></i> AI Specializations</h3>
+                    <ul>
+                        <li><i class="fas fa-cogs"></i> Custom Language Model Development</li>
+                        <li><i class="fas fa-eye"></i> Computer Vision Solutions</li>
+                        <li><i class="fas fa-robot"></i> Generative & Agentic AI</li>
+                        <li><i class="fas fa-shield-alt"></i> AI Security & Compliance</li>
+                        <li><i class="fas fa-balance-scale"></i> AI Governance</li>
+                        <li><i class="fas fa-handshake"></i> Responsible AI</li>
+                        <li><i class="fab fa-microsoft"></i> MS Copilot Security</li>
+                        <li><i class="fas fa-comment-dots"></i> ChatGPT Security</li>
+                        <li><i class="fas fa-chart-line"></i> Model Evaluation</li>
+                    </ul>
+                </div>
+                
+                <!-- Languages & Frameworks -->
+                <div class="skill-card">
+                    <h3><i class="fas fa-code"></i> Languages & Frameworks</h3>
+                    <ul>
+                        <li><i class="fab fa-python"></i> Python</li>
+                        <li><i class="fas fa-database"></i> SQL</li>
+                        <li><i class="fas fa-chart-line"></i> R Programming</li>
+                        <li><i class="fas fa-robot"></i> OpenAI</li>
+                        <li><i class="fas fa-link"></i> LangChain</li>
+                        <li><i class="fas fa-search"></i> LlamaIndex</li>
+                    </ul>
+                </div>
+                
+                <!-- Agent Frameworks -->
+                <div class="skill-card">
+                    <h3><i class="fas fa-cogs"></i> AI Agent Frameworks</h3>
+                    <ul>
+                        <li><i class="fas fa-users-cog"></i> Crew.ai</li>
+                        <li><i class="fas fa-project-diagram"></i> LangGraph</li>
+                        <li><i class="fas fa-stream"></i> LangFlow</li>
+                        <li><i class="fas fa-bolt"></i> Autogen</li>
+                        <li><i class="fas fa-random"></i> n8n</li>
+                        <li><i class="fab fa-microsoft"></i> MS Copilot Studio</li>
+                        <li><i class="fas fa-lightbulb"></i> MindPal</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Publications Section -->
     <section class="section publications" id="publications">
@@ -1850,7 +1795,7 @@
             threshold: 0.1
         });
         
-        document.querySelectorAll('.timeline-content, .publication-card, .achievement-card, .additional-card, .skill-category').forEach(el => {
+        document.querySelectorAll('.timeline-content, .publication-card, .achievement-card, .additional-card, .skill-card').forEach(el => {
             el.classList.add('hide');
             observer.observe(el);
         });
