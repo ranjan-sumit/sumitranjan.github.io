@@ -179,7 +179,7 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--primary);
-            margin-right: 20px; /* Moved away from corner */
+            margin-right: 15px; /* Better positioning */
         }
         
         /* Hero Section */
@@ -223,21 +223,21 @@
             line-height: 1.1;
         }
         
+        /* REMOVED UNDERLINE STYLE */
         .hero-subtitle {
             font-size: 1.8rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--secondary);
             margin-bottom: 1.5rem;
             font-weight: 600;
         }
         
+        /* CHANGED TO LEFT ALIGNMENT */
         .hero-description {
             margin-bottom: 2rem;
             font-size: 1.2rem;
             max-width: 600px;
             color: var(--secondary);
+            text-align: left;
         }
         
         .hero-contact {
@@ -1216,7 +1216,7 @@
         @media (max-width: 768px) {
             .mobile-toggle {
                 display: block;
-                margin-right: 15px; /* Better positioning for mobile */
+                margin-right: 15px; /* Better positioning */
             }
             
             .nav-menu {
@@ -1250,22 +1250,10 @@
             
             .hero-title {
                 font-size: 2.4rem;
-                text-align: center;
             }
             
             .hero-subtitle {
                 font-size: 1.4rem;
-                text-align: center;
-            }
-            
-            .hero-description {
-                text-align: center;
-                margin: 0 auto 2rem;
-            }
-            
-            .hero-btns {
-                flex-direction: column;
-                align-items: center;
             }
             
             .section {
@@ -1294,25 +1282,52 @@
                 font-size: 2rem;
             }
             
-            .hero-contact {
-                justify-content: center;
+            /* Improved mobile navigation */
+            .nav-menu.active {
+                top: 70px;
+                padding: 1rem 0;
             }
             
+            .nav-item {
+                margin: 0.8rem 0;
+            }
+            
+            .nav-link {
+                font-size: 1rem;
+                padding: 0.5rem 1rem;
+            }
+            
+            /* Mobile touch targets */
+            .btn {
+                padding: 1.2rem 1.5rem;
+                min-width: 200px;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            /* Better mobile spacing */
+            .section {
+                padding: 3rem 0;
+            }
+            
+            .section-header {
+                margin-bottom: 2rem;
+            }
+            
+            /* Optimized timeline for mobile */
             .timeline-content {
                 padding: 1.5rem;
             }
             
-            .podcast-title {
-                font-size: 1.8rem;
+            .timeline-title {
+                font-size: 1.2rem;
             }
             
-            .podcast-description {
+            .timeline-company {
                 font-size: 1rem;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 300px;
             }
         }
         
@@ -1337,7 +1352,7 @@
             
             .hero-contact {
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
                 gap: 1rem;
             }
             
@@ -1359,6 +1374,10 @@
             
             .podcast-thumbnail {
                 height: 250px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1389,7 +1408,9 @@
             <div class="hero-content">
                 <div class="hero-text">
                     <h1 class="hero-title">Sumit Ranjan</h1>
+                    <!-- Removed underline from subtitle -->
                     <h2 class="hero-subtitle">Head - Responsible AI | PhD Scholar | Author | AI Security Expert</h2>
+                    <!-- Changed to left alignment -->
                     <p class="hero-description">
                         I am a results-driven AI leader with over a decade of experience at the intersection of AI innovation, security, and governance. 
                         As the Head of Responsible AI at Forcespot, I lead initiatives focused on trust, safety, and accountability in AI, driving secure adoption for enterprises and government.
@@ -1824,7 +1845,7 @@
                         <p>In this engaging discussion, we explore the challenges and opportunities in developing secure AI systems that align with human values and ethical principles. We dive deep into strategies for building AI that not only advances technology but also protects users and maintains trust.</p>
                         <p>Key topics include balancing innovation with security, implementing ethical AI frameworks, and preparing organizations for the next generation of AI governance.</p>
                     </div>
-                    <a href="https://www.youtube.com/watch?v=320Ze0ZSS7M&t=139s" target="_blank" class="btn btn-primary">
+                    <a href="https://www.youtube.com/watch?v/320Ze0ZSS7M&t=139s" target="_blank" class="btn btn-primary">
                         <i class="fas fa-play-circle"></i> Watch Full Podcast
                     </a>
                 </div>
