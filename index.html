@@ -73,7 +73,8 @@
             content: '';
             position: absolute;
             bottom: 0;
-            left: 0;
+            left: 50%;
+            transform: translateX(-50%);
             width: 60px;
             height: 4px;
             background: var(--gradient);
@@ -128,12 +129,12 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
             text-decoration: none;
-            padding-left: 10px; /* adds space to the left */
+            padding-left: 10px;
         }
         
         .logo span {
-                color: var(--secondary);
-    			margin-left: 5px; /* adds space between Sumit and Ranjan */
+            color: var(--secondary);
+            margin-left: 5px;
         }
         
         .nav-menu {
@@ -178,6 +179,7 @@
             font-size: 1.5rem;
             cursor: pointer;
             color: var(--primary);
+            margin-right: 20px; /* Moved away from corner */
         }
         
         /* Hero Section */
@@ -464,7 +466,7 @@
             color: var(--gray);
         }
         
-             /* Publications Section */
+        /* Publications Section */
         .publications {
             background-color: white;
             position: relative;
@@ -982,33 +984,37 @@
             font-size: 1rem;
         }
         
-        /* About Section - Redesigned - MOVED OUTSIDE MEDIA QUERY */
+        /* About Section - Redesigned */
         .about {
             background-color: white;
             border-radius: var(--border-radius);
             box-shadow: var(--shadow);
+            padding: 4rem 2rem;
             position: relative;
             overflow: hidden;
+            margin: 4rem auto;
             max-width: 1000px;
-            margin: 0 auto;
             border-top: 4px solid var(--accent);
         }
         
         .about-header {
             text-align: center;
-            padding: 3rem 2rem 0;
+            margin-bottom: 3rem;
         }
         
         .about-header h2 {
             font-size: 2.5rem;
             color: var(--primary-dark);
             margin-bottom: 1rem;
+            position: relative;
+            padding-bottom: 0.5rem;
         }
         
-        .about-header:after {
+        /* FIXED: Center the underline */
+        .about-header h2:after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
             width: 80px;
@@ -1022,8 +1028,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 2rem;
-            margin: 3rem 0;
-            padding: 0 2rem;
+            margin-bottom: 3rem;
         }
         
         .profile-badge {
@@ -1174,7 +1179,7 @@
             color: var(--accent);
         }
         
-        /* Responsive */
+        /* Mobile Optimization Enhancements */
         @media (max-width: 992px) {
             .hero-content {
                 flex-direction: column;
@@ -1211,6 +1216,7 @@
         @media (max-width: 768px) {
             .mobile-toggle {
                 display: block;
+                margin-right: 15px; /* Better positioning for mobile */
             }
             
             .nav-menu {
@@ -1238,8 +1244,28 @@
                 font-size: 2.2rem;
             }
             
+            h2 {
+                font-size: 1.8rem;
+            }
+            
             .hero-title {
-                font-size: 2.8rem;
+                font-size: 2.4rem;
+                text-align: center;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.4rem;
+                text-align: center;
+            }
+            
+            .hero-description {
+                text-align: center;
+                margin: 0 auto 2rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
             }
             
             .section {
@@ -1250,7 +1276,6 @@
                 padding: 10rem 0 4rem;
             }
             
-            /* Mobile adjustments for About section */
             .profile-highlight {
                 flex-direction: column;
                 align-items: center;
@@ -1258,10 +1283,82 @@
             
             .profile-badge {
                 width: 100%;
+                max-width: 350px;
             }
             
             .about-content {
                 padding: 1.5rem;
+            }
+            
+            .about-header h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-contact {
+                justify-content: center;
+            }
+            
+            .timeline-content {
+                padding: 1.5rem;
+            }
+            
+            .podcast-title {
+                font-size: 1.8rem;
+            }
+            
+            .podcast-description {
+                font-size: 1rem;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .profile-photo {
+                width: 220px;
+                height: 220px;
+            }
+            
+            .hero-bg {
+                width: 280px;
+                height: 280px;
+            }
+            
+            .hero-contact {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .contact-item {
+                font-size: 1rem;
+            }
+            
+            .profile-badge {
+                padding: 1.5rem;
+            }
+            
+            .profile-badge h3 {
+                font-size: 1.5rem;
+            }
+            
+            .profile-badge p {
+                font-size: 1rem;
+            }
+            
+            .podcast-thumbnail {
+                height: 250px;
             }
         }
     </style>
@@ -1325,7 +1422,7 @@
         </div>
     </section>
 
-    <!-- Fixed About Section -->
+    <!-- About Section -->
     <section class="section about" id="about">
         <div class="container">
             <div class="about-header">
@@ -1466,7 +1563,6 @@
             </div>
 
             <div class="skills-cards">
-                <!-- AI Specializations -->
                 <div class="skill-card">
                     <h3><i class="fas fa-brain"></i> AI Specializations</h3>
                     <ul>
@@ -1482,7 +1578,6 @@
                     </ul>
                 </div>
 
-                <!-- Languages & Frameworks -->
                 <div class="skill-card">
                     <h3><i class="fas fa-code"></i> Languages & Frameworks</h3>
                     <ul>
@@ -1495,7 +1590,6 @@
                     </ul>
                 </div>
 
-                <!-- Agent Frameworks -->
                 <div class="skill-card">
                     <h3><i class="fas fa-cogs"></i> AI Agent Frameworks</h3>
                     <ul>
