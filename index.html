@@ -44,323 +44,169 @@
       overflow-x: hidden;
     }
 
-    /* ─── NAV ─── */
+    /* NAV */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 0 2rem;
       background: rgba(10,10,15,0.88);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
     .nav-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 68px;
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between; height: 68px;
     }
     .nav-logo {
-      font-family: var(--font-display);
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--gold);
-      text-decoration: none;
-      letter-spacing: 0.02em;
+      font-family: var(--font-display); font-size: 1.3rem; font-weight: 700;
+      color: var(--gold); text-decoration: none; letter-spacing: 0.02em;
     }
-    .nav-links {
-      display: flex;
-      list-style: none;
-      gap: 2.2rem;
-    }
+    .nav-links { display: flex; list-style: none; gap: 2rem; }
     .nav-links a {
-      text-decoration: none;
-      color: var(--text-dim);
-      font-size: 0.83rem;
-      font-weight: 500;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      transition: color 0.2s;
+      text-decoration: none; color: var(--text-dim);
+      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s;
     }
     .nav-links a:hover { color: var(--gold); }
-    .nav-toggle {
-      display: none;
-      background: none;
-      border: none;
-      color: var(--text);
-      font-size: 1.3rem;
-      cursor: pointer;
-    }
+    .nav-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.3rem; cursor: pointer; }
 
-    /* ─── HERO ─── */
+    /* HERO */
     .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 120px 2rem 80px;
-      position: relative;
-      overflow: hidden;
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 120px 2rem 80px; position: relative; overflow: hidden;
     }
     .hero-ambient {
-      position: absolute;
-      top: -200px; right: -200px;
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
-      pointer-events: none;
+      position: absolute; top: -200px; right: -200px; width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%); pointer-events: none;
     }
     .hero-ambient-2 {
-      position: absolute;
-      bottom: -100px; left: -100px;
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(108,143,245,0.05) 0%, transparent 70%);
-      pointer-events: none;
+      position: absolute; bottom: -100px; left: -100px; width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(108,143,245,0.05) 0%, transparent 70%); pointer-events: none;
     }
     .hero-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 5rem;
-      align-items: center;
-      width: 100%;
-      position: relative;
-      z-index: 1;
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr auto; gap: 5rem;
+      align-items: center; width: 100%; position: relative; z-index: 1;
     }
     .hero-eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: var(--gold-dim);
-      border: 1px solid rgba(201,168,76,0.25);
-      color: var(--gold);
-      font-size: 0.76rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 0.42rem 1rem;
-      border-radius: 100px;
-      margin-bottom: 1.6rem;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.25); color: var(--gold);
+      font-size: 0.76rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.42rem 1rem; border-radius: 100px; margin-bottom: 1.6rem;
     }
     .hero-eyebrow::before {
-      content: '';
-      width: 6px; height: 6px;
-      background: var(--gold);
-      border-radius: 50%;
+      content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%;
       animation: pulse 2s infinite;
     }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.4; transform: scale(0.7); }
-    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
     .hero-name {
-      font-family: var(--font-display);
-      font-size: clamp(3rem, 6vw, 5.5rem);
-      font-weight: 900;
-      line-height: 1.0;
-      color: var(--text);
-      margin-bottom: 0.4rem;
+      font-family: var(--font-display); font-size: clamp(3rem,6vw,5.5rem);
+      font-weight: 900; line-height: 1.0; color: var(--text); margin-bottom: 0.4rem;
     }
     .hero-name span { color: var(--gold); }
     .hero-title {
-      font-family: var(--font-display);
-      font-size: clamp(1rem, 2vw, 1.4rem);
-      font-weight: 400;
-      color: var(--text-dim);
-      font-style: italic;
-      margin-bottom: 2rem;
+      font-family: var(--font-display); font-size: clamp(1rem,2vw,1.4rem);
+      font-weight: 400; color: var(--text-dim); font-style: italic; margin-bottom: 2rem;
     }
-    .hero-desc {
-      font-size: 1rem;
-      color: var(--text-dim);
-      max-width: 540px;
-      line-height: 1.85;
-      margin-bottom: 2.5rem;
-    }
-    .hero-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.65rem;
-      margin-bottom: 2.8rem;
-    }
+    .hero-desc { font-size: 1rem; color: var(--text-dim); max-width: 540px; line-height: 1.85; margin-bottom: 2.5rem; }
+    .hero-chips { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-bottom: 2.8rem; }
     .chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      color: var(--text-dim);
-      font-size: 0.8rem;
-      padding: 0.38rem 0.85rem;
-      border-radius: 100px;
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--surface-2); border: 1px solid var(--border);
+      color: var(--text-dim); font-size: 0.8rem; padding: 0.38rem 0.85rem; border-radius: 100px;
     }
     .chip i { color: var(--gold); font-size: 0.72rem; }
     .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn-gold {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: var(--gold);
-      color: var(--ink);
-      font-weight: 700;
-      font-size: 0.88rem;
-      padding: 0.82rem 1.7rem;
-      border-radius: var(--radius);
-      text-decoration: none;
-      letter-spacing: 0.03em;
-      transition: all 0.25s;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: var(--gold); color: var(--ink); font-weight: 700; font-size: 0.88rem;
+      padding: 0.82rem 1.7rem; border-radius: var(--radius); text-decoration: none;
+      letter-spacing: 0.03em; transition: all 0.25s;
     }
     .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.25); }
     .btn-ghost {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      background: transparent;
-      color: var(--text);
-      font-weight: 500;
-      font-size: 0.88rem;
-      padding: 0.82rem 1.7rem;
-      border-radius: var(--radius);
-      text-decoration: none;
-      border: 1px solid var(--border);
-      transition: all 0.25s;
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: transparent; color: var(--text); font-weight: 500; font-size: 0.88rem;
+      padding: 0.82rem 1.7rem; border-radius: var(--radius); text-decoration: none;
+      border: 1px solid var(--border); transition: all 0.25s;
     }
     .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
     .hero-photo-wrap { position: relative; display: flex; flex-direction: column; align-items: center; }
     .hero-photo-ring {
-      position: absolute;
-      inset: -14px;
-      border-radius: 50%;
-      border: 1px solid rgba(201,168,76,0.2);
+      position: absolute; border-radius: 50%; border: 1px solid rgba(201,168,76,0.2);
       animation: spin-slow 22s linear infinite;
       top: -14px; left: -14px; right: -14px; bottom: auto;
-      width: calc(100% + 28px);
-      height: calc(260px + 28px);
+      width: calc(100% + 28px); height: calc(260px + 28px);
     }
     .hero-photo-ring::before {
-      content: '';
-      position: absolute;
-      top: -3px; left: 50%;
-      transform: translateX(-50%);
-      width: 6px; height: 6px;
-      background: var(--gold);
-      border-radius: 50%;
+      content: ''; position: absolute; top: -3px; left: 50%; transform: translateX(-50%);
+      width: 6px; height: 6px; background: var(--gold); border-radius: 50%;
     }
     @keyframes spin-slow { to { transform: rotate(360deg); } }
     .hero-photo {
-      width: 260px; height: 260px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid var(--surface-3);
-      position: relative;
-      z-index: 1;
-      display: block;
+      width: 260px; height: 260px; border-radius: 50%; object-fit: cover;
+      border: 3px solid var(--surface-3); position: relative; z-index: 1; display: block;
     }
     .hero-stats { display: flex; gap: 2rem; margin-top: 1.8rem; }
     .stat { text-align: center; }
-    .stat-num {
-      font-family: var(--font-display);
-      font-size: 1.7rem;
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1;
-    }
+    .stat-num { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; color: var(--gold); line-height: 1; }
     .stat-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem; }
 
-    /* ─── SECTIONS ─── */
+    /* SECTIONS */
     .section { padding: 90px 2rem; }
     .section-inner { max-width: 1200px; margin: 0 auto; }
     .section-label {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      color: var(--gold);
-      font-size: 0.73rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.6rem;
+      display: inline-flex; align-items: center; gap: 0.6rem; color: var(--gold);
+      font-size: 0.73rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.6rem;
     }
     .section-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
     .section-title {
-      font-family: var(--font-display);
-      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-      font-weight: 700;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-      line-height: 1.2;
+      font-family: var(--font-display); font-size: clamp(1.8rem,3.5vw,2.6rem);
+      font-weight: 700; color: var(--text); margin-bottom: 0.5rem; line-height: 1.2;
     }
-    .section-sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 3rem; max-width: 500px; }
+    .section-sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 3rem; max-width: 520px; }
     hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
 
-    /* ─── ABOUT ─── */
+    /* ABOUT */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
     .about-text p { color: var(--text-dim); font-size: 0.97rem; line-height: 1.85; margin-bottom: 1.1rem; }
     .about-text strong { color: var(--gold); font-weight: 600; }
     .mission-block {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-left: 3px solid var(--gold);
-      padding: 1.4rem 1.7rem;
-      border-radius: 0 var(--radius) var(--radius) 0;
-      margin-top: 1.8rem;
+      background: var(--surface-2); border: 1px solid var(--border); border-left: 3px solid var(--gold);
+      padding: 1.4rem 1.7rem; border-radius: 0 var(--radius) var(--radius) 0; margin-top: 1.8rem;
     }
     .mission-block h4 { color: var(--gold); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; font-weight: 600; }
     .mission-block p { color: var(--text-dim); font-style: italic; font-size: 1rem; margin: 0; }
     .about-highlights { display: flex; flex-direction: column; gap: 0.85rem; }
     .highlight-pill {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.2rem 1.4rem;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.2rem 1.4rem; display: flex; align-items: center; gap: 1rem;
       transition: border-color 0.2s, transform 0.2s;
     }
     .highlight-pill:hover { border-color: rgba(201,168,76,0.3); transform: translateX(4px); }
     .highlight-pill-icon {
-      width: 40px; height: 40px;
-      background: var(--gold-dim);
-      border-radius: 9px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--gold); font-size: 1rem; flex-shrink: 0;
+      width: 40px; height: 40px; background: var(--gold-dim); border-radius: 9px;
+      display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1rem; flex-shrink: 0;
     }
     .highlight-pill-text h4 { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.1rem; }
     .highlight-pill-text p { font-size: 0.78rem; color: var(--text-muted); margin: 0; }
 
-    /* ─── EXPERIENCE COMPACT ─── */
+    /* EXPERIENCE */
     .exp-bg { background: var(--surface); }
     .exp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 0.85rem; }
     .exp-card {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.1rem 1.3rem;
-      display: flex;
-      gap: 0.9rem;
-      align-items: flex-start;
-      transition: border-color 0.2s, transform 0.2s;
-      position: relative;
-      overflow: hidden;
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.1rem 1.3rem; display: flex; gap: 0.9rem; align-items: flex-start;
+      transition: border-color 0.2s, transform 0.2s; position: relative; overflow: hidden;
     }
     .exp-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px; height: 100%;
-      background: var(--text-muted);
-      transition: background 0.2s;
+      content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+      background: var(--text-muted); transition: background 0.2s;
     }
     .exp-card.current::before { background: var(--gold); }
     .exp-card.accent-blue::before { background: var(--accent); }
     .exp-card:hover { border-color: rgba(255,255,255,0.1); transform: translateY(-2px); }
     .exp-card:hover::before { background: var(--gold); }
     .exp-dot {
-      width: 36px; height: 36px;
-      border-radius: 8px;
-      background: var(--surface-3);
+      width: 36px; height: 36px; border-radius: 8px; background: var(--surface-3);
       display: flex; align-items: center; justify-content: center;
       color: var(--text-muted); font-size: 0.85rem; flex-shrink: 0; margin-top: 1px;
     }
@@ -380,14 +226,11 @@
     .tag-advisory { background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(108,143,245,0.2); }
     .tag-academic { background: rgba(16,185,129,0.1); color: #34d399; border: 1px solid rgba(16,185,129,0.2); }
 
-    /* ─── SKILLS ─── */
+    /* SKILLS */
     .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.1rem; }
     .skill-card {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.6rem;
-      transition: border-color 0.2s, transform 0.2s;
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 1.6rem; transition: border-color 0.2s, transform 0.2s;
     }
     .skill-card:hover { border-color: rgba(201,168,76,0.2); transform: translateY(-3px); }
     .skill-card-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem; }
@@ -402,29 +245,23 @@
       font-size: 0.76rem; padding: 0.28rem 0.65rem; border-radius: 6px; border: 1px solid var(--border-soft);
     }
 
-    /* ─── PUBLICATIONS ─── */
+    /* PUBLICATIONS */
     .pub-bg { background: var(--surface); }
     .pub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.3rem; }
     .pub-card {
-      background: var(--surface-2);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      transition: border-color 0.2s, transform 0.2s;
-      display: flex; flex-direction: column;
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      overflow: hidden; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column;
     }
     .pub-card:hover { border-color: rgba(201,168,76,0.25); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
     .pub-thumb {
-      height: 150px;
-      display: flex; align-items: center; justify-content: center;
+      height: 150px; display: flex; align-items: center; justify-content: center;
       font-size: 3.2rem; position: relative; overflow: hidden;
     }
     .pub-thumb.book { background-size: cover; background-position: center; }
     .pub-thumb.book::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.28); }
     .pub-thumb-icon { position: relative; z-index: 1; }
     .pub-type-badge {
-      position: absolute; top: 10px; left: 10px;
-      background: var(--gold); color: var(--ink);
+      position: absolute; top: 10px; left: 10px; background: var(--gold); color: var(--ink);
       font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
       padding: 0.22rem 0.6rem; border-radius: 4px; z-index: 2;
     }
@@ -440,7 +277,43 @@
     .pub-publisher:hover { color: var(--gold); }
     .pub-publisher i { color: var(--gold); font-size: 0.7rem; }
 
-    /* ─── ACHIEVEMENTS ─── */
+    /* OWASP */
+    .owasp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); gap: 1.3rem; }
+    .owasp-card {
+      background: var(--surface-2); border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+      padding: 2rem 2rem 2rem 2.2rem;
+      display: flex; flex-direction: column; gap: 1rem;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      text-decoration: none;
+    }
+    .owasp-card:hover {
+      border-color: rgba(201,168,76,0.45); border-left-color: var(--gold-light);
+      transform: translateY(-3px); box-shadow: 0 16px 36px rgba(0,0,0,0.3);
+    }
+    .owasp-card-top { display: flex; align-items: flex-start; gap: 1rem; }
+    .owasp-icon {
+      width: 46px; height: 46px; min-width: 46px; background: var(--gold-dim); border-radius: 10px;
+      display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1.1rem;
+    }
+    .owasp-card-meta { flex: 1; }
+    .owasp-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.3); color: var(--gold);
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 0.55rem;
+    }
+    .owasp-title { font-size: 0.98rem; font-weight: 600; color: var(--text); line-height: 1.4; }
+    .owasp-desc { font-size: 0.83rem; color: var(--text-dim); line-height: 1.75; }
+    .owasp-link-label {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      color: var(--gold); font-size: 0.79rem; font-weight: 600; letter-spacing: 0.03em;
+    }
+    .owasp-link-label i { font-size: 0.72rem; transition: transform 0.2s; }
+    .owasp-card:hover .owasp-link-label i { transform: translateX(4px); }
+
+    /* ACHIEVEMENTS */
     .ach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.1rem; }
     .ach-card {
       background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius);
@@ -449,40 +322,59 @@
     .ach-card:hover { border-color: rgba(201,168,76,0.25); transform: translateY(-3px); }
     .ach-icon {
       width: 40px; height: 40px; background: var(--gold-dim); border-radius: 9px;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--gold); font-size: 1rem; margin-bottom: 1rem;
+      display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1rem; margin-bottom: 1rem;
     }
     .ach-title { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.35rem; }
     .ach-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
 
-    /* ─── PODCAST ─── */
-    .pod-bg { background: var(--surface); }
-    .pod-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .pod-label { font-size: 0.73rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 600; margin-bottom: 0.9rem; }
-    .pod-title { font-family: var(--font-display); font-size: 1.8rem; color: var(--text); line-height: 1.25; margin-bottom: 1.1rem; }
-    .pod-meta { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
-    .pod-meta-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; color: var(--text-muted); }
-    .pod-meta-item i { color: var(--gold); }
-    .pod-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.8; margin-bottom: 1.8rem; }
-    .pod-visual {
-      position: relative; border-radius: var(--radius-lg); overflow: hidden;
-      aspect-ratio: 16/9; background: var(--surface-3); cursor: pointer; display: block; text-decoration: none;
+    /* MEDIA COVERAGE */
+    .media-bg { background: var(--surface); }
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 1.4rem; }
+    .media-card {
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      overflow: hidden; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      display: flex; flex-direction: column; text-decoration: none;
     }
-    .pod-visual img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
-    .pod-visual:hover img { transform: scale(1.04); }
-    .pod-visual::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%); }
-    .pod-play {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%);
-      width: 60px; height: 60px;
-      background: rgba(255,255,255,0.95); border-radius: 50%;
+    .media-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.35); }
+    .media-thumb { position: relative; aspect-ratio: 16/9; overflow: hidden; background: var(--surface-3); }
+    .media-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+    .media-card:hover .media-thumb img { transform: scale(1.05); }
+    .media-thumb::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 55%); }
+    .media-play-btn {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 54px; height: 54px; background: rgba(255,255,255,0.93); border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      z-index: 2; transition: transform 0.25s; box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      z-index: 2; box-shadow: 0 6px 20px rgba(0,0,0,0.4); transition: transform 0.25s;
     }
-    .pod-play i { color: var(--ink); font-size: 1.3rem; margin-left: 3px; }
-    .pod-visual:hover .pod-play { transform: translate(-50%, -50%) scale(1.1); }
+    .media-play-btn i { color: var(--ink); font-size: 1.1rem; margin-left: 3px; }
+    .media-card:hover .media-play-btn { transform: translate(-50%, -50%) scale(1.1); }
+    .media-outlet-badge {
+      position: absolute; top: 10px; left: 10px;
+      background: rgba(10,10,15,0.82); border: 1px solid rgba(201,168,76,0.35); color: var(--gold);
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.22rem 0.65rem; border-radius: 4px; z-index: 3; backdrop-filter: blur(8px);
+    }
+    .media-duration {
+      position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.75);
+      color: var(--text-dim); font-size: 0.68rem; font-weight: 600;
+      padding: 0.2rem 0.5rem; border-radius: 4px; z-index: 3;
+    }
+    .media-body { padding: 1.35rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+    .media-event-tag {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.25); color: var(--gold);
+      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em;
+      padding: 0.2rem 0.55rem; border-radius: 4px; width: fit-content;
+    }
+    .media-title { font-size: 0.93rem; font-weight: 600; color: var(--text); line-height: 1.45; }
+    .media-sub { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; flex: 1; }
+    .media-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 0.7rem; }
+    .media-date { font-size: 0.72rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.3rem; }
+    .media-date i { color: var(--gold); font-size: 0.65rem; }
+    .media-watch { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--gold); font-size: 0.76rem; font-weight: 600; }
+    .media-watch i { font-size: 0.7rem; }
 
-    /* ─── HIGHLIGHTS ─── */
+    /* HIGHLIGHTS */
     .hlt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.1rem; }
     .hlt-card {
       background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg);
@@ -504,7 +396,7 @@
     .hlt-item:last-child { border-bottom: none; }
     .hlt-item i { color: var(--gold); margin-top: 2px; flex-shrink: 0; font-size: 0.72rem; }
 
-    /* ─── FOOTER ─── */
+    /* FOOTER */
     footer { background: var(--surface); border-top: 1px solid var(--border); padding: 56px 2rem 28px; }
     .footer-inner { max-width: 1200px; margin: 0 auto; }
     .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 2.5rem; }
@@ -512,8 +404,7 @@
     .footer-brand p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.7; margin-bottom: 1.4rem; }
     .social-row { display: flex; gap: 0.7rem; }
     .social-btn {
-      width: 36px; height: 36px; border-radius: 8px;
-      background: var(--surface-3); border: 1px solid var(--border);
+      width: 36px; height: 36px; border-radius: 8px; background: var(--surface-3); border: 1px solid var(--border);
       display: flex; align-items: center; justify-content: center;
       color: var(--text-dim); text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
     }
@@ -525,17 +416,18 @@
     .footer-col ul li a:hover { color: var(--gold); }
     .footer-bottom { padding-top: 1.6rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.8rem; }
 
-    /* ─── SCROLL REVEAL ─── */
+    /* SCROLL REVEAL */
     .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ─── RESPONSIVE ─── */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
       .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
       .hero-photo-wrap { align-items: center; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .pod-container { grid-template-columns: 1fr; gap: 2.5rem; }
       .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .owasp-grid { grid-template-columns: 1fr; }
+      .media-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 640px) {
       .nav-links { display: none; }
@@ -563,8 +455,9 @@
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#publications">Research</a></li>
+        <li><a href="#owasp">OWASP</a></li>
         <li><a href="#achievements">Awards</a></li>
-        <li><a href="#podcast">Podcast</a></li>
+        <li><a href="#media">Media</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
       <button class="nav-toggle" id="navToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
@@ -581,10 +474,10 @@
         <h1 class="hero-name">Sumit<br><span>Ranjan</span></h1>
         <p class="hero-title">Powering the Next Generation of Reliable, Secure, and Cost-Efficient Agentic AI</p>
         <p class="hero-desc">
-          Researching and building the infrastructure for trustworthy agentic systems — 
-          compact SLMs that cut cost without sacrificing safety. Author of <em>Enterprise Agentic AI</em>, 
-          OWASP Agentic AI Top 10 Contributor, and PhD Scholar pushing the boundaries 
-          of what secure autonomous AI can look like in the real world.
+          Researching and building the infrastructure for trustworthy agentic systems —
+          compact SLMs that cut costs without sacrificing safety. Author of <em>Enterprise Agentic AI</em>,
+          OWASP Agentic AI Top 10 Contributor, and PhD Scholar pushing the boundaries
+          of what secure, autonomous AI can look like in the real world.
         </p>
         <div class="hero-chips">
           <span class="chip"><i class="fas fa-microchip"></i> Building SLMs for Agentic AI</span>
@@ -605,7 +498,7 @@
       <div class="hero-photo-wrap">
         <div class="hero-photo-ring"></div>
         <img src="https://m.media-amazon.com/images/S/amzn-author-media-prod/po40koefeo50ovvtk0nq7jgggn._SX300_CR0%2C0%2C300%2C300_.jpg" alt="Sumit Ranjan" class="hero-photo">
-          <div class="hero-stats">
+        <div class="hero-stats">
           <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years</div></div>
           <div class="stat"><div class="stat-num">2</div><div class="stat-label">Books</div></div>
           <div class="stat"><div class="stat-num">OWASP</div><div class="stat-label">Contributor</div></div>
@@ -622,7 +515,7 @@
       <div class="about-grid reveal">
         <div class="about-text">
           <p>I'm <strong>Sumit Ranjan</strong> — currently in stealth, focused on a single hard problem: <strong>making agentic AI systems reliable, secure, and cheaper to run</strong>. That means building compact <strong>Small Language Models (SLMs)</strong> that are domain-trained, verifiable, and enterprise-ready — without the cost and opacity of large general-purpose models.</p>
-          <p>My research at <strong>BITS Pilani (PhD)</strong> sits at the intersection of agentic system architecture and AI security — exploring how autonomous agents fail, how they can be exploited, and how to build them so they don't. I contribute to the <strong>OWASP Agentic AI Top 10</strong>, helping define the security standards the industry will build on.</p>
+          <p>My research at <strong>BITS Pilani (PhD)</strong> sits at the intersection of agentic system architecture and AI security — exploring how autonomous agents fail, how they can be exploited, and how to build them so they don't. I contribute to the <strong>OWASP Agentic AI Top 10</strong>, helping define the security standards the industry will build upon.</p>
           <p>I'm also the author of <strong><em>Enterprise Agentic AI</em></strong> (Packt) — a practical guide to deploying autonomous AI in production. As a <strong>Responsible AI Leader</strong> and keynote speaker, I bring this research into boardrooms, conferences, and classrooms globally.</p>
           <div class="mission-block">
             <h4>Core Focus</h4>
@@ -632,7 +525,7 @@
         <div class="about-highlights">
           <div class="highlight-pill">
             <div class="highlight-pill-icon"><i class="fas fa-microchip"></i></div>
-            <div class="highlight-pill-text"><h4>Building SLMs for Agentic AI</h4><p>Reliable, secure & cheaper agentic systems</p></div>
+            <div class="highlight-pill-text"><h4>Building SLMs for Agentic AI</h4><p>Reliable, secure &amp; cost-efficient agentic systems</p></div>
           </div>
           <div class="highlight-pill">
             <div class="highlight-pill-icon"><i class="fas fa-book"></i></div>
@@ -640,7 +533,7 @@
           </div>
           <div class="highlight-pill">
             <div class="highlight-pill-icon"><i class="fas fa-balance-scale"></i></div>
-            <div class="highlight-pill-text"><h4>Responsible AI Leader</h4><p>Ethics, governance & trust in AI systems</p></div>
+            <div class="highlight-pill-text"><h4>Responsible AI Leader</h4><p>Ethics, governance &amp; trust in AI systems</p></div>
           </div>
           <div class="highlight-pill">
             <div class="highlight-pill-icon"><i class="fas fa-shield-alt"></i></div>
@@ -652,7 +545,7 @@
           </div>
           <div class="highlight-pill">
             <div class="highlight-pill-icon"><i class="fas fa-microphone-alt"></i></div>
-            <div class="highlight-pill-text"><h4>Keynote Speaker</h4><p>AI governance, security & agentic systems</p></div>
+            <div class="highlight-pill-text"><h4>Keynote Speaker</h4><p>AI governance, security &amp; agentic systems</p></div>
           </div>
         </div>
       </div>
@@ -672,7 +565,7 @@
         <div class="exp-card accent-blue">
           <div class="exp-dot"><i class="fas fa-chalkboard-teacher"></i></div>
           <div class="exp-info">
-            <div class="exp-role">Adjunct Professor – AI & Digital Transformation</div>
+            <div class="exp-role">Adjunct Professor – AI &amp; Digital Transformation</div>
             <div class="exp-company">Symbiosis International University Dubai</div>
             <div class="exp-date"><i class="fas fa-calendar-alt"></i> Sep 2025 – Present</div>
           </div>
@@ -682,7 +575,7 @@
         <div class="exp-card accent-blue">
           <div class="exp-dot"><i class="fas fa-shield-alt"></i></div>
           <div class="exp-info">
-            <div class="exp-role">Advisor – AI Security & Responsible Innovation</div>
+            <div class="exp-role">Advisor – AI Security &amp; Responsible Innovation</div>
             <div class="exp-company">Protect Neuron · Dubai</div>
             <div class="exp-date"><i class="fas fa-calendar-alt"></i> Aug 2025 – Present</div>
           </div>
@@ -692,7 +585,7 @@
         <div class="exp-card">
           <div class="exp-dot"><i class="fas fa-building"></i></div>
           <div class="exp-info">
-            <div class="exp-role">Co-Founder & CTO</div>
+            <div class="exp-role">Co-Founder &amp; CTO</div>
             <div class="exp-company">Emvo · Dubai</div>
             <div class="exp-date"><i class="fas fa-calendar-alt"></i> Sep – Oct 2025</div>
           </div>
@@ -712,7 +605,7 @@
         <div class="exp-card">
           <div class="exp-dot"><i class="fas fa-university"></i></div>
           <div class="exp-info">
-            <div class="exp-role">Visiting Professor – Generative AI & NLP</div>
+            <div class="exp-role">Visiting Professor – Generative AI &amp; NLP</div>
             <div class="exp-company">Manipal University Dubai</div>
             <div class="exp-date"><i class="fas fa-calendar-alt"></i> Feb – Oct 2024</div>
           </div>
@@ -722,7 +615,7 @@
         <div class="exp-card">
           <div class="exp-dot"><i class="fas fa-chart-line"></i></div>
           <div class="exp-info">
-            <div class="exp-role">Manager – Data Science & AI</div>
+            <div class="exp-role">Manager – Data Science &amp; AI</div>
             <div class="exp-company">Majid Al Futtaim · Carrefour</div>
             <div class="exp-date"><i class="fas fa-calendar-alt"></i> Dec 2022 – Nov 2024</div>
           </div>
@@ -790,12 +683,12 @@
     <div class="section-inner">
       <div class="section-label">Expertise</div>
       <h2 class="section-title">Technical Skills</h2>
-      <p class="section-sub">Deep specialization across the AI research and deployment lifecycle.</p>
+      <p class="section-sub">Deep specialisation across the AI research and deployment lifecycle.</p>
       <div class="skills-grid reveal">
         <div class="skill-card">
           <div class="skill-card-header">
             <div class="skill-card-icon"><i class="fas fa-brain"></i></div>
-            <div class="skill-card-title">AI Specializations</div>
+            <div class="skill-card-title">AI Specialisations</div>
           </div>
           <div class="skill-tags">
             <span class="skill-tag">Agentic AI</span><span class="skill-tag">LLM Security</span>
@@ -808,7 +701,7 @@
         <div class="skill-card">
           <div class="skill-card-header">
             <div class="skill-card-icon"><i class="fas fa-code"></i></div>
-            <div class="skill-card-title">Languages & Libraries</div>
+            <div class="skill-card-title">Languages &amp; Libraries</div>
           </div>
           <div class="skill-tags">
             <span class="skill-tag">Python</span><span class="skill-tag">SQL</span>
@@ -838,7 +731,7 @@
   <!-- PUBLICATIONS -->
   <section class="section pub-bg" id="publications">
     <div class="section-inner">
-      <div class="section-label">Research & Writing</div>
+      <div class="section-label">Research &amp; Writing</div>
       <h2 class="section-title">Publications</h2>
       <p class="section-sub">Books, research papers, and conference contributions across AI, security, and healthcare.</p>
       <div class="pub-grid reveal">
@@ -849,7 +742,7 @@
           </div>
           <div class="pub-body">
             <div class="pub-title">Applied Deep Learning and Computer Vision for Self-Driving Cars</div>
-            <div class="pub-meta">Comprehensive guide to autonomous vehicles using deep learning and computer vision. Packt Publications.</div>
+            <div class="pub-meta">A comprehensive guide to autonomous vehicles using deep learning and computer vision. Packt Publications.</div>
             <a href="https://www.amazon.com/Applied-Learning-Computer-Vision-Self-Driving/dp/1838646302" target="_blank" class="pub-publisher"><i class="fab fa-amazon"></i> View on Amazon</a>
           </div>
         </div>
@@ -860,7 +753,7 @@
           </div>
           <div class="pub-body">
             <div class="pub-title">Enterprise Agentic AI: Harnessing AI Transformation</div>
-            <div class="pub-meta">Practical guide to secure agentic AI deployment in enterprise environments. Packt Publications.</div>
+            <div class="pub-meta">A practical guide to secure agentic AI deployment in enterprise environments. Packt Publications.</div>
             <a href="https://www.amazon.com/Agentic-AI-Enterprise-Harnessing-Transformation/dp/B0F44VF26B" target="_blank" class="pub-publisher"><i class="fab fa-amazon"></i> Pre-order</a>
           </div>
         </div>
@@ -872,7 +765,7 @@
           </div>
           <div class="pub-body">
             <div class="pub-title">Text Summarization for Pharmaceutical Sciences Using Hierarchical Clustering</div>
-            <div class="pub-meta">Novel NLP approach for pharmaceutical text summarization via hierarchical clustering.</div>
+            <div class="pub-meta">A novel NLP approach for pharmaceutical text summarisation via hierarchical clustering.</div>
             <a href="https://pubmed.ncbi.nlm.nih.gov/39209906/" target="_blank" class="pub-publisher"><i class="fas fa-external-link-alt"></i> Nature Springer</a>
           </div>
         </div>
@@ -884,7 +777,7 @@
           </div>
           <div class="pub-body">
             <div class="pub-title">LLM-Powered Generative AI for Enhanced Real Estate Property Search</div>
-            <div class="pub-meta">AI-driven personalized property search using LLMs and generative AI.</div>
+            <div class="pub-meta">AI-driven personalised property search using LLMs and generative AI.</div>
             <span class="pub-publisher"><i class="fas fa-university"></i> IIM Bangalore</span>
           </div>
         </div>
@@ -908,7 +801,7 @@
           </div>
           <div class="pub-body">
             <div class="pub-title">SecuregenAI: A Lifecycle Framework for Securing LLMs in Healthcare</div>
-            <div class="pub-meta">Framework for healthcare LLM security via AI red teaming and federated learning.</div>
+            <div class="pub-meta">A framework for healthcare LLM security via AI red teaming and federated learning.</div>
             <span class="pub-publisher"><i class="fas fa-book-open"></i> Springer Nature</span>
           </div>
         </div>
@@ -919,27 +812,69 @@
 
   <hr class="divider">
 
+  <!-- OWASP CONTRIBUTIONS -->
+  <section class="section" id="owasp" style="background:var(--ink)">
+    <div class="section-inner">
+      <div class="section-label">Open Standards</div>
+      <h2 class="section-title">OWASP Contributions</h2>
+      <p class="section-sub">Contributing to the global standards shaping the security and governance of agentic AI systems.</p>
+      <div class="owasp-grid reveal">
+
+        <a href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/" target="_blank" class="owasp-card">
+          <div class="owasp-card-top">
+            <div class="owasp-icon"><i class="fas fa-list-ol"></i></div>
+            <div class="owasp-card-meta">
+              <div class="owasp-badge"><i class="fas fa-shield-alt"></i> OWASP · 2026</div>
+              <div class="owasp-title">OWASP Top 10 for Agentic Applications 2026</div>
+            </div>
+          </div>
+          <div class="owasp-desc">
+            The definitive industry reference for identifying and mitigating the ten most critical security risks in agentic AI applications. This publication establishes the security baseline for autonomous AI systems entering production environments worldwide — and Sumit is a named contributor to this landmark document.
+          </div>
+          <div class="owasp-link-label">Read the Paper <i class="fas fa-arrow-right"></i></div>
+        </a>
+
+        <a href="https://genai.owasp.org/resource/state-of-agentic-ai-security-and-governance-1-0/" target="_blank" class="owasp-card">
+          <div class="owasp-card-top">
+            <div class="owasp-icon"><i class="fas fa-globe-americas"></i></div>
+            <div class="owasp-card-meta">
+              <div class="owasp-badge"><i class="fas fa-shield-alt"></i> OWASP · v1.0</div>
+              <div class="owasp-title">The State of Agentic AI Security and Governance</div>
+            </div>
+          </div>
+          <div class="owasp-desc">
+            A comprehensive landscape analysis of where agentic AI security and governance stands today — covering threat models, organisational readiness, policy gaps, and the road ahead for enterprises deploying autonomous AI at scale.
+          </div>
+          <div class="owasp-link-label">Read the Paper <i class="fas fa-arrow-right"></i></div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
   <!-- ACHIEVEMENTS -->
-  <section class="section" id="achievements" style="background:var(--ink)">
+  <section class="section exp-bg" id="achievements">
     <div class="section-inner">
       <div class="section-label">Recognition</div>
-      <h2 class="section-title">Achievements & Awards</h2>
-      <p class="section-sub">Recognition for research contributions, innovation, and thought leadership.</p>
+      <h2 class="section-title">Achievements &amp; Awards</h2>
+      <p class="section-sub">Recognition for research contributions, innovation, and thought leadership in AI.</p>
       <div class="ach-grid reveal">
         <div class="ach-card">
           <div class="ach-icon"><i class="fas fa-globe"></i></div>
           <div class="ach-title">AI Universal Council Ambassador</div>
-          <div class="ach-desc">Recognized ambassador promoting responsible AI practices globally.</div>
+          <div class="ach-desc">Recognised ambassador promoting responsible AI practices globally.</div>
         </div>
         <div class="ach-card">
           <div class="ach-icon"><i class="fas fa-award"></i></div>
           <div class="ach-title">Einstein Award – Best Mind of the Year</div>
-          <div class="ach-desc">Awarded by the Institute of Engineering & Technology, United Kingdom.</div>
+          <div class="ach-desc">Awarded by the Institute of Engineering &amp; Technology, United Kingdom.</div>
         </div>
         <div class="ach-card">
           <div class="ach-icon"><i class="fas fa-microphone-alt"></i></div>
           <div class="ach-title">Keynote Speaker – GSDC 2025</div>
-          <div class="ach-desc">Global Generative AI Advance Prompt Engineering Webinar, Singapore.</div>
+          <div class="ach-desc">Global Generative AI Advanced Prompt Engineering Webinar, Singapore.</div>
         </div>
         <div class="ach-card">
           <div class="ach-icon"><i class="fas fa-chalkboard-teacher"></i></div>
@@ -949,12 +884,12 @@
         <div class="ach-card">
           <div class="ach-icon"><i class="fas fa-file-contract"></i></div>
           <div class="ach-title">Patent Published</div>
-          <div class="ach-desc">XPath identification using computer vision & localization. App No. 202231060501.</div>
+          <div class="ach-desc">XPath identification using computer vision &amp; localisation. App No. 202231060501.</div>
         </div>
         <div class="ach-card">
           <div class="ach-icon"><i class="fas fa-lightbulb"></i></div>
           <div class="ach-title">Innovator Award 2022</div>
-          <div class="ach-desc">For driving multiple AI/ML innovations at MResult Corp.</div>
+          <div class="ach-desc">Awarded for driving multiple AI/ML innovations at MResult Corp.</div>
         </div>
         <div class="ach-card">
           <div class="ach-icon"><i class="fas fa-medal"></i></div>
@@ -964,7 +899,7 @@
         <div class="ach-card">
           <div class="ach-icon"><i class="fas fa-users"></i></div>
           <div class="ach-title">VMware Analytics Hackathon – 2nd Place</div>
-          <div class="ach-desc">Marketing Analytics Hackathon 2020 — solution ranked 2nd.</div>
+          <div class="ach-desc">Marketing Analytics Hackathon 2020 — solution ranked 2nd globally.</div>
         </div>
       </div>
     </div>
@@ -972,28 +907,52 @@
 
   <hr class="divider">
 
-  <!-- PODCAST -->
-  <section class="section pod-bg" id="podcast">
+  <!-- MEDIA COVERAGE -->
+  <section class="section media-bg" id="media">
     <div class="section-inner">
       <div class="section-label">Media</div>
-      <h2 class="section-title">Featured Podcast</h2>
-      <div class="pod-container reveal">
-        <div>
-          <div class="pod-label"><i class="fas fa-headphones"></i> &nbsp;SharafDG AI Podcast</div>
-          <h3 class="pod-title">Cyber Security, Human Brains & Responsible AI</h3>
-          <div class="pod-meta">
-            <span class="pod-meta-item"><i class="fas fa-calendar"></i> June 2025</span>
-            <span class="pod-meta-item"><i class="fas fa-clock"></i> 39 min</span>
+      <h2 class="section-title">Media Coverage &amp; Podcast</h2>
+      <p class="section-sub">Featured interviews, podcasts, and press coverage on AI leadership, agentic systems, and responsible innovation.</p>
+      <div class="media-grid reveal">
+
+        <!-- Entrepreneur ME – STEP 2026 -->
+        <a href="https://www.youtube.com/watch?v=f6mwFXW-mV4" target="_blank" class="media-card">
+          <div class="media-thumb">
+            <img src="https://img.youtube.com/vi/f6mwFXW-mV4/maxresdefault.jpg" alt="Entrepreneur ME – STEP 2026 Interview">
+            <div class="media-play-btn"><i class="fas fa-play"></i></div>
+            <div class="media-outlet-badge">Entrepreneur ME</div>
+            <div class="media-duration">2 min</div>
           </div>
-          <p class="pod-desc">Invited by the SharafDG AI Group to discuss the critical intersection of cybersecurity, human cognition, and responsible AI — exploring strategies for secure AI systems aligned with human values and the next generation of AI governance.</p>
-          <a href="https://www.youtube.com/watch?v=320Ze0ZSS7M&t=139s" target="_blank" class="btn-gold">
-            <i class="fas fa-play"></i> Watch Now
-          </a>
-        </div>
-        <a href="https://www.youtube.com/watch?v=320Ze0ZSS7M&t=139s" target="_blank" class="pod-visual">
-          <img src="https://img.youtube.com/vi/320Ze0ZSS7M/maxresdefault.jpg" alt="SharafDG Podcast">
-          <div class="pod-play"><i class="fas fa-play"></i></div>
+          <div class="media-body">
+            <div class="media-event-tag"><i class="fas fa-star"></i> STEP 2026</div>
+            <div class="media-title">Sovereign AI, Build vs Buy &amp; the Future of AI Agents</div>
+            <div class="media-sub">An exclusive interview at STEP 2026 — the Middle East's premier tech conference — covering the geopolitics of sovereign AI, the strategic build-versus-buy decision for enterprises, and where agentic AI is headed next.</div>
+            <div class="media-footer">
+              <div class="media-date"><i class="fas fa-calendar"></i> 2026</div>
+              <div class="media-watch"><i class="fas fa-play-circle"></i> Watch Interview</div>
+            </div>
+          </div>
         </a>
+
+        <!-- SharafDG Podcast -->
+        <a href="https://www.youtube.com/watch?v=320Ze0ZSS7M&t=139s" target="_blank" class="media-card">
+          <div class="media-thumb">
+            <img src="https://img.youtube.com/vi/320Ze0ZSS7M/maxresdefault.jpg" alt="SharafDG AI Podcast">
+            <div class="media-play-btn"><i class="fas fa-play"></i></div>
+            <div class="media-outlet-badge">SharafDG Podcast</div>
+            <div class="media-duration">39 min</div>
+          </div>
+          <div class="media-body">
+            <div class="media-event-tag"><i class="fas fa-headphones"></i> AI Podcast</div>
+            <div class="media-title">Cybersecurity, Human Brains &amp; Responsible AI</div>
+            <div class="media-sub">Invited by the SharafDG AI Group to explore the critical intersection of cybersecurity, human cognition, and responsible AI — and what the next generation of AI governance must look like.</div>
+            <div class="media-footer">
+              <div class="media-date"><i class="fas fa-calendar"></i> June 2025</div>
+              <div class="media-watch"><i class="fas fa-play-circle"></i> Watch Episode</div>
+            </div>
+          </div>
+        </a>
+
       </div>
     </div>
   </section>
@@ -1035,13 +994,13 @@
         <div class="hlt-card">
           <div class="hlt-card-header">
             <div class="hlt-card-icon"><i class="fas fa-microphone"></i></div>
-            <div class="hlt-card-title">Talks & Workshops</div>
+            <div class="hlt-card-title">Talks &amp; Workshops</div>
           </div>
           <ul class="hlt-list">
             <li class="hlt-item"><i class="fas fa-chalkboard"></i> "Agentic AI in Industry" – BITS Pilani Dubai, May 2025</li>
             <li class="hlt-item"><i class="fas fa-chalkboard"></i> "Decoding AI Agents" Bootcamp – DDS Dubai, Jun 2025</li>
             <li class="hlt-item"><i class="fas fa-chalkboard"></i> GenAI in Industry – Manipal University, Jul 2024</li>
-            <li class="hlt-item"><i class="fas fa-chalkboard"></i> Deep Learning for CV – Faculty Dev Program 2020</li>
+            <li class="hlt-item"><i class="fas fa-chalkboard"></i> Deep Learning for CV – Faculty Development Program 2020</li>
           </ul>
         </div>
       </div>
@@ -1054,7 +1013,7 @@
       <div class="footer-top">
         <div class="footer-brand">
           <h3>Sumit Ranjan</h3>
-          <p>Researcher · Author · Responsible AI Leader<br>Making agentic AI reliable, secure, and cheaper. Currently in stealth.</p>
+          <p>Researcher · Author · Responsible AI Leader<br>Making agentic AI reliable, secure, and cost-efficient. Currently in stealth.</p>
           <div class="social-row">
             <a href="https://linkedin.com/in/sumit-ranjan-33015b22" target="_blank" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             <a href="https://github.com/ranjan-sumit" target="_blank" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
@@ -1068,8 +1027,9 @@
             <li><a href="#experience">Experience</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#publications">Publications</a></li>
+            <li><a href="#owasp">OWASP</a></li>
             <li><a href="#achievements">Awards</a></li>
-            <li><a href="#podcast">Podcast</a></li>
+            <li><a href="#media">Media</a></li>
           </ul>
         </div>
         <div class="footer-col">
