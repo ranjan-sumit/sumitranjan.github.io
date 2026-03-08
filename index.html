@@ -1,2069 +1,1110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sumit Ranjan</title>
-    <meta name="description" content="Sumit Ranjan: Agentic AI Researcher, PhD Scholar, Author, and AI Researcher with 10+ years of experience in Data Science, Machine Learning, and Generative AI.">
-    <meta name="keywords" content="Sumit Ranjan, Responsible AI, Generative AI, AI Researcher, Applied Deep Learning, Enterprise Agentic AI, AI Governance">
-    <meta name="author" content="Sumit Ranjan">
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary: #1e293b;
-            --accent: #8b5cf6;
-            --accent-light: #c4b5fd;
-            --light: #f8fafc;
-            --dark: #0f172a;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-            --gray: #64748b;
-            --light-gray: #e2e8f0;
-            --border-radius: 12px;
-            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --transition: all 0.3s ease;
-            --gradient: linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Space Grotesk', sans-serif;
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
-            overflow-x: hidden;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f1f5f9"/><path d="M0 0L100 100M100 0L0 100" stroke="%23e2e8f0" stroke-width="0.5"/></svg>');
-        }
-        
-        h1, h2, h3, h4, h5, h6 {
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            color: var(--secondary);
-        }
-        
-        h1 {
-            font-size: 2.8rem;
-        }
-        
-        h2 {
-            font-size: 2.2rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-            margin-bottom: 2rem;
-        }
-        
-         h2:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 5%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 4px;
-            background: var(--gradient);
-            border-radius: 2px;
-        } 
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-        }
-        
-        .section {
-            padding: 6rem 0;
-        }
-        
-        .section-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .section-header h2:after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-        
-        /* Header */
-        header {
-            background-color: rgba(255, 255, 255, 0.95);
-            box-shadow: var(--shadow);
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-        }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-        
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-decoration: none;
-            padding-left: 35px;
-        }
-        
-        .logo span {
-            color: var(--secondary);
-            margin-left: 5px;
-        }
-        
-        .nav-menu {
-            display: flex;
-            list-style: none;
-        }
-        
-        .nav-item {
-            margin-left: 2rem;
-        }
-        
-        .nav-link {
-            text-decoration: none;
-            color: var(--secondary);
-            font-weight: 600;
-            transition: var(--transition);
-            position: relative;
-            font-size: 1.1rem;
-        }
-        
-        .nav-link:hover {
-            color: var(--primary);
-        }
-        
-        .nav-link:after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 3px;
-            background: var(--gradient);
-            transition: var(--transition);
-        }
-        
-        .nav-link:hover:after {
-            width: 100%;
-        }
-        
-        .mobile-toggle {
-            display: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--primary);
-            margin-right: 15px; /* Better positioning */
-        }
-        
-        /* Hero Section */
-        .hero {
-            padding: 12rem 0 6rem;
-            background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid var(--light-gray);
-        }
-        
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="%232563eb" opacity="0.1"/><circle cx="50" cy="50" r="1" fill="%232563eb" opacity="0.1"/><circle cx="80" cy="80" r="1" fill="%232563eb" opacity="0.1"/></svg>');
-            background-size: 300px;
-            opacity: 0.3;
-            z-index: 0;
-        }
-        
-        .hero-content {
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero-text {
-            flex: 1;
-        }
-        
-        .hero-title {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            color: var(--primary-dark);
-            line-height: 1.1;
-        }
-        
-        /* REMOVED UNDERLINE STYLE */
-        .hero-subtitle {
-            font-size: 1.8rem;
-            color: var(--secondary);
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-        }
-        
-        /* CHANGED TO LEFT ALIGNMENT */
-        .hero-description {
-            margin-bottom: 2rem;
-            font-size: 1.2rem;
-            max-width: 600px;
-            color: var(--secondary);
-            text-align: left;
-        }
-        
-        .hero-contact {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            color: var(--secondary);
-            font-size: 1.1rem;
-        }
-        
-        .hero-btns {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            border: none;
-            cursor: pointer;
-            font-size: 1.1rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-        }
-        
-        .btn-primary {
-            background: var(--gradient);
-            color: white;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4);
-        }
-        
-        .btn-outline {
-            background-color: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
-        
-        .btn-outline:hover {
-            background-color: var(--primary);
-            color: white;
-            transform: translateY(-3px);
-        }
-        
-        .hero-image {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            position: relative;
-        }
-        
-        .hero-bg {
-            position: absolute;
-            width: 350px;
-            height: 350px;
-            background: var(--accent-light);
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.3;
-            z-index: 0;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-        
-        .profile-photo {
-            width: 280px;
-            height: 280px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid white;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Experience Section */
-        .experience {
-            background-color: #f8fafc;
-            position: relative;
-        }
-        
-        .experience:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23f1f5f9"/><path d="M0 0L100 100M100 0L0 100" stroke="%23e2e8f0" stroke-width="0.5"/></svg>');
-            opacity: 0.5;
-            z-index: 0;
-        }
-        
-        .timeline {
-            position: relative;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .timeline:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 4px;
-            background: var(--light-gray);
-            left: 50%;
-            margin-left: -2px;
-            z-index: 1;
-        }
-        
-        .timeline-item {
-            position: relative;
-            margin-bottom: 3.5rem;
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-content {
-            margin-left: auto;
-            text-align: right;
-            padding-right: 5rem;
-        }
-        
-        .timeline-item:nth-child(even) .timeline-content {
-            padding-left: 5rem;
-        }
-        
-        .timeline-content {
-            width: 45%;
-            background: white;
-            padding: 2rem;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            position: relative;
-            z-index: 2;
-            border-left: 4px solid var(--primary);
-            transition: var(--transition);
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-content {
-            border-left: none;
-            border-right: 4px solid var(--accent);
-        }
-        
-        .timeline-content:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .timeline-content:before {
-            content: '';
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            background: var(--primary);
-            border-radius: 50%;
-            top: 24px;
-            border: 4px solid white;
-            box-shadow: 0 0 0 2px var(--primary);
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-content:before {
-            right: -58px;
-            background: var(--accent);
-            box-shadow: 0 0 0 2px var(--accent);
-        }
-        
-        .timeline-item:nth-child(even) .timeline-content:before {
-            left: -58px;
-        }
-        
-        .timeline-date {
-            font-weight: 600;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-        
-        .timeline-item:nth-child(odd) .timeline-date {
-            justify-content: flex-end;
-        }
-        
-        .timeline-title {
-            font-size: 1.4rem;
-            margin-bottom: 0.5rem;
-            color: var(--dark);
-        }
-        
-        .timeline-company {
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-        
-        .timeline-badge {
-            display: inline-block;
-            background: var(--gradient);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-top: 0.5rem;
-        }
-        
-        .timeline-description {
-            margin-top: 1rem;
-            font-size: 0.95rem;
-            color: var(--gray);
-        }
-        
-        /* Publications Section */
-        .publications {
-            background-color: white;
-            position: relative;
-        }
-        
-        .publications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 2.5rem;
-        }
-        
-        .publication-card {
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            transition: var(--transition);
-            position: relative;
-            z-index: 1;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-            border: 1px solid var(--light-gray);
-        }
-        
-        .publication-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .publication-header {
-            padding: 1.5rem 1.5rem 1rem;
-            background: linear-gradient(135deg, #f8fafc 0%, #e6f7ff 100%);
-            border-bottom: 1px solid var(--light-gray);
-        }
-        
-        .publication-type {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--primary);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-        
-        .publication-image {
-            height: 180px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        
-        .publication-image:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.4) 100%);
-        }
-        
-        .book1 {
-            background-image: url('https://m.media-amazon.com/images/I/71Jwlf6WAIL._SY522_.jpg');
-        }
-        
-        .book2 {
-            background-image: url('https://m.media-amazon.com/images/I/41+FqDTUzOL._AC_UY436_FMwebp_QL65_.jpg');
-        }
-        
-        .paper1 {
-            background: linear-gradient(135deg, #8b5cf6 0%, #2563eb 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .paper2 {
-            background: linear-gradient(135deg, #10b981 0%, #0d9488 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .paper3 {
-            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .paper4 {
-            background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .paper-icon {
-            font-size: 4rem;
-            color: white;
-            opacity: 0.8;
-            z-index: 1;
-        }
-        
-        .publication-content {
-            padding: 1.8rem;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .publication-title {
-            font-size: 1.3rem;
-            margin-bottom: 0.8rem;
-            color: var(--dark);
-        }
-        
-        .publication-meta {
-            font-size: 0.95rem;
-            color: var(--gray);
-            margin-bottom: 1.2rem;
-            flex-grow: 1;
-        }
-        
-        .conference-highlight {
-            display: inline-block;
-            background: var(--accent-light);
-            color: var(--primary-dark);
-            padding: 0.3rem 0.8rem;
-            border-radius: 4px;
-            font-weight: 600;
-            margin-top: 0.5rem;
-        }
-        
-        .publisher-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-            font-weight: 600;
-        }
-        
-        /* Achievements Section */
-        .achievements {
-            background-color: white;
-            position: relative;
-        }
-        
-        .achievements-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
-        
-        .achievement-card {
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            padding: 2.5rem 2rem;
-            transition: var(--transition);
-            border-left: 4px solid var(--primary);
-            position: relative;
-            z-index: 1;
-        }
-        
-        .achievement-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-        }
-        
-        .achievement-icon {
-            font-size: 2.8rem;
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-        
-        /* Skills Section */
-        .skills {
-            background-color: #f8fafc;
-            position: relative;
-        }
-        
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
-        
-        .skill-category {
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            padding: 2rem;
-            position: relative;
-            z-index: 1;
-            transition: var(--transition);
-            border-top: 4px solid var(--accent);
-        }
-        
-        .skill-category:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .skill-category h3 {
-            font-size: 1.4rem;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-        
-        .skill-list {
-            list-style: none;
-        }
-        
-        .skill-item {
-            padding: 0.9rem 0;
-            border-bottom: 1px solid var(--light-gray);
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-size: 1.05rem;
-        }
-        
-        .skill-item:last-child {
-            border-bottom: none;
-        }
-        
-        .skill-badge {
-            display: inline-block;
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
-            padding: 0.3rem 0.6rem;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            margin-top: 0.3rem;
-        }
-        
-        /* Podcast Section */
-        .podcast {
-            background: linear-gradient(135deg, #f8fafc 0%, #e6f7ff 100%);
-            padding: 6rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .podcast:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 300px;
-            height: 300px;
-            background: var(--accent-light);
-            border-radius: 50%;
-            filter: blur(100px);
-            opacity: 0.2;
-            z-index: 0;
-        }
-        
-        .podcast-container {
-            display: flex;
-            align-items: center;
-            gap: 3rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .podcast-content {
-            flex: 1;
-        }
-        
-        .podcast-thumbnail {
-            flex: 1;
-            position: relative;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            height: 350px;
-            background: linear-gradient(135deg, #2563eb 0%, #8b5cf6 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.5s ease;
-        }
-        
-        .podcast-thumbnail:hover {
-            transform: scale(1.03);
-        }
-        
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px;
-            height: 80px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-            z-index: 2;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        .play-button:hover {
-            transform: translate(-50%, -50%) scale(1.1);
-            background: white;
-        }
-        
-        .play-button i {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-left: 5px;
-        }
-        
-        .podcast-thumbnail img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .podcast-title {
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            color: var(--primary-dark);
-            position: relative;
-            display: inline-block;
-        }
-        
-        .podcast-title:after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: var(--accent);
-            border-radius: 2px;
-        }
-        
-        .podcast-description {
-            margin-bottom: 2rem;
-            font-size: 1.1rem;
-            color: var(--secondary);
-            line-height: 1.7;
-        }
-        
-        .podcast-meta {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            color: var(--gray);
-            font-size: 1rem;
-        }
-        
-        .podcast-meta i {
-            color: var(--primary);
-        }
-        
-        /* Additional Sections */
-        .additional-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2.5rem;
-        }
-        
-        .additional-card {
-            background: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            padding: 2rem;
-            transition: var(--transition);
-            position: relative;
-            z-index: 1;
-            border-top: 4px solid var(--accent);
-        }
-        
-        .additional-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .additional-card h3 {
-            font-size: 1.4rem;
-            color: var(--accent);
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-        
-        .additional-list {
-            list-style: none;
-        }
-        
-        .additional-item {
-            padding: 0.8rem 0;
-            border-bottom: 1px solid var(--light-gray);
-            display: flex;
-            align-items: flex-start;
-            gap: 0.8rem;
-        }
-        
-        .additional-item:last-child {
-            border-bottom: none;
-        }
-        
-        .additional-item i {
-            color: var(--primary);
-            margin-top: 0.3rem;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: white;
-            padding: 5rem 0 2.5rem;
-            position: relative;
-        }
-        
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 3.5rem;
-            margin-bottom: 3rem;
-        }
-        
-        .footer-col h3 {
-            color: white;
-            margin-bottom: 1.8rem;
-            font-size: 1.4rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        
-        .footer-col h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
-        
-        .footer-col ul {
-            list-style: none;
-        }
-        
-        .footer-col ul li {
-            margin-bottom: 1rem;
-        }
-        
-        .footer-col ul li a {
-            color: #cbd5e1;
-            text-decoration: none;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            font-size: 1.05rem;
-        }
-        
-        .footer-col ul li a:hover {
-            color: white;
-            transform: translateX(5px);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 1.2rem;
-            margin-top: 1.5rem;
-        }
-        
-        .social-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            transition: var(--transition);
-            font-size: 1.2rem;
-        }
-        
-        .social-link:hover {
-            background: var(--primary);
-            transform: translateY(-5px);
-        }
-        
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #94a3b8;
-            font-size: 1rem;
-        }
-        
-        /* About Section - Redesigned */
-        .about {
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            padding: 4rem 2rem;
-            position: relative;
-            overflow: hidden;
-            margin: 4rem auto;
-            max-width: 1000px;
-            border-top: 4px solid var(--accent);
-        }
-        
-        .about-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .about-header h2 {
-            font-size: 2.5rem;
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-        
-        /* FIXED: Center the underline */
-        .about-header h2:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--gradient);
-            border-radius: 2px;
-        }
-        
-        .profile-highlight {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-        
-        .profile-badge {
-            background: linear-gradient(135deg, #f8fafc 0%, #e6f7ff 100%);
-            border-radius: var(--border-radius);
-            padding: 2.5rem 2rem;
-            text-align: center;
-            min-width: 300px;
-            box-shadow: var(--shadow);
-            border: 1px solid var(--light-gray);
-            position: relative;
-            z-index: 1;
-            transition: var(--transition);
-        }
-        
-        .profile-badge:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .profile-badge i {
-            font-size: 3.5rem;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 1.5rem;
-        }
-        
-        .profile-badge h3 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-        
-        .profile-badge p {
-            font-size: 1.2rem;
-            color: var(--secondary);
-            font-weight: 500;
-        }
-        
-        .about-content {
-            background: white;
-            padding: 2.5rem;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .about-content p {
-            margin-bottom: 1.5rem;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--secondary);
-        }
-        
-        .about-content strong {
-            color: var(--primary);
-            font-weight: 600;
-        }
-        
-        .about-divider {
-            height: 1px;
-            background: var(--light-gray);
-            margin: 2rem 0;
-            position: relative;
-        }
-        
-        .about-divider:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 3px;
-            background: var(--accent);
-        }
-        
-        .core-mission {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
-            border-left: 4px solid var(--primary);
-            padding: 1.5rem;
-            border-radius: 0 var(--border-radius) var(--border-radius) 0;
-            margin-top: 2rem;
-        }
-        
-        .core-mission h4 {
-            font-size: 1.3rem;
-            color: var(--primary-dark);
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-        }
-        
-        .core-mission p {
-            font-style: italic;
-            color: var(--secondary);
-            margin-bottom: 0;
-        }
-        
-        /* Skills Cards */
-        .skills-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sumit Ranjan — Building SLMs for Agentic AI</title>
+  <meta name="description" content="Sumit Ranjan: Building SLMs for Agentic AI Systems, Author of Enterprise Agentic AI, Responsible AI Leader, OWASP Contributor, PhD Scholar, Keynote Speaker.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        .skill-card {
-            background: #ffffff;
-            border-radius: 1rem;
-            padding: 1.5rem;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-        }
+  <style>
+    :root {
+      --ink: #0a0a0f;
+      --ink-soft: #14141c;
+      --surface: #111118;
+      --surface-2: #1a1a24;
+      --surface-3: #22222e;
+      --border: rgba(255,255,255,0.07);
+      --border-soft: rgba(255,255,255,0.04);
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --gold-dim: rgba(201,168,76,0.15);
+      --gold-glow: rgba(201,168,76,0.08);
+      --text: #e8e8f0;
+      --text-dim: #9090a8;
+      --text-muted: #5a5a70;
+      --accent: #6c8ff5;
+      --accent-soft: rgba(108,143,245,0.12);
+      --radius: 10px;
+      --radius-lg: 18px;
+      --font-display: 'Playfair Display', Georgia, serif;
+      --font-body: 'DM Sans', sans-serif;
+    }
 
-        .skill-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-        }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      background: var(--ink);
+      color: var(--text);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
 
-        .skill-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-            color: var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 0 2rem;
+      background: rgba(10,10,15,0.88);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2.2rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-dim);
+      font-size: 0.83rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text);
+      font-size: 1.3rem;
+      cursor: pointer;
+    }
 
-        .skill-card ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 2rem 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero-ambient {
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-ambient-2 {
+      position: absolute;
+      bottom: -100px; left: -100px;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(108,143,245,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 5rem;
+      align-items: center;
+      width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--gold-dim);
+      border: 1px solid rgba(201,168,76,0.25);
+      color: var(--gold);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.42rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 1.6rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+    .hero-name {
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      color: var(--text);
+      margin-bottom: 0.4rem;
+    }
+    .hero-name span { color: var(--gold); }
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 2vw, 1.4rem);
+      font-weight: 400;
+      color: var(--text-dim);
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--text-dim);
+      max-width: 540px;
+      line-height: 1.85;
+      margin-bottom: 2.5rem;
+    }
+    .hero-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-bottom: 2.8rem;
+    }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      font-size: 0.8rem;
+      padding: 0.38rem 0.85rem;
+      border-radius: 100px;
+    }
+    .chip i { color: var(--gold); font-size: 0.72rem; }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--gold);
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.88rem;
+      padding: 0.82rem 1.7rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: all 0.25s;
+    }
+    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.25); }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: transparent;
+      color: var(--text);
+      font-weight: 500;
+      font-size: 0.88rem;
+      padding: 0.82rem 1.7rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: all 0.25s;
+    }
+    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
+    .hero-photo-wrap { position: relative; display: flex; flex-direction: column; align-items: center; }
+    .hero-photo-ring {
+      position: absolute;
+      inset: -14px;
+      border-radius: 50%;
+      border: 1px solid rgba(201,168,76,0.2);
+      animation: spin-slow 22s linear infinite;
+      top: -14px; left: -14px; right: -14px; bottom: auto;
+      width: calc(100% + 28px);
+      height: calc(260px + 28px);
+    }
+    .hero-photo-ring::before {
+      content: '';
+      position: absolute;
+      top: -3px; left: 50%;
+      transform: translateX(-50%);
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+    @keyframes spin-slow { to { transform: rotate(360deg); } }
+    .hero-photo {
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--surface-3);
+      position: relative;
+      z-index: 1;
+      display: block;
+    }
+    .hero-stats { display: flex; gap: 2rem; margin-top: 1.8rem; }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: var(--font-display);
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .stat-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem; }
 
-        .skill-card li {
-            display: flex;
-            align-items: center;
-            margin-bottom: 0.6rem;
-            font-size: 0.95rem;
-            gap: 10px;
-        }
+    /* ─── SECTIONS ─── */
+    .section { padding: 90px 2rem; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--gold);
+      font-size: 0.73rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .section-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+    .section-sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 3rem; max-width: 500px; }
+    hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
 
-        .skill-card li i {
-            color: var(--accent);
-        }
-        
-        /* Mobile Optimization Enhancements */
-        @media (max-width: 992px) {
-            .hero-content {
-                flex-direction: column;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .timeline:before {
-                left: 31px;
-            }
-            
-            .timeline-item:nth-child(odd) .timeline-content,
-            .timeline-item:nth-child(even) .timeline-content {
-                width: calc(100% - 4rem);
-                margin-left: 4rem;
-                text-align: left;
-                padding-left: 2rem;
-                border-right: none;
-                border-left: 4px solid var(--primary);
-            }
-            
-            .timeline-item:nth-child(odd) .timeline-content:before,
-            .timeline-item:nth-child(even) .timeline-content:before {
-                left: -52px;
-            }
-            
-            .podcast-container {
-                flex-direction: column;
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .mobile-toggle {
-                display: block;
-                margin-right: 15px; /* Better positioning */
-            }
-            
-            .nav-menu {
-                position: fixed;
-                top: 70px;
-                left: -100%;
-                flex-direction: column;
-                background: white;
-                width: 100%;
-                text-align: center;
-                transition: var(--transition);
-                box-shadow: var(--shadow);
-                padding: 2rem 0;
-            }
-            
-            .nav-menu.active {
-                left: 0;
-            }
-            
-            .nav-item {
-                margin: 1.2rem 0;
-            }
-            
-            h1 {
-                font-size: 2.2rem;
-            }
-            
-            h2 {
-                font-size: 1.8rem;
-            }
-            
-            .hero-title {
-                font-size: 2.4rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.4rem;
-            }
-            
-            .section {
-                padding: 4rem 0;
-            }
-            
-            .hero {
-                padding: 10rem 0 4rem;
-            }
-            
-            .profile-highlight {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .profile-badge {
-                width: 100%;
-                max-width: 350px;
-            }
-            
-            .about-content {
-                padding: 1.5rem;
-            }
-            
-            .about-header h2 {
-                font-size: 2rem;
-            }
-            
-            /* Improved mobile navigation */
-            .nav-menu.active {
-                top: 70px;
-                padding: 1rem 0;
-            }
-            
-            .nav-item {
-                margin: 0.8rem 0;
-            }
-            
-            .nav-link {
-                font-size: 1rem;
-                padding: 0.5rem 1rem;
-            }
-            
-            /* Mobile touch targets */
-            .btn {
-                padding: 1.2rem 1.5rem;
-                min-width: 200px;
-            }
-            
-            .hero-btns {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            /* Better mobile spacing */
-            .section {
-                padding: 3rem 0;
-            }
-            
-            .section-header {
-                margin-bottom: 2rem;
-            }
-            
-            /* Optimized timeline for mobile */
-            .timeline-content {
-                padding: 1.5rem;
-            }
-            
-            .timeline-title {
-                font-size: 1.2rem;
-            }
-            
-            .timeline-company {
-                font-size: 1rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero-title {
-                font-size: 2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .profile-photo {
-                width: 220px;
-                height: 220px;
-            }
-            
-            .hero-bg {
-                width: 280px;
-                height: 280px;
-            }
-            
-            .hero-contact {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 1rem;
-            }
-            
-            .contact-item {
-                font-size: 1rem;
-            }
-            
-            .profile-badge {
-                padding: 1.5rem;
-            }
-            
-            .profile-badge h3 {
-                font-size: 1.5rem;
-            }
-            
-            .profile-badge p {
-                font-size: 1rem;
-            }
-            
-            .podcast-thumbnail {
-                height: 250px;
-            }
-            
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    /* ─── ABOUT ─── */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
+    .about-text p { color: var(--text-dim); font-size: 0.97rem; line-height: 1.85; margin-bottom: 1.1rem; }
+    .about-text strong { color: var(--gold); font-weight: 600; }
+    .mission-block {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--gold);
+      padding: 1.4rem 1.7rem;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-top: 1.8rem;
+    }
+    .mission-block h4 { color: var(--gold); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; font-weight: 600; }
+    .mission-block p { color: var(--text-dim); font-style: italic; font-size: 1rem; margin: 0; }
+    .about-highlights { display: flex; flex-direction: column; gap: 0.85rem; }
+    .highlight-pill {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .highlight-pill:hover { border-color: rgba(201,168,76,0.3); transform: translateX(4px); }
+    .highlight-pill-icon {
+      width: 40px; height: 40px;
+      background: var(--gold-dim);
+      border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1rem; flex-shrink: 0;
+    }
+    .highlight-pill-text h4 { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.1rem; }
+    .highlight-pill-text p { font-size: 0.78rem; color: var(--text-muted); margin: 0; }
+
+    /* ─── EXPERIENCE COMPACT ─── */
+    .exp-bg { background: var(--surface); }
+    .exp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 0.85rem; }
+    .exp-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.1rem 1.3rem;
+      display: flex;
+      gap: 0.9rem;
+      align-items: flex-start;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .exp-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--text-muted);
+      transition: background 0.2s;
+    }
+    .exp-card.current::before { background: var(--gold); }
+    .exp-card.accent-blue::before { background: var(--accent); }
+    .exp-card:hover { border-color: rgba(255,255,255,0.1); transform: translateY(-2px); }
+    .exp-card:hover::before { background: var(--gold); }
+    .exp-dot {
+      width: 36px; height: 36px;
+      border-radius: 8px;
+      background: var(--surface-3);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-muted); font-size: 0.85rem; flex-shrink: 0; margin-top: 1px;
+    }
+    .exp-card.current .exp-dot { background: var(--gold-dim); color: var(--gold); }
+    .exp-card.accent-blue .exp-dot { background: var(--accent-soft); color: var(--accent); }
+    .exp-info { flex: 1; min-width: 0; }
+    .exp-role { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 0.12rem; line-height: 1.3; }
+    .exp-company { font-size: 0.78rem; color: var(--gold); font-weight: 500; margin-bottom: 0.18rem; }
+    .exp-card.accent-blue .exp-company { color: var(--accent); }
+    .exp-date { font-size: 0.72rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.3rem; }
+    .exp-tag {
+      font-size: 0.65rem; padding: 0.18rem 0.5rem; border-radius: 4px;
+      font-weight: 600; letter-spacing: 0.04em; flex-shrink: 0; align-self: flex-start; margin-top: 2px;
+    }
+    .tag-current { background: var(--gold-dim); color: var(--gold); border: 1px solid rgba(201,168,76,0.25); }
+    .tag-past { background: var(--surface-3); color: var(--text-muted); }
+    .tag-advisory { background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(108,143,245,0.2); }
+    .tag-academic { background: rgba(16,185,129,0.1); color: #34d399; border: 1px solid rgba(16,185,129,0.2); }
+
+    /* ─── SKILLS ─── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.1rem; }
+    .skill-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.6rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .skill-card:hover { border-color: rgba(201,168,76,0.2); transform: translateY(-3px); }
+    .skill-card-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem; }
+    .skill-card-icon {
+      width: 38px; height: 38px; background: var(--gold-dim); border-radius: 9px;
+      display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 0.95rem;
+    }
+    .skill-card-title { font-size: 0.92rem; font-weight: 600; color: var(--text); }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+    .skill-tag {
+      background: var(--surface-3); color: var(--text-dim);
+      font-size: 0.76rem; padding: 0.28rem 0.65rem; border-radius: 6px; border: 1px solid var(--border-soft);
+    }
+
+    /* ─── PUBLICATIONS ─── */
+    .pub-bg { background: var(--surface); }
+    .pub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.3rem; }
+    .pub-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex; flex-direction: column;
+    }
+    .pub-card:hover { border-color: rgba(201,168,76,0.25); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+    .pub-thumb {
+      height: 150px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3.2rem; position: relative; overflow: hidden;
+    }
+    .pub-thumb.book { background-size: cover; background-position: center; }
+    .pub-thumb.book::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.28); }
+    .pub-thumb-icon { position: relative; z-index: 1; }
+    .pub-type-badge {
+      position: absolute; top: 10px; left: 10px;
+      background: var(--gold); color: var(--ink);
+      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.22rem 0.6rem; border-radius: 4px; z-index: 2;
+    }
+    .pub-body { padding: 1.3rem; flex: 1; display: flex; flex-direction: column; }
+    .pub-title { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; line-height: 1.4; }
+    .pub-meta { font-size: 0.78rem; color: var(--text-muted); flex: 1; margin-bottom: 0.9rem; line-height: 1.6; }
+    .pub-publisher {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      background: var(--surface-3); color: var(--text-dim);
+      font-size: 0.76rem; font-weight: 500; padding: 0.32rem 0.7rem; border-radius: 6px;
+      text-decoration: none; transition: color 0.2s; width: fit-content;
+    }
+    .pub-publisher:hover { color: var(--gold); }
+    .pub-publisher i { color: var(--gold); font-size: 0.7rem; }
+
+    /* ─── ACHIEVEMENTS ─── */
+    .ach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.1rem; }
+    .ach-card {
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius);
+      padding: 1.5rem; transition: border-color 0.2s, transform 0.2s;
+    }
+    .ach-card:hover { border-color: rgba(201,168,76,0.25); transform: translateY(-3px); }
+    .ach-icon {
+      width: 40px; height: 40px; background: var(--gold-dim); border-radius: 9px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1rem; margin-bottom: 1rem;
+    }
+    .ach-title { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.35rem; }
+    .ach-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+
+    /* ─── PODCAST ─── */
+    .pod-bg { background: var(--surface); }
+    .pod-container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .pod-label { font-size: 0.73rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--gold); font-weight: 600; margin-bottom: 0.9rem; }
+    .pod-title { font-family: var(--font-display); font-size: 1.8rem; color: var(--text); line-height: 1.25; margin-bottom: 1.1rem; }
+    .pod-meta { display: flex; gap: 1.2rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+    .pod-meta-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; color: var(--text-muted); }
+    .pod-meta-item i { color: var(--gold); }
+    .pod-desc { color: var(--text-dim); font-size: 0.93rem; line-height: 1.8; margin-bottom: 1.8rem; }
+    .pod-visual {
+      position: relative; border-radius: var(--radius-lg); overflow: hidden;
+      aspect-ratio: 16/9; background: var(--surface-3); cursor: pointer; display: block; text-decoration: none;
+    }
+    .pod-visual img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+    .pod-visual:hover img { transform: scale(1.04); }
+    .pod-visual::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 60%); }
+    .pod-play {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 60px; height: 60px;
+      background: rgba(255,255,255,0.95); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 2; transition: transform 0.25s; box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+    }
+    .pod-play i { color: var(--ink); font-size: 1.3rem; margin-left: 3px; }
+    .pod-visual:hover .pod-play { transform: translate(-50%, -50%) scale(1.1); }
+
+    /* ─── HIGHLIGHTS ─── */
+    .hlt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.1rem; }
+    .hlt-card {
+      background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg);
+      padding: 1.6rem; transition: border-color 0.2s;
+    }
+    .hlt-card:hover { border-color: rgba(201,168,76,0.2); }
+    .hlt-card-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem; }
+    .hlt-card-icon {
+      width: 36px; height: 36px; background: var(--gold-dim); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 0.9rem;
+    }
+    .hlt-card-title { font-size: 0.92rem; font-weight: 600; color: var(--text); }
+    .hlt-list { list-style: none; }
+    .hlt-item {
+      display: flex; gap: 0.65rem; padding: 0.58rem 0;
+      border-bottom: 1px solid var(--border-soft);
+      font-size: 0.8rem; color: var(--text-dim); line-height: 1.5;
+    }
+    .hlt-item:last-child { border-bottom: none; }
+    .hlt-item i { color: var(--gold); margin-top: 2px; flex-shrink: 0; font-size: 0.72rem; }
+
+    /* ─── FOOTER ─── */
+    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 56px 2rem 28px; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 2.5rem; }
+    .footer-brand h3 { font-family: var(--font-display); font-size: 1.5rem; color: var(--gold); margin-bottom: 0.5rem; }
+    .footer-brand p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.7; margin-bottom: 1.4rem; }
+    .social-row { display: flex; gap: 0.7rem; }
+    .social-btn {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--surface-3); border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--text-dim); text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
+    }
+    .social-btn:hover { background: var(--gold-dim); color: var(--gold); border-color: rgba(201,168,76,0.3); }
+    .footer-col h4 { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 1.1rem; }
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.65rem; }
+    .footer-col ul li a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-col ul li a:hover { color: var(--gold); }
+    .footer-bottom { padding-top: 1.6rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.8rem; }
+
+    /* ─── SCROLL REVEAL ─── */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .hero-photo-wrap { align-items: center; }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .pod-container { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .nav-toggle { display: block; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: fixed; top: 68px; left: 0; right: 0;
+        background: var(--surface); border-bottom: 1px solid var(--border);
+        padding: 1.5rem 2rem; gap: 1.2rem;
+      }
+      .exp-grid { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; }
+      .hero-photo { width: 200px; height: 200px; }
+      .hero-photo-ring { width: calc(100% + 28px); height: calc(200px + 28px); }
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container nav-container">
-            <a href="#" class="logo">Sumit<span>Ranjan</span></a>
-            <div class="mobile-toggle">
-                <i class="fas fa-bars"></i>
-            </div>
-            <ul class="nav-menu">
-                <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
-                <li class="nav-item"><a href="#experience" class="nav-link">Experience</a></li>
-                <li class="nav-item"><a href="#skills" class="nav-link">Skills</a></li>
-                <li class="nav-item"><a href="#publications" class="nav-link">Publications</a></li>
-                <li class="nav-item"><a href="#achievements" class="nav-link">Achievements</a></li>
-                <li class="nav-item"><a href="#podcast" class="nav-link">Podcast</a></li>
-                <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
-            </ul>
+
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Sumit Ranjan</a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#publications">Research</a></li>
+        <li><a href="#achievements">Awards</a></li>
+        <li><a href="#podcast">Podcast</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-ambient"></div>
+    <div class="hero-ambient-2"></div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <div class="hero-eyebrow">Stealth Mode &nbsp;·&nbsp; Dubai, UAE</div>
+        <h1 class="hero-name">Sumit<br><span>Ranjan</span></h1>
+        <p class="hero-title">Making Agentic AI Reliable, Secure & Cheaper</p>
+        <p class="hero-desc">
+          Researching and building the infrastructure for trustworthy agentic systems — 
+          compact SLMs that cut cost without sacrificing safety. Author of <em>Enterprise Agentic AI</em>, 
+          OWASP Agentic AI Top 10 Contributor, and PhD Scholar pushing the boundaries 
+          of what secure autonomous AI can look like in the real world.
+        </p>
+        <div class="hero-chips">
+          <span class="chip"><i class="fas fa-microchip"></i> Building SLMs for Agentic AI</span>
+          <span class="chip"><i class="fas fa-book"></i> Author · Enterprise Agentic AI</span>
+          <span class="chip"><i class="fas fa-shield-alt"></i> OWASP Top 10 Contributor</span>
+          <span class="chip"><i class="fas fa-graduation-cap"></i> PhD Scholar · BITS Pilani</span>
+          <span class="chip"><i class="fas fa-microphone-alt"></i> Keynote Speaker</span>
         </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">Sumit Ranjan</h1>
-                    <!-- Removed underline from subtitle -->
-                    <h2 class="hero-subtitle">Agentic AI Researcher | PhD Scholar | Author | AI Security Expert</h2>
-                    <!-- Changed to left alignment -->
-                    <p class="hero-description">
-                        I am a results-driven AI leader with over a decade of experience at the intersection of AI innovation, security, and governance. 
-                        As the Head of Responsible AI at Forcespot, I lead initiatives focused on trust, safety, and accountability in AI, driving secure adoption for enterprises and government.
-                    </p>
-                    
-                    <div class="hero-contact">
-                        <div class="contact-item">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Dubai, UAE</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fas fa-graduation-cap"></i>
-                            <span>PhD scholar in AgenticAI Security</span>
-                        </div>
-                    </div>
-                    
-                    <div class="hero-btns">
-                        <a href="https://linkedin.com/in/sumit-ranjan-33015b22" target="_blank" class="btn btn-primary">Get In Touch</a>
-                        <a href="#publications" class="btn btn-outline">
-                            <i class="fas fa-book"></i> View Publications
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="hero-image">
-                    <div class="hero-bg"></div>
-                    <img src="https://m.media-amazon.com/images/S/amzn-author-media-prod/po40koefeo50ovvtk0nq7jgggn._SX300_CR0%2C0%2C300%2C300_.jpg" alt="Sumit Ranjan" class="profile-photo">
-                </div>
-            </div>
+        <div class="hero-cta">
+          <a href="https://linkedin.com/in/sumit-ranjan-33015b22" target="_blank" class="btn-gold">
+            <i class="fab fa-linkedin"></i> Connect on LinkedIn
+          </a>
+          <a href="#publications" class="btn-ghost">
+            <i class="fas fa-book-open"></i> View Research
+          </a>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="section about" id="about">
-        <div class="container">
-            <div class="about-header">
-                <h2>About Me</h2>
-            </div>
-            
-            <div class="profile-highlight">
-                <div class="profile-badge">
-                    <i class="fas fa-crown"></i>
-                    <h3>AI Leader & Researcher</h3>
-                    <p>Driving Innovation in AI Systems</p>
-                </div>
-                
-                <div class="profile-badge">
-                    <i class="fas fa-user-graduate"></i>
-                    <h3>PhD Scholar</h3>
-                    <p>AgenticAI Security at BITS Pilani</p>
-                </div>
-            </div>
-            
-            <div class="about-content">
-                <p>
-                    I'm <strong>Sumit Ranjan</strong> — AI researcher, author, and security strategist with a decade of experience at the forefront of <strong>AI innovation and safety</strong>. My focus lies in building secure, scalable, and ethical AI systems with deep specialization in <strong>Agentic AI</strong>, <strong>LLM security</strong>, and <strong>AI governance</strong>.
-                </p>
-                
-                <p>
-                    Currently, I serve as the <strong>Head of Responsible AI at Forcespot</strong>, leading cross-functional initiatives to integrate ethics, transparency, and risk mitigation into enterprise AI deployments. Alongside, I'm pursuing a <strong>PhD in Agentic AI Security at BITS Pilani</strong>, researching trustworthy agent-based systems.
-                </p>
-                
-                <div class="about-divider"></div>
-                
-                <p>
-                    I contribute to the <strong>OWASP Agentic Security Initiative</strong>, helping define global standards in GenAI safety. My past roles span healthcare, retail, and finance—delivering real-world impact by translating complex models into meaningful business outcomes.
-                </p>
-                
-                <p>
-                    As an author, I've written the bestselling book <strong>"Applied Deep Learning and Computer Vision for Self-Driving Cars"</strong> and am currently working on <strong>"Enterprise Agentic AI"</strong> which explores secure deployment of autonomous AI systems in enterprises.
-                </p>
-                
-                <div class="core-mission">
-                    <h4><i class="fas fa-bullseye"></i> Core Mission</h4>
-                    <p>
-                        To build AI that's not just powerful, but also safe, ethical, and accountable.
-                    </p>
-                </div>
-            </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="hero-photo-ring"></div>
+        <img src="https://m.media-amazon.com/images/S/amzn-author-media-prod/po40koefeo50ovvtk0nq7jgggn._SX300_CR0%2C0%2C300%2C300_.jpg" alt="Sumit Ranjan" class="hero-photo">
+          <div class="hero-stats">
+          <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years</div></div>
+          <div class="stat"><div class="stat-num">2</div><div class="stat-label">Books</div></div>
+          <div class="stat"><div class="stat-num">OWASP</div><div class="stat-label">Contributor</div></div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Experience Section -->
-    <section class="section experience" id="experience">
-        <div class="container">
-            <div class="section-header">
-                <h2>Work Experience</h2>
-            </div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date"><i class="fas fa-calendar"></i> Nov 2024 - Present</div>
-                        <h3 class="timeline-title">Head - Responsible AI</h3>
-                        <div class="timeline-company">Forcespot, Dubai</div>
-                        <div class="timeline-badge">Current Position</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date"><i class="fas fa-calendar"></i> Feb 2024 - Oct 2024</div>
-                        <h3 class="timeline-title">Visiting Professor - Generative AI & NLP</h3>
-                        <div class="timeline-company">Manipal University Dubai</div>
-                        <div class="timeline-badge">Academic Leadership</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date"><i class="fas fa-calendar"></i> Dec 2022 - Nov 2024</div>
-                        <h3 class="timeline-title">Manager Data Science & AI</h3>
-                        <div class="timeline-company">Majid Al Futtaim - Carrefour, Dubai</div>
-                        <div class="timeline-badge">Enterprise AI Solutions</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date"><i class="fas fa-calendar"></i> Feb 2021 - Dec 2022</div>
-                        <h3 class="timeline-title">Principal Data Scientist</h3>
-                        <div class="timeline-company">MResult Corp, Bengaluru</div>
-                        <div class="timeline-badge">Healthcare AI Innovations</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date"><i class="fas fa-calendar"></i> Mar 2019 - Jan 2021</div>
-                        <h3 class="timeline-title">Sr. Data Scientist</h3>
-                        <div class="timeline-company">VMWare, Bengaluru</div>
-                        <div class="timeline-badge">Customer Journey Optimization</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date"><i class="fas fa-calendar"></i> Jun 2018 - Feb 2019</div>
-                        <h3 class="timeline-title">Data Scientist</h3>
-                        <div class="timeline-company">Affine Analytics, Bengaluru</div>
-                        <div class="timeline-badge">Computer Vision for Automobile</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date"><i class="fas fa-calendar"></i> Mar 2017 - May 2018</div>
-                        <h3 class="timeline-title">Software Consultant</h3>
-                        <div class="timeline-company">KPIT Technologies, Bengaluru</div>
-                        <div class="timeline-badge">Risk Modeling & AI Scholarship</div>
-                    </div>
-                </div>
-                
-                <div class="timeline-item">
-                    <div class="timeline-content">
-                        <div class="timeline-date"><i class="fas fa-calendar"></i> Jul 2014 - Dec 2016</div>
-                        <h3 class="timeline-title">Software Consultant</h3>
-                        <div class="timeline-company">Oak Systems, Bengaluru</div>
-                        <div class="timeline-badge">Semiconductor Analytics</div>
-                    </div>
-                </div>
-            </div>
+  <!-- ABOUT -->
+  <section class="section" id="about" style="background:var(--ink)">
+    <div class="section-inner">
+      <div class="section-label">Who I Am</div>
+      <h2 class="section-title">Researcher. Builder. Author.</h2>
+      <div class="about-grid reveal">
+        <div class="about-text">
+          <p>I'm <strong>Sumit Ranjan</strong> — currently in stealth, focused on a single hard problem: <strong>making agentic AI systems reliable, secure, and cheaper to run</strong>. That means building compact <strong>Small Language Models (SLMs)</strong> that are domain-trained, verifiable, and enterprise-ready — without the cost and opacity of large general-purpose models.</p>
+          <p>My research at <strong>BITS Pilani (PhD)</strong> sits at the intersection of agentic system architecture and AI security — exploring how autonomous agents fail, how they can be exploited, and how to build them so they don't. I contribute to the <strong>OWASP Agentic AI Top 10</strong>, helping define the security standards the industry will build on.</p>
+          <p>I'm also the author of <strong><em>Enterprise Agentic AI</em></strong> (Packt) — a practical guide to deploying autonomous AI in production. As a <strong>Responsible AI Leader</strong> and keynote speaker, I bring this research into boardrooms, conferences, and classrooms globally.</p>
+          <div class="mission-block">
+            <h4>Core Focus</h4>
+            <p>"Agentic AI that enterprises can trust — reliable, secure, and cost-efficient by design."</p>
+          </div>
         </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="section skills" id="skills">
-        <div class="container">
-            <div class="section-header">
-                <h2>Technical Expertise</h2>
-                <p>Specialized skills across the AI development lifecycle</p>
-            </div>
-
-            <div class="skills-cards">
-                <div class="skill-card">
-                    <h3><i class="fas fa-brain"></i> AI Specializations</h3>
-                    <ul>
-                        <li><i class="fas fa-cogs"></i> Custom Language Model Development</li>
-                        <li><i class="fas fa-eye"></i> Computer Vision Solutions</li>
-                        <li><i class="fas fa-robot"></i> Generative & Agentic AI</li>
-                        <li><i class="fas fa-shield-alt"></i> AI Security & Compliance</li>
-                        <li><i class="fas fa-balance-scale"></i> AI Governance</li>
-                        <li><i class="fas fa-handshake"></i> Responsible AI</li>
-                        <li><i class="fab fa-microsoft"></i> MS Copilot Security</li>
-                        <li><i class="fas fa-comment-dots"></i> ChatGPT Security</li>
-                        <li><i class="fas fa-chart-line"></i> Model Evaluation</li>
-                    </ul>
-                </div>
-
-                <div class="skill-card">
-                    <h3><i class="fas fa-code"></i> Languages & Frameworks</h3>
-                    <ul>
-                        <li><i class="fab fa-python"></i> Python</li>
-                        <li><i class="fas fa-database"></i> SQL</li>
-                        <li><i class="fas fa-chart-line"></i> R Programming</li>
-                        <li><i class="fas fa-robot"></i> OpenAI</li>
-                        <li><i class="fas fa-link"></i> LangChain</li>
-                        <li><i class="fas fa-search"></i> LlamaIndex</li>
-                    </ul>
-                </div>
-
-                <div class="skill-card">
-                    <h3><i class="fas fa-cogs"></i> AI Agent Frameworks</h3>
-                    <ul>
-                        <li><i class="fas fa-users-cog"></i> Crew.ai</li>
-                        <li><i class="fas fa-project-diagram"></i> LangGraph</li>
-                        <li><i class="fas fa-stream"></i> LangFlow</li>
-                        <li><i class="fas fa-bolt"></i> Autogen</li>
-                        <li><i class="fas fa-random"></i> n8n</li>
-                        <li><i class="fab fa-microsoft"></i> MS Copilot Studio</li>
-                        <li><i class="fas fa-lightbulb"></i> MindPal</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="about-highlights">
+          <div class="highlight-pill">
+            <div class="highlight-pill-icon"><i class="fas fa-microchip"></i></div>
+            <div class="highlight-pill-text"><h4>Building SLMs for Agentic AI</h4><p>Reliable, secure & cheaper agentic systems</p></div>
+          </div>
+          <div class="highlight-pill">
+            <div class="highlight-pill-icon"><i class="fas fa-book"></i></div>
+            <div class="highlight-pill-text"><h4>Author — Enterprise Agentic AI</h4><p>Packt Publications · Practical enterprise deployment guide</p></div>
+          </div>
+          <div class="highlight-pill">
+            <div class="highlight-pill-icon"><i class="fas fa-balance-scale"></i></div>
+            <div class="highlight-pill-text"><h4>Responsible AI Leader</h4><p>Ethics, governance & trust in AI systems</p></div>
+          </div>
+          <div class="highlight-pill">
+            <div class="highlight-pill-icon"><i class="fas fa-shield-alt"></i></div>
+            <div class="highlight-pill-text"><h4>OWASP Agentic AI Top 10</h4><p>Contributor · Global AI security standards</p></div>
+          </div>
+          <div class="highlight-pill">
+            <div class="highlight-pill-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="highlight-pill-text"><h4>PhD Scholar</h4><p>Agentic AI Security · BITS Pilani</p></div>
+          </div>
+          <div class="highlight-pill">
+            <div class="highlight-pill-icon"><i class="fas fa-microphone-alt"></i></div>
+            <div class="highlight-pill-text"><h4>Keynote Speaker</h4><p>AI governance, security & agentic systems</p></div>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- Publications Section -->
-    <section class="section publications" id="publications">
-        <div class="container">
-            <div class="section-header">
-                <h2>Publications & Research</h2>
-                <p>Featured works in prestigious journals and conferences</p>
-            </div>
-            
-            <div class="publications-grid">
-                <div class="publication-card">
-                    <div class="publication-header">
-                        <div class="publication-type">Bestselling Book</div>
-                    </div>
-                    <div class="publication-image book1"></div>
-                    <div class="publication-content">
-                        <h3 class="publication-title">Applied Deep Learning and Computer Vision for Self-Driving Cars</h3>
-                        <div class="publication-meta">
-                            Comprehensive guide to building autonomous vehicles using deep learning techniques and computer vision systems.
-                        </div>
-                        <div class="publisher-badge">
-                            <i class="fas fa-book"></i> Packt Publications
-                        </div>
-                        <a href="https://www.amazon.com/Applied-Learning-Computer-Vision-Self-Driving/dp/1838646302" target="_blank" class="btn btn-outline" style="margin-top: 1.5rem;">View on Amazon</a>
-                    </div>
-                </div>
-                
-                <div class="publication-card">
-                    <div class="publication-header">
-                        <div class="publication-type">Upcoming Book</div>
-                    </div>
-                    <div class="publication-image book2"></div>
-                    <div class="publication-content">
-                        <h3 class="publication-title">Enterprise Agentic AI: Harnessing AI Transformation</h3>
-                        <div class="publication-meta">
-                            Practical guide to implementing agentic AI systems in enterprise environments with a focus on security and governance.
-                        </div>
-                        <div class="publisher-badge">
-                            <i class="fas fa-book"></i> Packt Publications
-                        </div>
-                        <a href="https://www.amazon.com/Agentic-AI-Enterprise-Harnessing-Transformation/dp/B0F44VF26B" target="_blank" class="btn btn-outline" style="margin-top: 1.5rem;">View on Amazon</a>
-                    </div>
-                </div>
-                
-                <div class="publication-card">
-                    <div class="publication-header">
-                        <div class="publication-type">Research Paper</div>
-                    </div>
-                    <div class="publication-image paper1">
-                        <i class="fas fa-pills paper-icon"></i>
-                    </div>
-                    <div class="publication-content">
-                        <h3 class="publication-title">Text summarization for pharmaceutical sciences using hierarchical clustering</h3>
-                        <div class="publication-meta">
-                            Novel approach to pharmaceutical text summarization using hierarchical clustering techniques for enhanced information extraction.
-                        </div>
-                        <div class="publisher-badge">
-                            <i class="fas fa-book-open"></i> Nature Springer International Journal
-                        </div>
-                        <a href="https://pubmed.ncbi.nlm.nih.gov/39209906/" target="_blank" class="btn btn-outline" style="margin-top: 1.5rem;">View Paper</a>
-                    </div>
-                </div>
-                
-                <div class="publication-card">
-                    <div class="publication-header">
-                        <div class="publication-type">Conference Paper</div>
-                    </div>
-                    <div class="publication-image paper2">
-                        <i class="fas fa-home paper-icon"></i>
-                    </div>
-                    <div class="publication-content">
-                        <h3 class="publication-title">LLM-Powered Generative AI for Enhanced Real Estate Property Search</h3>
-                        <div class="publication-meta">
-                            Innovative AI approach to real estate search using generative AI and large language models for personalized property recommendations.
-                        </div>
-                        <div class="publisher-badge">
-                            <i class="fas fa-university"></i> IIM Bangalore
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="publication-card">
-                    <div class="publication-header">
-                        <div class="publication-type">Conference Paper</div>
-                    </div>
-                    <div class="publication-image paper3">
-                        <i class="fas fa-robot paper-icon"></i>
-                    </div>
-                    <div class="publication-content">
-                        <h3 class="publication-title">UI Automation Test Element Search Using Machine Learning</h3>
-                        <div class="publication-meta">
-                            Advanced techniques for UI automation testing using machine learning to improve element identification and testing efficiency.
-                        </div>
-                        <div class="publisher-badge">
-                            <i class="fas fa-university"></i> IIM Bangalore
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="publication-card">
-                    <div class="publication-header">
-                        <div class="publication-type">Research Paper</div>
-                    </div>
-                    <div class="publication-image paper4">
-                        <i class="fas fa-shield-alt paper-icon"></i>
-                    </div>
-                    <div class="publication-content">
-                        <h3 class="publication-title">SecuregenAI: A Lifecycle Framework For Securing Large Language Models In Healthcare</h3>
-                        <div class="publication-meta">
-                            Comprehensive framework for securing LLMs in healthcare applications through AI red teaming, federated learning and advanced security protocols.
-                        </div>
-                        <div class="publisher-badge">
-                            <i class="fas fa-book-open"></i> Springer Nature
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <hr class="divider">
+
+  <!-- EXPERIENCE -->
+  <section class="section exp-bg" id="experience">
+    <div class="section-inner">
+      <div class="section-label">Career</div>
+      <h2 class="section-title">Work Experience</h2>
+      <p class="section-sub">A decade of building, researching, and leading AI across enterprise, academia, and advisory.</p>
+      <div class="exp-grid reveal">
+
+        <div class="exp-card accent-blue">
+          <div class="exp-dot"><i class="fas fa-chalkboard-teacher"></i></div>
+          <div class="exp-info">
+            <div class="exp-role">Adjunct Professor – AI & Digital Transformation</div>
+            <div class="exp-company">Symbiosis International University Dubai</div>
+            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Sep 2025 – Present</div>
+          </div>
+          <span class="exp-tag tag-academic">Academic</span>
         </div>
-    </section>
 
-    <!-- Achievements Section -->
-    <section class="section achievements" id="achievements">
-        <div class="container">
-            <div class="section-header">
-                <h2>Achievements & Awards</h2>
-                <p>Recognitions for excellence in AI research and innovation</p>
-            </div>
-            
-            <div class="achievements-grid">
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-trophy"></i>
-                    </div>
-                    <h3>AI Universal Council Ambassador</h3>
-                    <p>Recognized as an ambassador for AI Universal Council promoting responsible AI practices globally.</p>
-                </div>
-                
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-medal"></i>
-                    </div>
-                    <h3>Einstein Award - Best Mind of the Year</h3>
-                    <p>Awarded by Institute of Engineering & Technology, United Kingdom for exceptional contributions to AI research.</p>
-                </div>
-                
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-microphone-alt"></i>
-                    </div>
-                    <h3>Keynote Speaker at GSDC</h3>
-                    <p>Global Generative AI Advance Prompt Engineering Webinar 2025, Singapore.</p>
-                </div>
-                
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-chalkboard-teacher"></i>
-                    </div>
-                    <h3>Workshop at University of Birmingham</h3>
-                    <p>Conducted "Developing AI Agent" workshop at the prestigious University of Birmingham Dubai Campus, February 2025.</p>
-                </div>
-                
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-file-contract"></i>
-                    </div>
-                    <h3>Patent Application Published</h3>
-                    <p>XPath identification using computer vision & localization<br>
-                    <strong>Application Number:</strong> 202231060501<br>
-                    <strong>Journal Date:</strong> 26/04/2024</p>
-                </div>
-                
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-lightbulb"></i>
-                    </div>
-                    <h3>Innovator Award 2022</h3>
-                    <p>For driving multiple AI/ML innovations at MResult Corp.</p>
-                </div>
-                
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-award"></i>
-                    </div>
-                    <h3>Synergy Award 2022</h3>
-                    <p>For Oncology Document classification Project at MResult Corp.</p>
-                </div>
-                
-                <div class="achievement-card">
-                    <div class="achievement-icon">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>VMware Marketing Analytics Hackathon 2020</h3>
-                    <p>Solution Ranked 2nd for innovative marketing analytics solution.</p>
-                </div>
-            </div>
+        <div class="exp-card accent-blue">
+          <div class="exp-dot"><i class="fas fa-shield-alt"></i></div>
+          <div class="exp-info">
+            <div class="exp-role">Advisor – AI Security & Responsible Innovation</div>
+            <div class="exp-company">Protect Neuron · Dubai</div>
+            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Aug 2025 – Present</div>
+          </div>
+          <span class="exp-tag tag-advisory">Advisory</span>
         </div>
-    </section>
 
-    <!-- Podcast Section -->
-    <section class="podcast" id="podcast">
-        <div class="container">
-            <div class="section-header">
-                <h2>Featured Podcast</h2>
-                <p>Insights on AI, cybersecurity and responsible innovation</p>
-            </div>
-            
-            <div class="podcast-container">
-                <div class="podcast-content">
-                    <h3 class="podcast-title">Cyber Security, Human Brains and Responsible AI</h3>
-                    <div class="podcast-meta">
-                        <span><i class="fas fa-calendar"></i> June 2025</span>
-                        <span><i class="fas fa-clock"></i> 39 min</span>
-                        <span><i class="fas fa-headphones"></i> SharafDG AI Podcast</span>
-                    </div>
-                    <div class="podcast-description">
-                        <p>I was honored to be invited by the SharafDG AI Group to speak on their popular podcast about the critical intersection of cybersecurity, human cognition, and responsible AI practices.</p>
-                        <p>In this engaging discussion, we explore the challenges and opportunities in developing secure AI systems that align with human values and ethical principles. We dive deep into strategies for building AI that not only advances technology but also protects users and maintains trust.</p>
-                        <p>Key topics include balancing innovation with security, implementing ethical AI frameworks, and preparing organizations for the next generation of AI governance.</p>
-                    </div>
-                    <a href="https://www.youtube.com/watch?v/320Ze0ZSS7M&t=139s" target="_blank" class="btn btn-primary">
-                        <i class="fas fa-play-circle"></i> Watch Full Podcast
-                    </a>
-                </div>
-                
-                <div class="podcast-thumbnail">
-                    <img src="https://img.youtube.com/vi/320Ze0ZSS7M/maxresdefault.jpg" alt="SharafDG AI Podcast">
-                    <div class="play-button">
-                        <i class="fas fa-play"></i>
-                    </div>
-                </div>
-            </div>
+        <div class="exp-card">
+          <div class="exp-dot"><i class="fas fa-building"></i></div>
+          <div class="exp-info">
+            <div class="exp-role">Co-Founder & CTO</div>
+            <div class="exp-company">Emvo · Dubai</div>
+            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Sep – Oct 2025</div>
+          </div>
+          <span class="exp-tag tag-past">Ex-CTO</span>
         </div>
-    </section>
 
-    <!-- Additional Sections -->
-    <section class="section" id="additional" style="background-color: #f8fafc;">
-        <div class="container">
-            <div class="section-header">
-                <h2>More Highlights</h2>
-                <p>Additional accomplishments and contributions</p>
-            </div>
-            
-            <div class="additional-grid">
-                <div class="additional-card">
-                    <h3><i class="fas fa-certificate"></i> Certifications</h3>
-                    <ul class="additional-list">
-                        <li class="additional-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div>AI Security Certification at Nullcon Goa 2025</div>
-                        </li>
-                        <li class="additional-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div>MLSecOps Certification by ProtectAI 2024</div>
-                        </li>
-                        <li class="additional-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div>Deep Learning for coders using Fastai from Queensland University, Australia</div>
-                        </li>
-                        <li class="additional-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div>Deep Learning Nanodegree by Udacity</div>
-                        </li>
-                        <li class="additional-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div>Deep Learning for Self Driving Cars Scholarship by KPIT Technologies</div>
-                        </li>
-                        <li class="additional-item">
-                            <i class="fas fa-check-circle"></i>
-                            <div>Certification on AWS-MLOPS 2022</div>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="additional-card">
-                    <h3><i class="fas fa-trophy"></i> Hackathons</h3>
-                    <ul class="additional-list">
-                        <li class="additional-item">
-                            <i class="fas fa-medal"></i>
-                            <div>VMware Sentiment Analysis Hackathon 2020 - Solution Ranked 9th</div>
-                        </li>
-                        <li class="additional-item">
-                            <i class="fas fa-medal"></i>
-                            <div>NLP News Classification Machinehack Aug 2024 - Solution Ranked 3rd</div>
-                        </li>
-                        <li class="additional-item">
-                            <i class="fas fa-medal"></i>
-                            <div>Solar Power Sustainability Challenge by Wipro 2022 - Top 5%</div>
-                        </li>
-                        <li class="additional-item">
-                            <i class="fas fa-medal"></i>
-                            <div>Ugam Sentiment Analysis Challenge 2022 - Top 1%</div>
-                        </li>
-                        <li class="additional-item">
-                            <i class="fas fa-medal"></i>
-                            <div>Trident Hackathon 2022 - Top 9%</div>
-                        </li>
-                    </ul>
-                </div>
-                
-                <div class="additional-card">
-                    <h3><i class="fas fa-microphone"></i> Talks & Workshops</h3>
-                    <ul class="additional-list">
-                        <li class="additional-item">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                            <div>Workshop on "Agentic AI in Industry" at BITS Pilani Dubai, May 2025</div>
-                        </li>
-                        <li class="additional-item">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                            <div>Bootcamp on "Decoding AI Agents" for DDS Community Dubai, June 2025</div>
-                        </li>
-                        <li class="additional-item">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                            <div>Session on Generative AI in Industry at Manipal University, Dubai, July 2024</div>
-                        </li>
-                        <li class="additional-item">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                            <div>Workshop on "Deep Learning for Computer Vision" for faculty development program 2020</div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+        <div class="exp-card">
+          <div class="exp-dot"><i class="fas fa-balance-scale"></i></div>
+          <div class="exp-info">
+            <div class="exp-role">Head – Responsible AI</div>
+            <div class="exp-company">Forcespot · Dubai</div>
+            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Nov 2024 – Present</div>
+          </div>
+          <span class="exp-tag tag-past">Past</span>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-col">
-                    <h3>Sumit Ranjan</h3>
-                    <p>Head - Responsible AI | PhD Scholar</p>
-                    <p>AI Researcher & Author with decade of experience in cutting-edge AI technologies.</p>
-                    
-                    <div class="social-links">
-                        <a href="https://linkedin.com/in/sumit-ranjan-33015b22" target="_blank" class="social-link">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="https://github.com/ranjan-sumit" target="_blank" class="social-link">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://neuralnetwork.guru" target="_blank" class="social-link">
-                            <i class="fas fa-globe"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#about"><i class="fas fa-chevron-right"></i> About</a></li>
-                        <li><a href="#experience"><i class="fas fa-chevron-right"></i> Experience</a></li>
-                        <li><a href="#skills"><i class="fas fa-chevron-right"></i> Skills</a></li>
-                        <li><a href="#publications"><i class="fas fa-chevron-right"></i> Publications</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-col">
-                    <h3>Projects & Organizations</h3>
-                    <ul>
-                        <li><a href="https://neuralnetwork.guru" target="_blank"><i class="fas fa-brain"></i> NeuralNetwork.Guru</a></li>
-                        <li><a href="https://aiucouncil.org/sumit-ranjan/" target="_blank"><i class="fas fa-users"></i> AI Universal Council</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 Sumit Ranjan. All Rights Reserved.</p>
-            </div>
+        <div class="exp-card">
+          <div class="exp-dot"><i class="fas fa-university"></i></div>
+          <div class="exp-info">
+            <div class="exp-role">Visiting Professor – Generative AI & NLP</div>
+            <div class="exp-company">Manipal University Dubai</div>
+            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Feb – Oct 2024</div>
+          </div>
+          <span class="exp-tag tag-academic">Academic</span>
         </div>
-    </footer>
 
-    <script>
-        // Mobile Navigation Toggle
-        const mobileToggle = document.querySelector('.mobile-toggle');
-        const navMenu = document.querySelector('.nav-menu');
-        
-        mobileToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                navMenu.classList.remove('active');
-                
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-        
-        // Sticky header
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            header.classList.toggle('sticky', window.scrollY > 0);
-        });
-        
-        // YouTube video play functionality
-        const playButton = document.querySelector('.play-button');
-        if(playButton) {
-            playButton.addEventListener('click', () => {
-                window.open('https://www.youtube.com/watch?v=320Ze0ZSS7M&t=139s', '_blank');
-            });
-        }
-        
-        // Animate elements on scroll
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('show');
-                }
-            });
-        }, {
-            threshold: 0.1
-        });
-        
-        document.querySelectorAll('.timeline-content, .publication-card, .achievement-card, .additional-card, .skill-category').forEach(el => {
-            el.classList.add('hide');
-            observer.observe(el);
-        });
-        
-        // Add animation styles
-        const style = document.createElement('style');
-        style.innerHTML = `
-            .hide {
-                opacity: 0;
-                transform: translateY(30px);
-                transition: all 0.6s ease-out;
-            }
-            
-            .show {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        `;
-        document.head.appendChild(style);
-    </script>
+        <div class="exp-card">
+          <div class="exp-dot"><i class="fas fa-chart-line"></i></div>
+          <div class="exp-info">
+            <div class="exp-role">Manager – Data Science & AI</div>
+            <div class="exp-company">Majid Al Futtaim · Carrefour</div>
+            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Dec 2022 – Nov 2024</div>
+          </div>
+          <span class="exp-tag tag-past">Enterprise</span>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-dot"><i class="fas fa-heartbeat"></i></div>
+          <div class="exp-info">
+            <div class="exp-role">Principal Data Scientist</div>
+            <div class="exp-company">MResult Corp · Bengaluru</div>
+            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Feb 2021 – Dec 2022</div>
+          </div>
+          <span class="exp-tag tag-past">Healthcare AI</span>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-dot"><i class="fas fa-cloud"></i></div>
+          <div class="exp-info">
+            <div class="exp-role">Sr. Data Scientist</div>
+            <div class="exp-company">VMware · Bengaluru</div>
+            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Mar 2019 – Jan 2021</div>
+          </div>
+          <span class="exp-tag tag-past">Enterprise</span>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-dot"><i class="fas fa-eye"></i></div>
+          <div class="exp-info">
+            <div class="exp-role">Data Scientist</div>
+            <div class="exp-company">Affine Analytics · Bengaluru</div>
+            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Jun 2018 – Feb 2019</div>
+          </div>
+          <span class="exp-tag tag-past">Computer Vision</span>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-dot"><i class="fas fa-code"></i></div>
+          <div class="exp-info">
+            <div class="exp-role">Software Consultant</div>
+            <div class="exp-company">KPIT Technologies · Bengaluru</div>
+            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Mar 2017 – May 2018</div>
+          </div>
+          <span class="exp-tag tag-past">Risk Modeling</span>
+        </div>
+
+        <div class="exp-card">
+          <div class="exp-dot"><i class="fas fa-microchip"></i></div>
+          <div class="exp-info">
+            <div class="exp-role">Software Consultant</div>
+            <div class="exp-company">Oak Systems · Bengaluru</div>
+            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Jul 2014 – Dec 2016</div>
+          </div>
+          <span class="exp-tag tag-past">Semiconductor</span>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- SKILLS -->
+  <section class="section" id="skills" style="background:var(--ink)">
+    <div class="section-inner">
+      <div class="section-label">Expertise</div>
+      <h2 class="section-title">Technical Skills</h2>
+      <p class="section-sub">Deep specialization across the AI research and deployment lifecycle.</p>
+      <div class="skills-grid reveal">
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <div class="skill-card-icon"><i class="fas fa-brain"></i></div>
+            <div class="skill-card-title">AI Specializations</div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Agentic AI</span><span class="skill-tag">LLM Security</span>
+            <span class="skill-tag">AI Governance</span><span class="skill-tag">Responsible AI</span>
+            <span class="skill-tag">Computer Vision</span><span class="skill-tag">Generative AI</span>
+            <span class="skill-tag">AI Red Teaming</span><span class="skill-tag">Model Evaluation</span>
+            <span class="skill-tag">Copilot Security</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <div class="skill-card-icon"><i class="fas fa-code"></i></div>
+            <div class="skill-card-title">Languages & Libraries</div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">Python</span><span class="skill-tag">SQL</span>
+            <span class="skill-tag">R</span><span class="skill-tag">OpenAI SDK</span>
+            <span class="skill-tag">LangChain</span><span class="skill-tag">LlamaIndex</span>
+            <span class="skill-tag">PyTorch</span><span class="skill-tag">FastAI</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <div class="skill-card-header">
+            <div class="skill-card-icon"><i class="fas fa-robot"></i></div>
+            <div class="skill-card-title">Agent Frameworks</div>
+          </div>
+          <div class="skill-tags">
+            <span class="skill-tag">CrewAI</span><span class="skill-tag">LangGraph</span>
+            <span class="skill-tag">LangFlow</span><span class="skill-tag">AutoGen</span>
+            <span class="skill-tag">n8n</span><span class="skill-tag">MS Copilot Studio</span>
+            <span class="skill-tag">MindPal</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PUBLICATIONS -->
+  <section class="section pub-bg" id="publications">
+    <div class="section-inner">
+      <div class="section-label">Research & Writing</div>
+      <h2 class="section-title">Publications</h2>
+      <p class="section-sub">Books, research papers, and conference contributions across AI, security, and healthcare.</p>
+      <div class="pub-grid reveal">
+
+        <div class="pub-card">
+          <div class="pub-thumb book" style="background-image:url('https://m.media-amazon.com/images/I/71Jwlf6WAIL._SY522_.jpg')">
+            <span class="pub-type-badge">Bestseller</span>
+          </div>
+          <div class="pub-body">
+            <div class="pub-title">Applied Deep Learning and Computer Vision for Self-Driving Cars</div>
+            <div class="pub-meta">Comprehensive guide to autonomous vehicles using deep learning and computer vision. Packt Publications.</div>
+            <a href="https://www.amazon.com/Applied-Learning-Computer-Vision-Self-Driving/dp/1838646302" target="_blank" class="pub-publisher"><i class="fab fa-amazon"></i> View on Amazon</a>
+          </div>
+        </div>
+
+        <div class="pub-card">
+          <div class="pub-thumb book" style="background-image:url('https://m.media-amazon.com/images/I/41+FqDTUzOL._AC_UY436_FMwebp_QL65_.jpg')">
+            <span class="pub-type-badge">Upcoming</span>
+          </div>
+          <div class="pub-body">
+            <div class="pub-title">Enterprise Agentic AI: Harnessing AI Transformation</div>
+            <div class="pub-meta">Practical guide to secure agentic AI deployment in enterprise environments. Packt Publications.</div>
+            <a href="https://www.amazon.com/Agentic-AI-Enterprise-Harnessing-Transformation/dp/B0F44VF26B" target="_blank" class="pub-publisher"><i class="fab fa-amazon"></i> Pre-order</a>
+          </div>
+        </div>
+
+        <div class="pub-card">
+          <div class="pub-thumb" style="background:linear-gradient(135deg,#6c8ff5,#2563eb)">
+            <span class="pub-type-badge">Journal</span>
+            <i class="fas fa-pills pub-thumb-icon" style="color:rgba(255,255,255,0.65);font-size:3rem"></i>
+          </div>
+          <div class="pub-body">
+            <div class="pub-title">Text Summarization for Pharmaceutical Sciences Using Hierarchical Clustering</div>
+            <div class="pub-meta">Novel NLP approach for pharmaceutical text summarization via hierarchical clustering.</div>
+            <a href="https://pubmed.ncbi.nlm.nih.gov/39209906/" target="_blank" class="pub-publisher"><i class="fas fa-external-link-alt"></i> Nature Springer</a>
+          </div>
+        </div>
+
+        <div class="pub-card">
+          <div class="pub-thumb" style="background:linear-gradient(135deg,#10b981,#047857)">
+            <span class="pub-type-badge">Conference</span>
+            <i class="fas fa-home pub-thumb-icon" style="color:rgba(255,255,255,0.65);font-size:3rem"></i>
+          </div>
+          <div class="pub-body">
+            <div class="pub-title">LLM-Powered Generative AI for Enhanced Real Estate Property Search</div>
+            <div class="pub-meta">AI-driven personalized property search using LLMs and generative AI.</div>
+            <span class="pub-publisher"><i class="fas fa-university"></i> IIM Bangalore</span>
+          </div>
+        </div>
+
+        <div class="pub-card">
+          <div class="pub-thumb" style="background:linear-gradient(135deg,#f59e0b,#b45309)">
+            <span class="pub-type-badge">Conference</span>
+            <i class="fas fa-robot pub-thumb-icon" style="color:rgba(255,255,255,0.65);font-size:3rem"></i>
+          </div>
+          <div class="pub-body">
+            <div class="pub-title">UI Automation Test Element Search Using Machine Learning</div>
+            <div class="pub-meta">Advanced ML techniques for UI automation testing and element identification.</div>
+            <span class="pub-publisher"><i class="fas fa-university"></i> IIM Bangalore</span>
+          </div>
+        </div>
+
+        <div class="pub-card">
+          <div class="pub-thumb" style="background:linear-gradient(135deg,#ef4444,#991b1b)">
+            <span class="pub-type-badge">Journal</span>
+            <i class="fas fa-shield-alt pub-thumb-icon" style="color:rgba(255,255,255,0.65);font-size:3rem"></i>
+          </div>
+          <div class="pub-body">
+            <div class="pub-title">SecuregenAI: A Lifecycle Framework for Securing LLMs in Healthcare</div>
+            <div class="pub-meta">Framework for healthcare LLM security via AI red teaming and federated learning.</div>
+            <span class="pub-publisher"><i class="fas fa-book-open"></i> Springer Nature</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ACHIEVEMENTS -->
+  <section class="section" id="achievements" style="background:var(--ink)">
+    <div class="section-inner">
+      <div class="section-label">Recognition</div>
+      <h2 class="section-title">Achievements & Awards</h2>
+      <p class="section-sub">Recognition for research contributions, innovation, and thought leadership.</p>
+      <div class="ach-grid reveal">
+        <div class="ach-card">
+          <div class="ach-icon"><i class="fas fa-globe"></i></div>
+          <div class="ach-title">AI Universal Council Ambassador</div>
+          <div class="ach-desc">Recognized ambassador promoting responsible AI practices globally.</div>
+        </div>
+        <div class="ach-card">
+          <div class="ach-icon"><i class="fas fa-award"></i></div>
+          <div class="ach-title">Einstein Award – Best Mind of the Year</div>
+          <div class="ach-desc">Awarded by the Institute of Engineering & Technology, United Kingdom.</div>
+        </div>
+        <div class="ach-card">
+          <div class="ach-icon"><i class="fas fa-microphone-alt"></i></div>
+          <div class="ach-title">Keynote Speaker – GSDC 2025</div>
+          <div class="ach-desc">Global Generative AI Advance Prompt Engineering Webinar, Singapore.</div>
+        </div>
+        <div class="ach-card">
+          <div class="ach-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+          <div class="ach-title">Workshop – University of Birmingham</div>
+          <div class="ach-desc">"Developing AI Agents" — Birmingham Dubai Campus, Feb 2025.</div>
+        </div>
+        <div class="ach-card">
+          <div class="ach-icon"><i class="fas fa-file-contract"></i></div>
+          <div class="ach-title">Patent Published</div>
+          <div class="ach-desc">XPath identification using computer vision & localization. App No. 202231060501.</div>
+        </div>
+        <div class="ach-card">
+          <div class="ach-icon"><i class="fas fa-lightbulb"></i></div>
+          <div class="ach-title">Innovator Award 2022</div>
+          <div class="ach-desc">For driving multiple AI/ML innovations at MResult Corp.</div>
+        </div>
+        <div class="ach-card">
+          <div class="ach-icon"><i class="fas fa-medal"></i></div>
+          <div class="ach-title">Synergy Award 2022</div>
+          <div class="ach-desc">Oncology Document Classification Project at MResult Corp.</div>
+        </div>
+        <div class="ach-card">
+          <div class="ach-icon"><i class="fas fa-users"></i></div>
+          <div class="ach-title">VMware Analytics Hackathon – 2nd Place</div>
+          <div class="ach-desc">Marketing Analytics Hackathon 2020 — solution ranked 2nd.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- PODCAST -->
+  <section class="section pod-bg" id="podcast">
+    <div class="section-inner">
+      <div class="section-label">Media</div>
+      <h2 class="section-title">Featured Podcast</h2>
+      <div class="pod-container reveal">
+        <div>
+          <div class="pod-label"><i class="fas fa-headphones"></i> &nbsp;SharafDG AI Podcast</div>
+          <h3 class="pod-title">Cyber Security, Human Brains & Responsible AI</h3>
+          <div class="pod-meta">
+            <span class="pod-meta-item"><i class="fas fa-calendar"></i> June 2025</span>
+            <span class="pod-meta-item"><i class="fas fa-clock"></i> 39 min</span>
+          </div>
+          <p class="pod-desc">Invited by the SharafDG AI Group to discuss the critical intersection of cybersecurity, human cognition, and responsible AI — exploring strategies for secure AI systems aligned with human values and the next generation of AI governance.</p>
+          <a href="https://www.youtube.com/watch?v=320Ze0ZSS7M&t=139s" target="_blank" class="btn-gold">
+            <i class="fas fa-play"></i> Watch Now
+          </a>
+        </div>
+        <a href="https://www.youtube.com/watch?v=320Ze0ZSS7M&t=139s" target="_blank" class="pod-visual">
+          <img src="https://img.youtube.com/vi/320Ze0ZSS7M/maxresdefault.jpg" alt="SharafDG Podcast">
+          <div class="pod-play"><i class="fas fa-play"></i></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- HIGHLIGHTS -->
+  <section class="section" style="background:var(--ink)">
+    <div class="section-inner">
+      <div class="section-label">More</div>
+      <h2 class="section-title">Highlights</h2>
+      <div class="hlt-grid reveal">
+        <div class="hlt-card">
+          <div class="hlt-card-header">
+            <div class="hlt-card-icon"><i class="fas fa-certificate"></i></div>
+            <div class="hlt-card-title">Certifications</div>
+          </div>
+          <ul class="hlt-list">
+            <li class="hlt-item"><i class="fas fa-check"></i> AI Security – Nullcon Goa 2025</li>
+            <li class="hlt-item"><i class="fas fa-check"></i> MLSecOps – ProtectAI 2024</li>
+            <li class="hlt-item"><i class="fas fa-check"></i> Deep Learning – Queensland University, AU</li>
+            <li class="hlt-item"><i class="fas fa-check"></i> Deep Learning Nanodegree – Udacity</li>
+            <li class="hlt-item"><i class="fas fa-check"></i> AWS MLOps Certification 2022</li>
+          </ul>
+        </div>
+        <div class="hlt-card">
+          <div class="hlt-card-header">
+            <div class="hlt-card-icon"><i class="fas fa-trophy"></i></div>
+            <div class="hlt-card-title">Hackathons</div>
+          </div>
+          <ul class="hlt-list">
+            <li class="hlt-item"><i class="fas fa-medal"></i> VMware Sentiment Hackathon 2020 – 9th</li>
+            <li class="hlt-item"><i class="fas fa-medal"></i> NLP News Classification MachineHack – 3rd</li>
+            <li class="hlt-item"><i class="fas fa-medal"></i> Solar Power Challenge by Wipro – Top 5%</li>
+            <li class="hlt-item"><i class="fas fa-medal"></i> Ugam Sentiment Analysis – Top 1%</li>
+            <li class="hlt-item"><i class="fas fa-medal"></i> Trident Hackathon 2022 – Top 9%</li>
+          </ul>
+        </div>
+        <div class="hlt-card">
+          <div class="hlt-card-header">
+            <div class="hlt-card-icon"><i class="fas fa-microphone"></i></div>
+            <div class="hlt-card-title">Talks & Workshops</div>
+          </div>
+          <ul class="hlt-list">
+            <li class="hlt-item"><i class="fas fa-chalkboard"></i> "Agentic AI in Industry" – BITS Pilani Dubai, May 2025</li>
+            <li class="hlt-item"><i class="fas fa-chalkboard"></i> "Decoding AI Agents" Bootcamp – DDS Dubai, Jun 2025</li>
+            <li class="hlt-item"><i class="fas fa-chalkboard"></i> GenAI in Industry – Manipal University, Jul 2024</li>
+            <li class="hlt-item"><i class="fas fa-chalkboard"></i> Deep Learning for CV – Faculty Dev Program 2020</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h3>Sumit Ranjan</h3>
+          <p>Researcher · Author · Responsible AI Leader<br>Making agentic AI reliable, secure, and cheaper. Currently in stealth.</p>
+          <div class="social-row">
+            <a href="https://linkedin.com/in/sumit-ranjan-33015b22" target="_blank" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://github.com/ranjan-sumit" target="_blank" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://neuralnetwork.guru" target="_blank" class="social-btn" title="Website"><i class="fas fa-globe"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#achievements">Awards</a></li>
+            <li><a href="#podcast">Podcast</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Projects</h4>
+          <ul>
+            <li><a href="https://neuralnetwork.guru" target="_blank">NeuralNetwork.Guru</a></li>
+            <li><a href="https://aiucouncil.org/sumit-ranjan/" target="_blank">AI Universal Council</a></li>
+            <li><a href="https://www.amazon.com/Applied-Learning-Computer-Vision-Self-Driving/dp/1838646302" target="_blank">Book – Self-Driving AI</a></li>
+            <li><a href="https://www.amazon.com/Agentic-AI-Enterprise-Harnessing-Transformation/dp/B0F44VF26B" target="_blank">Book – Enterprise Agentic AI</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Sumit Ranjan · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const navLinks = document.getElementById('navLinks');
+    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    document.querySelectorAll('#navLinks a').forEach(a => {
+      a.addEventListener('click', () => navLinks.classList.remove('open'));
+    });
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+      });
+    });
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.07 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 </body>
 </html>
