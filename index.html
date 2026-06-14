@@ -1,1067 +1,698 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sumit Ranjan — Building SLMs for Agentic AI</title>
-  <meta name="description" content="Sumit Ranjan: Building SLMs for Agentic AI Systems, Author of Enterprise Agentic AI, Responsible AI Leader, OWASP Contributor, PhD Scholar, Keynote Speaker.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sumit Ranjan — Principal Agentic AI &amp; Security Architect</title>
+<meta name="description" content="Sumit Ranjan — Principal Agentic AI &amp; Security Architect. Building reliable, secure, cost-efficient agentic systems. OWASP Agentic AI contributor, author, PhD scholar, keynote speaker. Creator of VoiceShield &amp; PromptShield.">
+<meta property="og:title" content="Sumit Ranjan — Principal Agentic AI & Security Architect">
+<meta property="og:description" content="Building reliable, secure, cost-efficient agentic systems. OWASP contributor, author of Enterprise Agentic AI, PhD scholar.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,900&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --ink:#0c0c0e;
+  --ink-2:#141417;
+  --panel:#16161a;
+  --panel-2:#1c1c21;
+  --line:rgba(255,255,255,0.08);
+  --line-soft:rgba(255,255,255,0.045);
+  --paper:#ECE7DC;          /* warm off-white text */
+  --paper-dim:#9a968c;
+  --paper-mute:#615e57;
+  --brass:#C8973F;          /* restrained brass, not glowy gold */
+  --brass-lt:#E0B45F;
+  --brass-dim:rgba(200,151,63,0.14);
+  --brass-line:rgba(200,151,63,0.28);
+  --signal:#7BA0C4;         /* quiet signal blue for links */
+  --signal-dim:rgba(123,160,196,0.12);
+  --r:9px; --r-lg:15px;
+  --disp:'Fraunces',Georgia,serif;
+  --body:'Inter',system-ui,sans-serif;
+  --mono:'JetBrains Mono',monospace;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--body);background:var(--ink);color:var(--paper);line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+::selection{background:var(--brass-dim);color:var(--brass-lt);}
 
-  <style>
-    :root {
-      --ink: #0a0a0f;
-      --ink-soft: #14141c;
-      --surface: #111118;
-      --surface-2: #1a1a24;
-      --surface-3: #22222e;
-      --border: rgba(255,255,255,0.07);
-      --border-soft: rgba(255,255,255,0.04);
-      --gold: #c9a84c;
-      --gold-light: #e8c97a;
-      --gold-dim: rgba(201,168,76,0.15);
-      --gold-glow: rgba(201,168,76,0.08);
-      --text: #e8e8f0;
-      --text-dim: #9090a8;
-      --text-muted: #5a5a70;
-      --accent: #6c8ff5;
-      --accent-soft: rgba(108,143,245,0.12);
-      --radius: 10px;
-      --radius-lg: 18px;
-      --font-display: 'Playfair Display', Georgia, serif;
-      --font-body: 'DM Sans', sans-serif;
-    }
+/* ---------- NAV ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(12,12,14,0.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line-soft);}
+.nav-in{max-width:1080px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:62px;padding:0 1.6rem;}
+.nav-logo{font-family:var(--mono);font-size:0.82rem;font-weight:600;letter-spacing:0.02em;color:var(--paper);text-decoration:none;display:flex;align-items:center;gap:0.55rem;}
+.nav-logo .blink{width:7px;height:7px;border-radius:50%;background:var(--brass);box-shadow:0 0 0 0 var(--brass);animation:beat 2.4s infinite;}
+@keyframes beat{0%,100%{opacity:1}50%{opacity:0.3}}
+.nav-links{display:flex;list-style:none;gap:1.7rem;}
+.nav-links a{text-decoration:none;color:var(--paper-dim);font-size:0.78rem;font-weight:500;letter-spacing:0.01em;transition:color .2s;}
+.nav-links a:hover{color:var(--brass-lt);}
+.nav-tg{display:none;background:none;border:none;color:var(--paper);font-size:1.2rem;cursor:pointer;}
 
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-body);
-      background: var(--ink);
-      color: var(--text);
-      line-height: 1.65;
-      overflow-x: hidden;
-    }
+/* ---------- HERO ---------- */
+.hero{min-height:100vh;display:flex;align-items:center;padding:108px 1.6rem 70px;position:relative;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--line-soft) 1px,transparent 1px),linear-gradient(90deg,var(--line-soft) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse 80% 60% at 70% 20%,#000 0%,transparent 75%);pointer-events:none;}
+.hero-in{max-width:1080px;margin:0 auto;width:100%;position:relative;z-index:1;display:grid;grid-template-columns:1fr 300px;gap:4.5rem;align-items:center;}
+.status{display:inline-flex;align-items:center;gap:0.6rem;font-family:var(--mono);font-size:0.72rem;color:var(--paper-dim);border:1px solid var(--line);background:var(--panel);padding:0.4rem 0.85rem;border-radius:100px;margin-bottom:1.8rem;}
+.status .live{width:7px;height:7px;border-radius:50%;background:#54d188;animation:beat 2s infinite;}
+.hero-name{font-family:var(--disp);font-weight:900;font-size:clamp(3.1rem,7vw,5.4rem);line-height:0.98;letter-spacing:-0.02em;color:var(--paper);margin-bottom:1.3rem;}
+.hero-name em{font-style:italic;font-weight:400;color:var(--brass);}
+.hero-role{font-size:1.05rem;font-weight:600;color:var(--paper);margin-bottom:0.5rem;letter-spacing:-0.01em;}
+.hero-role .sep{color:var(--brass);font-weight:400;margin:0 0.5rem;}
+.hero-desc{font-size:1rem;color:var(--paper-dim);max-width:520px;line-height:1.82;margin-bottom:2rem;}
+.hero-desc b{color:var(--paper);font-weight:600;}
+.hero-cta{display:flex;gap:0.8rem;flex-wrap:wrap;margin-bottom:2.4rem;}
+.btn{display:inline-flex;align-items:center;gap:0.55rem;font-size:0.86rem;font-weight:600;padding:0.72rem 1.4rem;border-radius:var(--r);text-decoration:none;transition:all .22s;}
+.btn-pri{background:var(--brass);color:var(--ink);}
+.btn-pri:hover{background:var(--brass-lt);transform:translateY(-2px);}
+.btn-gho{background:transparent;color:var(--paper);border:1px solid var(--line);}
+.btn-gho:hover{border-color:var(--brass-line);color:var(--brass-lt);transform:translateY(-2px);}
+.hero-meta{display:flex;gap:2.1rem;flex-wrap:wrap;}
+.hm{display:flex;flex-direction:column;gap:0.15rem;}
+.hm-num{font-family:var(--disp);font-size:1.55rem;font-weight:600;color:var(--paper);line-height:1;}
+.hm-lab{font-family:var(--mono);font-size:0.66rem;color:var(--paper-mute);letter-spacing:0.04em;text-transform:uppercase;}
 
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 0 2rem;
-      background: rgba(10,10,15,0.88);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between; height: 68px;
-    }
-    .nav-logo {
-      font-family: var(--font-display); font-size: 1.3rem; font-weight: 700;
-      color: var(--gold); text-decoration: none; letter-spacing: 0.02em;
-    }
-    .nav-links { display: flex; list-style: none; gap: 2rem; }
-    .nav-links a {
-      text-decoration: none; color: var(--text-dim);
-      font-size: 0.78rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s;
-    }
-    .nav-links a:hover { color: var(--gold); }
-    .nav-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.3rem; cursor: pointer; }
+/* portrait */
+.portrait-wrap{position:relative;}
+.portrait{width:100%;aspect-ratio:1;border-radius:var(--r-lg);object-fit:cover;border:1px solid var(--line);filter:grayscale(0.22) contrast(1.03);display:block;}
+.portrait-tag{position:absolute;bottom:-12px;left:-12px;background:var(--ink-2);border:1px solid var(--brass-line);border-radius:var(--r);padding:0.55rem 0.85rem;font-family:var(--mono);font-size:0.68rem;color:var(--brass-lt);display:flex;align-items:center;gap:0.45rem;box-shadow:0 12px 30px rgba(0,0,0,0.4);}
+.portrait-frame{position:absolute;inset:-9px;border:1px solid var(--line-soft);border-radius:calc(var(--r-lg) + 6px);pointer-events:none;}
 
-    /* HERO */
-    .hero {
-      min-height: 100vh; display: flex; align-items: center;
-      padding: 120px 2rem 80px; position: relative; overflow: hidden;
-    }
-    .hero-ambient {
-      position: absolute; top: -200px; right: -200px; width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%); pointer-events: none;
-    }
-    .hero-ambient-2 {
-      position: absolute; bottom: -100px; left: -100px; width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(108,143,245,0.05) 0%, transparent 70%); pointer-events: none;
-    }
-    .hero-inner {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr auto; gap: 5rem;
-      align-items: center; width: 100%; position: relative; z-index: 1;
-    }
-    .hero-eyebrow {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.25); color: var(--gold);
-      font-size: 0.76rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.42rem 1rem; border-radius: 100px; margin-bottom: 1.6rem;
-    }
-    .hero-eyebrow::before {
-      content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
-    .hero-name {
-      font-family: var(--font-display); font-size: clamp(3rem,6vw,5.5rem);
-      font-weight: 900; line-height: 1.0; color: var(--text); margin-bottom: 0.4rem;
-    }
-    .hero-name span { color: var(--gold); }
-    .hero-title {
-      font-family: var(--font-display); font-size: clamp(1rem,2vw,1.4rem);
-      font-weight: 400; color: var(--text-dim); font-style: italic; margin-bottom: 2rem;
-    }
-    .hero-desc { font-size: 1rem; color: var(--text-dim); max-width: 540px; line-height: 1.85; margin-bottom: 2.5rem; }
-    .hero-chips { display: flex; flex-wrap: wrap; gap: 0.65rem; margin-bottom: 2.8rem; }
-    .chip {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: var(--surface-2); border: 1px solid var(--border);
-      color: var(--text-dim); font-size: 0.8rem; padding: 0.38rem 0.85rem; border-radius: 100px;
-    }
-    .chip i { color: var(--gold); font-size: 0.72rem; }
-    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
-    .btn-gold {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      background: var(--gold); color: var(--ink); font-weight: 700; font-size: 0.88rem;
-      padding: 0.82rem 1.7rem; border-radius: var(--radius); text-decoration: none;
-      letter-spacing: 0.03em; transition: all 0.25s;
-    }
-    .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,0.25); }
-    .btn-ghost {
-      display: inline-flex; align-items: center; gap: 0.6rem;
-      background: transparent; color: var(--text); font-weight: 500; font-size: 0.88rem;
-      padding: 0.82rem 1.7rem; border-radius: var(--radius); text-decoration: none;
-      border: 1px solid var(--border); transition: all 0.25s;
-    }
-    .btn-ghost:hover { border-color: var(--gold); color: var(--gold); transform: translateY(-2px); }
-    .hero-photo-wrap { position: relative; display: flex; flex-direction: column; align-items: center; }
-    .hero-photo-ring {
-      position: absolute; border-radius: 50%; border: 1px solid rgba(201,168,76,0.2);
-      animation: spin-slow 22s linear infinite;
-      top: -14px; left: -14px; right: -14px; bottom: auto;
-      width: calc(100% + 28px); height: calc(260px + 28px);
-    }
-    .hero-photo-ring::before {
-      content: ''; position: absolute; top: -3px; left: 50%; transform: translateX(-50%);
-      width: 6px; height: 6px; background: var(--gold); border-radius: 50%;
-    }
-    @keyframes spin-slow { to { transform: rotate(360deg); } }
-    .hero-photo {
-      width: 260px; height: 260px; border-radius: 50%; object-fit: cover;
-      border: 3px solid var(--surface-3); position: relative; z-index: 1; display: block;
-    }
-    .hero-stats { display: flex; gap: 2rem; margin-top: 1.8rem; }
-    .stat { text-align: center; }
-    .stat-num { font-family: var(--font-display); font-size: 1.7rem; font-weight: 700; color: var(--gold); line-height: 1; }
-    .stat-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem; }
+/* ---------- SECTION SHELL ---------- */
+.sec{padding:84px 1.6rem;position:relative;}
+.sec-bg{background:var(--ink-2);}
+.sec-in{max-width:1080px;margin:0 auto;}
+.eyebrow{display:flex;align-items:center;gap:0.7rem;font-family:var(--mono);font-size:0.72rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:var(--brass);margin-bottom:0.9rem;}
+.eyebrow::before{content:'';width:26px;height:1px;background:var(--brass);}
+.sec-title{font-family:var(--disp);font-weight:600;font-size:clamp(1.9rem,3.6vw,2.7rem);letter-spacing:-0.015em;color:var(--paper);line-height:1.15;margin-bottom:0.6rem;}
+.sec-sub{color:var(--paper-mute);font-size:0.96rem;max-width:560px;line-height:1.7;margin-bottom:2.8rem;}
 
-    /* SECTIONS */
-    .section { padding: 90px 2rem; }
-    .section-inner { max-width: 1200px; margin: 0 auto; }
-    .section-label {
-      display: inline-flex; align-items: center; gap: 0.6rem; color: var(--gold);
-      font-size: 0.73rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.6rem;
-    }
-    .section-label::before { content: ''; width: 24px; height: 1px; background: var(--gold); }
-    .section-title {
-      font-family: var(--font-display); font-size: clamp(1.8rem,3.5vw,2.6rem);
-      font-weight: 700; color: var(--text); margin-bottom: 0.5rem; line-height: 1.2;
-    }
-    .section-sub { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 3rem; max-width: 520px; }
-    hr.divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+/* ---------- ABOUT ---------- */
+.about{display:grid;grid-template-columns:1.35fr 1fr;gap:3.5rem;align-items:start;}
+.about-body p{color:var(--paper-dim);font-size:1rem;line-height:1.92;margin-bottom:1.15rem;}
+.about-body b{color:var(--paper);font-weight:600;}
+.about-body a{color:var(--signal);text-decoration:none;border-bottom:1px solid var(--signal-dim);transition:border-color .2s;}
+.about-body a:hover{border-color:var(--signal);}
+.pull{font-family:var(--disp);font-style:italic;font-size:1.15rem;line-height:1.55;color:var(--paper);border-left:2px solid var(--brass);padding:0.3rem 0 0.3rem 1.3rem;margin:1.8rem 0;}
+.facts{display:flex;flex-direction:column;gap:0;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;background:var(--panel);}
+.fact{display:flex;gap:0.95rem;padding:1.05rem 1.25rem;border-bottom:1px solid var(--line-soft);align-items:flex-start;transition:background .2s;}
+.fact:last-child{border-bottom:none;}
+.fact:hover{background:var(--panel-2);}
+.fact-ico{width:34px;height:34px;border-radius:8px;background:var(--brass-dim);display:flex;align-items:center;justify-content:center;color:var(--brass);font-size:0.85rem;flex-shrink:0;}
+.fact-tx h4{font-size:0.86rem;font-weight:600;color:var(--paper);margin-bottom:0.1rem;}
+.fact-tx p{font-size:0.76rem;color:var(--paper-mute);line-height:1.5;}
 
-    /* ABOUT */
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-    .about-text p { color: var(--text-dim); font-size: 0.97rem; line-height: 1.85; margin-bottom: 1.1rem; }
-    .about-text strong { color: var(--gold); font-weight: 600; }
-    .mission-block {
-      background: var(--surface-2); border: 1px solid var(--border); border-left: 3px solid var(--gold);
-      padding: 1.4rem 1.7rem; border-radius: 0 var(--radius) var(--radius) 0; margin-top: 1.8rem;
-    }
-    .mission-block h4 { color: var(--gold); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; font-weight: 600; }
-    .mission-block p { color: var(--text-dim); font-style: italic; font-size: 1rem; margin: 0; }
-    .about-highlights { display: flex; flex-direction: column; gap: 0.85rem; }
-    .highlight-pill {
-      background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 1.2rem 1.4rem; display: flex; align-items: center; gap: 1rem;
-      transition: border-color 0.2s, transform 0.2s;
-    }
-    .highlight-pill:hover { border-color: rgba(201,168,76,0.3); transform: translateX(4px); }
-    .highlight-pill-icon {
-      width: 40px; height: 40px; background: var(--gold-dim); border-radius: 9px;
-      display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1rem; flex-shrink: 0;
-    }
-    .highlight-pill-text h4 { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.1rem; }
-    .highlight-pill-text p { font-size: 0.78rem; color: var(--text-muted); margin: 0; }
+/* ---------- MODELS (signature) ---------- */
+.models{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;}
+.model{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.6rem;position:relative;overflow:hidden;transition:border-color .25s,transform .25s;text-decoration:none;display:block;}
+.model:hover{border-color:var(--brass-line);transform:translateY(-3px);}
+.model-idx{font-family:var(--mono);font-size:0.7rem;color:var(--paper-mute);letter-spacing:0.05em;}
+.model-name{font-family:var(--disp);font-weight:600;font-size:1.3rem;color:var(--paper);margin:0.65rem 0 0.2rem;letter-spacing:-0.01em;}
+.model-kind{font-family:var(--mono);font-size:0.68rem;color:var(--brass);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.85rem;}
+.model-desc{font-size:0.82rem;color:var(--paper-dim);line-height:1.65;margin-bottom:1.1rem;}
+.model-stat{display:inline-flex;align-items:center;gap:0.4rem;font-family:var(--mono);font-size:0.72rem;color:var(--paper);background:var(--ink);border:1px solid var(--line);border-radius:6px;padding:0.3rem 0.6rem;}
+.model-stat b{color:var(--brass-lt);font-weight:600;}
+.model-link{position:absolute;top:1.5rem;right:1.5rem;color:var(--paper-mute);font-size:0.8rem;transition:color .2s,transform .2s;}
+.model:hover .model-link{color:var(--brass-lt);transform:translate(2px,-2px);}
 
-    /* EXPERIENCE */
-    .exp-bg { background: var(--surface); }
-    .exp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(330px, 1fr)); gap: 0.85rem; }
-    .exp-card {
-      background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 1.1rem 1.3rem; display: flex; gap: 0.9rem; align-items: flex-start;
-      transition: border-color 0.2s, transform 0.2s; position: relative; overflow: hidden;
-    }
-    .exp-card::before {
-      content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%;
-      background: var(--text-muted); transition: background 0.2s;
-    }
-    .exp-card.current::before { background: var(--gold); }
-    .exp-card.accent-blue::before { background: var(--accent); }
-    .exp-card:hover { border-color: rgba(255,255,255,0.1); transform: translateY(-2px); }
-    .exp-card:hover::before { background: var(--gold); }
-    .exp-dot {
-      width: 36px; height: 36px; border-radius: 8px; background: var(--surface-3);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--text-muted); font-size: 0.85rem; flex-shrink: 0; margin-top: 1px;
-    }
-    .exp-card.current .exp-dot { background: var(--gold-dim); color: var(--gold); }
-    .exp-card.accent-blue .exp-dot { background: var(--accent-soft); color: var(--accent); }
-    .exp-info { flex: 1; min-width: 0; }
-    .exp-role { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 0.12rem; line-height: 1.3; }
-    .exp-company { font-size: 0.78rem; color: var(--gold); font-weight: 500; margin-bottom: 0.18rem; }
-    .exp-card.accent-blue .exp-company { color: var(--accent); }
-    .exp-date { font-size: 0.72rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.3rem; }
-    .exp-tag {
-      font-size: 0.65rem; padding: 0.18rem 0.5rem; border-radius: 4px;
-      font-weight: 600; letter-spacing: 0.04em; flex-shrink: 0; align-self: flex-start; margin-top: 2px;
-    }
-    .tag-current { background: var(--gold-dim); color: var(--gold); border: 1px solid rgba(201,168,76,0.25); }
-    .tag-past { background: var(--surface-3); color: var(--text-muted); }
-    .tag-advisory { background: var(--accent-soft); color: var(--accent); border: 1px solid rgba(108,143,245,0.2); }
-    .tag-academic { background: rgba(16,185,129,0.1); color: #34d399; border: 1px solid rgba(16,185,129,0.2); }
+/* ---------- EXPERIENCE ---------- */
+.exp{position:relative;}
+.exp-row{display:grid;grid-template-columns:150px 1fr;gap:1.5rem;padding:1.4rem 0;border-top:1px solid var(--line-soft);transition:background .2s;}
+.exp-row:hover{background:rgba(255,255,255,0.012);}
+.exp-row:first-child{border-top:none;}
+.exp-when{font-family:var(--mono);font-size:0.74rem;color:var(--paper-mute);padding-top:0.2rem;letter-spacing:0.01em;}
+.exp-when .now{color:var(--brass);}
+.exp-main{}
+.exp-role{font-size:1rem;font-weight:600;color:var(--paper);margin-bottom:0.15rem;letter-spacing:-0.01em;}
+.exp-org{font-size:0.86rem;color:var(--brass-lt);margin-bottom:0.5rem;}
+.exp-note{font-size:0.85rem;color:var(--paper-dim);line-height:1.6;max-width:600px;}
+.exp-pills{display:flex;gap:0.4rem;flex-wrap:wrap;margin-top:0.6rem;}
+.pill{font-family:var(--mono);font-size:0.66rem;color:var(--paper-dim);border:1px solid var(--line);border-radius:5px;padding:0.18rem 0.5rem;}
 
-    /* SKILLS */
-    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.1rem; }
-    .skill-card {
-      background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg);
-      padding: 1.6rem; transition: border-color 0.2s, transform 0.2s;
-    }
-    .skill-card:hover { border-color: rgba(201,168,76,0.2); transform: translateY(-3px); }
-    .skill-card-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem; }
-    .skill-card-icon {
-      width: 38px; height: 38px; background: var(--gold-dim); border-radius: 9px;
-      display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 0.95rem;
-    }
-    .skill-card-title { font-size: 0.92rem; font-weight: 600; color: var(--text); }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.45rem; }
-    .skill-tag {
-      background: var(--surface-3); color: var(--text-dim);
-      font-size: 0.76rem; padding: 0.28rem 0.65rem; border-radius: 6px; border: 1px solid var(--border-soft);
-    }
+/* ---------- TEACHING ---------- */
+.teach-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.9rem;}
+.teach{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.4rem 1.3rem;display:flex;flex-direction:column;gap:0.8rem;transition:border-color .25s,transform .25s;}
+.teach:hover{border-color:var(--brass-line);transform:translateY(-3px);}
+.teach-logo{width:50px;height:50px;border-radius:11px;background:var(--ink);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-family:var(--disp);font-weight:600;font-size:1.15rem;color:var(--brass);overflow:hidden;}
+.teach-logo img{width:100%;height:100%;object-fit:contain;padding:7px;}
+.teach-name{font-size:0.88rem;font-weight:600;color:var(--paper);line-height:1.35;}
+.teach-meta{font-family:var(--mono);font-size:0.68rem;color:var(--paper-mute);margin-top:auto;}
+.teach-meta .subj{color:var(--brass);}
 
-    /* PUBLICATIONS */
-    .pub-bg { background: var(--surface); }
-    .pub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 1.3rem; }
-    .pub-card {
-      background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg);
-      overflow: hidden; transition: border-color 0.2s, transform 0.2s; display: flex; flex-direction: column;
-    }
-    .pub-card:hover { border-color: rgba(201,168,76,0.25); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-    .pub-thumb {
-      height: 150px; display: flex; align-items: center; justify-content: center;
-      font-size: 3.2rem; position: relative; overflow: hidden;
-    }
-    .pub-thumb.book { background-size: cover; background-position: center; }
-    .pub-thumb.book::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.28); }
-    .pub-thumb-icon { position: relative; z-index: 1; }
-    .pub-type-badge {
-      position: absolute; top: 10px; left: 10px; background: var(--gold); color: var(--ink);
-      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 0.22rem 0.6rem; border-radius: 4px; z-index: 2;
-    }
-    .pub-body { padding: 1.3rem; flex: 1; display: flex; flex-direction: column; }
-    .pub-title { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; line-height: 1.4; }
-    .pub-meta { font-size: 0.78rem; color: var(--text-muted); flex: 1; margin-bottom: 0.9rem; line-height: 1.6; }
-    .pub-publisher {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: var(--surface-3); color: var(--text-dim);
-      font-size: 0.76rem; font-weight: 500; padding: 0.32rem 0.7rem; border-radius: 6px;
-      text-decoration: none; transition: color 0.2s; width: fit-content;
-    }
-    .pub-publisher:hover { color: var(--gold); }
-    .pub-publisher i { color: var(--gold); font-size: 0.7rem; }
+/* ---------- SKILLS ---------- */
+.sk-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem 3rem;}
+.sk-block h4{font-family:var(--mono);font-size:0.74rem;color:var(--brass);text-transform:uppercase;letter-spacing:0.06em;margin-bottom:0.9rem;display:flex;align-items:center;gap:0.5rem;}
+.sk-tags{display:flex;flex-wrap:wrap;gap:0.45rem;}
+.sk{font-size:0.8rem;color:var(--paper-dim);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:0.32rem 0.7rem;transition:all .18s;}
+.sk:hover{color:var(--paper);border-color:var(--brass-line);}
 
-    /* OWASP */
-    .owasp-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(440px, 1fr)); gap: 1.3rem; }
-    .owasp-card {
-      background: var(--surface-2); border: 1px solid var(--border);
-      border-left: 3px solid var(--gold);
-      border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
-      padding: 2rem 2rem 2rem 2.2rem;
-      display: flex; flex-direction: column; gap: 1rem;
-      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-      text-decoration: none;
-    }
-    .owasp-card:hover {
-      border-color: rgba(201,168,76,0.45); border-left-color: var(--gold-light);
-      transform: translateY(-3px); box-shadow: 0 16px 36px rgba(0,0,0,0.3);
-    }
-    .owasp-card-top { display: flex; align-items: flex-start; gap: 1rem; }
-    .owasp-icon {
-      width: 46px; height: 46px; min-width: 46px; background: var(--gold-dim); border-radius: 10px;
-      display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1.1rem;
-    }
-    .owasp-card-meta { flex: 1; }
-    .owasp-badge {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.3); color: var(--gold);
-      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 0.2rem 0.6rem; border-radius: 4px; margin-bottom: 0.55rem;
-    }
-    .owasp-title { font-size: 0.98rem; font-weight: 600; color: var(--text); line-height: 1.4; }
-    .owasp-desc { font-size: 0.83rem; color: var(--text-dim); line-height: 1.75; }
-    .owasp-link-label {
-      display: inline-flex; align-items: center; gap: 0.4rem;
-      color: var(--gold); font-size: 0.79rem; font-weight: 600; letter-spacing: 0.03em;
-    }
-    .owasp-link-label i { font-size: 0.72rem; transition: transform 0.2s; }
-    .owasp-card:hover .owasp-link-label i { transform: translateX(4px); }
+/* ---------- OWASP / RESEARCH ---------- */
+.owasp-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+.owasp{background:var(--panel);border:1px solid var(--line);border-left:2px solid var(--brass);border-radius:0 var(--r-lg) var(--r-lg) 0;padding:1.7rem 1.8rem;text-decoration:none;display:flex;flex-direction:column;gap:0.85rem;transition:border-color .25s,transform .25s;}
+.owasp:hover{border-left-color:var(--brass-lt);transform:translateY(-3px);}
+.owasp-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;}
+.owasp-badge{font-family:var(--mono);font-size:0.66rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--brass);background:var(--brass-dim);border:1px solid var(--brass-line);padding:0.22rem 0.6rem;border-radius:5px;}
+.owasp-new{font-family:var(--mono);font-size:0.64rem;color:var(--ink);background:var(--brass-lt);padding:0.2rem 0.5rem;border-radius:5px;font-weight:600;letter-spacing:0.04em;}
+.owasp-title{font-family:var(--disp);font-weight:600;font-size:1.15rem;color:var(--paper);line-height:1.3;}
+.owasp-desc{font-size:0.83rem;color:var(--paper-dim);line-height:1.7;}
+.owasp-go{font-family:var(--mono);font-size:0.74rem;color:var(--brass);display:inline-flex;align-items:center;gap:0.4rem;}
+.owasp:hover .owasp-go i{transform:translateX(3px);}
+.owasp-go i{transition:transform .2s;}
 
-    /* ACHIEVEMENTS */
-    .ach-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); gap: 1.1rem; }
-    .ach-card {
-      background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 1.5rem; transition: border-color 0.2s, transform 0.2s;
-    }
-    .ach-card:hover { border-color: rgba(201,168,76,0.25); transform: translateY(-3px); }
-    .ach-icon {
-      width: 40px; height: 40px; background: var(--gold-dim); border-radius: 9px;
-      display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 1rem; margin-bottom: 1rem;
-    }
-    .ach-title { font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.35rem; }
-    .ach-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; }
+/* pubs */
+.pub-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1.1rem;margin-top:1.4rem;}
+.pub{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:border-color .25s,transform .25s;text-decoration:none;}
+.pub:hover{border-color:var(--brass-line);transform:translateY(-3px);}
+.pub-thumb{height:128px;background-size:cover;background-position:center;position:relative;display:flex;align-items:center;justify-content:center;}
+.pub-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(12,12,14,0.55));}
+.pub-tag{position:absolute;top:9px;left:9px;font-family:var(--mono);font-size:0.62rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;background:var(--ink);color:var(--brass-lt);padding:0.2rem 0.5rem;border-radius:4px;z-index:1;border:1px solid var(--brass-line);}
+.pub-ico{font-size:2.4rem;color:rgba(236,231,220,0.4);z-index:1;}
+.pub-bd{padding:1.1rem 1.2rem;flex:1;display:flex;flex-direction:column;}
+.pub-ti{font-size:0.86rem;font-weight:600;color:var(--paper);line-height:1.4;margin-bottom:0.4rem;}
+.pub-me{font-size:0.76rem;color:var(--paper-mute);line-height:1.55;flex:1;margin-bottom:0.8rem;}
+.pub-pub{font-family:var(--mono);font-size:0.72rem;color:var(--brass);display:inline-flex;align-items:center;gap:0.4rem;}
 
-    /* MEDIA COVERAGE */
-    .media-bg { background: var(--surface); }
-    .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); gap: 1.4rem; }
-    .media-card {
-      background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg);
-      overflow: hidden; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-      display: flex; flex-direction: column; text-decoration: none;
-    }
-    .media-card:hover { border-color: rgba(201,168,76,0.3); transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.35); }
-    .media-thumb { position: relative; aspect-ratio: 16/9; overflow: hidden; background: var(--surface-3); }
-    .media-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
-    .media-card:hover .media-thumb img { transform: scale(1.05); }
-    .media-thumb::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 55%); }
-    .media-play-btn {
-      position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-      width: 54px; height: 54px; background: rgba(255,255,255,0.93); border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      z-index: 2; box-shadow: 0 6px 20px rgba(0,0,0,0.4); transition: transform 0.25s;
-    }
-    .media-play-btn i { color: var(--ink); font-size: 1.1rem; margin-left: 3px; }
-    .media-card:hover .media-play-btn { transform: translate(-50%, -50%) scale(1.1); }
-    .media-outlet-badge {
-      position: absolute; top: 10px; left: 10px;
-      background: rgba(10,10,15,0.82); border: 1px solid rgba(201,168,76,0.35); color: var(--gold);
-      font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
-      padding: 0.22rem 0.65rem; border-radius: 4px; z-index: 3; backdrop-filter: blur(8px);
-    }
-    .media-duration {
-      position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.75);
-      color: var(--text-dim); font-size: 0.68rem; font-weight: 600;
-      padding: 0.2rem 0.5rem; border-radius: 4px; z-index: 3;
-    }
-    .media-body { padding: 1.35rem; flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
-    .media-event-tag {
-      display: inline-flex; align-items: center; gap: 0.35rem;
-      background: var(--gold-dim); border: 1px solid rgba(201,168,76,0.25); color: var(--gold);
-      font-size: 0.68rem; font-weight: 600; letter-spacing: 0.06em;
-      padding: 0.2rem 0.55rem; border-radius: 4px; width: fit-content;
-    }
-    .media-title { font-size: 0.93rem; font-weight: 600; color: var(--text); line-height: 1.45; }
-    .media-sub { font-size: 0.8rem; color: var(--text-muted); line-height: 1.6; flex: 1; }
-    .media-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 0.7rem; }
-    .media-date { font-size: 0.72rem; color: var(--text-muted); display: flex; align-items: center; gap: 0.3rem; }
-    .media-date i { color: var(--gold); font-size: 0.65rem; }
-    .media-watch { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--gold); font-size: 0.76rem; font-weight: 600; }
-    .media-watch i { font-size: 0.7rem; }
+/* ---------- MEDIA ---------- */
+.media-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.3rem;}
+.media{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;transition:border-color .25s,transform .25s;}
+.media:hover{border-color:var(--brass-line);transform:translateY(-3px);}
+.media-thumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--ink);}
+.media-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s;}
+.media:hover .media-thumb img{transform:scale(1.04);}
+.media-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(12,12,14,0.5),transparent 55%);}
+.media-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:50px;height:50px;border-radius:50%;background:rgba(236,231,220,0.95);display:flex;align-items:center;justify-content:center;z-index:2;transition:transform .25s;}
+.media:hover .media-play{transform:translate(-50%,-50%) scale(1.1);}
+.media-play i{color:var(--ink);font-size:1rem;margin-left:3px;}
+.media-outlet{position:absolute;top:10px;left:10px;z-index:3;font-family:var(--mono);font-size:0.64rem;font-weight:600;letter-spacing:0.05em;text-transform:uppercase;color:var(--brass-lt);background:rgba(12,12,14,0.8);border:1px solid var(--brass-line);padding:0.2rem 0.55rem;border-radius:4px;backdrop-filter:blur(6px);}
+.media-dur{position:absolute;bottom:10px;right:10px;z-index:3;font-family:var(--mono);font-size:0.66rem;color:var(--paper-dim);background:rgba(0,0,0,0.7);padding:0.18rem 0.45rem;border-radius:4px;}
+.media-bd{padding:1.3rem;display:flex;flex-direction:column;gap:0.5rem;flex:1;}
+.media-kind{font-family:var(--mono);font-size:0.66rem;color:var(--brass);text-transform:uppercase;letter-spacing:0.06em;}
+.media-ti{font-size:0.96rem;font-weight:600;color:var(--paper);line-height:1.4;}
+.media-sub{font-size:0.8rem;color:var(--paper-mute);line-height:1.6;flex:1;}
+.media-ft{display:flex;align-items:center;justify-content:space-between;margin-top:0.5rem;}
+.media-date{font-family:var(--mono);font-size:0.7rem;color:var(--paper-mute);}
+.media-watch{font-family:var(--mono);font-size:0.72rem;color:var(--brass);display:inline-flex;align-items:center;gap:0.4rem;}
 
-    /* HIGHLIGHTS */
-    .hlt-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.1rem; }
-    .hlt-card {
-      background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius-lg);
-      padding: 1.6rem; transition: border-color 0.2s;
-    }
-    .hlt-card:hover { border-color: rgba(201,168,76,0.2); }
-    .hlt-card-header { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.2rem; }
-    .hlt-card-icon {
-      width: 36px; height: 36px; background: var(--gold-dim); border-radius: 8px;
-      display: flex; align-items: center; justify-content: center; color: var(--gold); font-size: 0.9rem;
-    }
-    .hlt-card-title { font-size: 0.92rem; font-weight: 600; color: var(--text); }
-    .hlt-list { list-style: none; }
-    .hlt-item {
-      display: flex; gap: 0.65rem; padding: 0.58rem 0;
-      border-bottom: 1px solid var(--border-soft);
-      font-size: 0.8rem; color: var(--text-dim); line-height: 1.5;
-    }
-    .hlt-item:last-child { border-bottom: none; }
-    .hlt-item i { color: var(--gold); margin-top: 2px; flex-shrink: 0; font-size: 0.72rem; }
+/* ---------- SPEAKING ---------- */
+.speak-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0.7rem;}
+.speak{display:flex;gap:0.85rem;padding:0.95rem 1.1rem;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);align-items:flex-start;transition:border-color .2s;}
+.speak:hover{border-color:var(--brass-line);}
+.speak-yr{font-family:var(--mono);font-size:0.68rem;color:var(--brass);border:1px solid var(--brass-line);border-radius:5px;padding:0.18rem 0.45rem;flex-shrink:0;margin-top:1px;}
+.speak-tx h4{font-size:0.82rem;font-weight:600;color:var(--paper);line-height:1.35;margin-bottom:0.12rem;}
+.speak-tx p{font-size:0.74rem;color:var(--paper-mute);}
 
-    /* FOOTER */
-    footer { background: var(--surface); border-top: 1px solid var(--border); padding: 56px 2rem 28px; }
-    .footer-inner { max-width: 1200px; margin: 0 auto; }
-    .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; margin-bottom: 2.5rem; }
-    .footer-brand h3 { font-family: var(--font-display); font-size: 1.5rem; color: var(--gold); margin-bottom: 0.5rem; }
-    .footer-brand p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.7; margin-bottom: 1.4rem; }
-    .social-row { display: flex; gap: 0.7rem; }
-    .social-btn {
-      width: 36px; height: 36px; border-radius: 8px; background: var(--surface-3); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--text-dim); text-decoration: none; font-size: 0.85rem; transition: all 0.2s;
-    }
-    .social-btn:hover { background: var(--gold-dim); color: var(--gold); border-color: rgba(201,168,76,0.3); }
-    .footer-col h4 { font-size: 0.76rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 1.1rem; }
-    .footer-col ul { list-style: none; }
-    .footer-col ul li { margin-bottom: 0.65rem; }
-    .footer-col ul li a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
-    .footer-col ul li a:hover { color: var(--gold); }
-    .footer-bottom { padding-top: 1.6rem; border-top: 1px solid var(--border); text-align: center; color: var(--text-muted); font-size: 0.8rem; }
+/* ---------- AWARDS strip ---------- */
+.aw-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:0.8rem;}
+.aw{padding:1.1rem 1.2rem;background:var(--panel);border:1px solid var(--line);border-radius:var(--r);transition:border-color .2s,transform .2s;}
+.aw:hover{border-color:var(--brass-line);transform:translateY(-2px);}
+.aw-ico{color:var(--brass);font-size:0.95rem;margin-bottom:0.6rem;}
+.aw h4{font-size:0.82rem;font-weight:600;color:var(--paper);margin-bottom:0.2rem;line-height:1.3;}
+.aw p{font-size:0.74rem;color:var(--paper-mute);line-height:1.5;}
 
-    /* SCROLL REVEAL */
-    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+/* ---------- FOOTER ---------- */
+footer{background:var(--ink-2);border-top:1px solid var(--line);padding:64px 1.6rem 30px;}
+.ft-in{max-width:1080px;margin:0 auto;}
+.ft-cta{text-align:center;margin-bottom:3.5rem;}
+.ft-cta h2{font-family:var(--disp);font-weight:600;font-size:clamp(1.8rem,4vw,2.8rem);color:var(--paper);letter-spacing:-0.015em;margin-bottom:0.7rem;}
+.ft-cta h2 em{font-style:italic;color:var(--brass);}
+.ft-cta p{color:var(--paper-mute);font-size:0.95rem;margin-bottom:1.8rem;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7;}
+.ft-social{display:flex;gap:0.7rem;justify-content:center;}
+.ft-social a{width:42px;height:42px;border-radius:10px;background:var(--panel);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;color:var(--paper-dim);text-decoration:none;font-size:0.95rem;transition:all .2s;}
+.ft-social a:hover{background:var(--brass-dim);color:var(--brass-lt);border-color:var(--brass-line);transform:translateY(-3px);}
+.ft-bottom{padding-top:1.8rem;border-top:1px solid var(--line-soft);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.ft-bottom p{font-family:var(--mono);font-size:0.72rem;color:var(--paper-mute);}
+.ft-nav{display:flex;gap:1.3rem;flex-wrap:wrap;}
+.ft-nav a{font-size:0.76rem;color:var(--paper-dim);text-decoration:none;transition:color .2s;}
+.ft-nav a:hover{color:var(--brass-lt);}
 
-    /* RESPONSIVE */
-    @media (max-width: 900px) {
-      .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .hero-photo-wrap { align-items: center; }
-      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
-      .owasp-grid { grid-template-columns: 1fr; }
-      .media-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 640px) {
-      .nav-links { display: none; }
-      .nav-toggle { display: block; }
-      .nav-links.open {
-        display: flex; flex-direction: column;
-        position: fixed; top: 68px; left: 0; right: 0;
-        background: var(--surface); border-bottom: 1px solid var(--border);
-        padding: 1.5rem 2rem; gap: 1.2rem;
-      }
-      .exp-grid { grid-template-columns: 1fr; }
-      .footer-top { grid-template-columns: 1fr; }
-      .hero-photo { width: 200px; height: 200px; }
-      .hero-photo-ring { width: calc(100% + 28px); height: calc(200px + 28px); }
-    }
-  </style>
+/* ---------- REVEAL ---------- */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease;}
+.rv.in{opacity:1;transform:translateY(0);}
+
+/* ---------- RESPONSIVE ---------- */
+@media(max-width:880px){
+  .hero-in{grid-template-columns:1fr;gap:3rem;}
+  .portrait-wrap{max-width:260px;}
+  .about{grid-template-columns:1fr;gap:2.2rem;}
+  .models{grid-template-columns:1fr;}
+  .owasp-grid,.media-grid,.sk-grid{grid-template-columns:1fr;}
+}
+@media(max-width:640px){
+  .nav-links{display:none;}
+  .nav-links.open{display:flex;flex-direction:column;position:fixed;top:62px;left:0;right:0;background:var(--ink-2);border-bottom:1px solid var(--line);padding:1.4rem 1.6rem;gap:1.1rem;}
+  .nav-tg{display:block;}
+  .exp-row{grid-template-columns:1fr;gap:0.5rem;}
+  .exp-when{padding-top:0;}
+  .hero-meta{gap:1.4rem;}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;}
+  .rv{opacity:1;transform:none;}
+}
+</style>
 </head>
 <body>
 
-  <nav>
-    <div class="nav-inner">
-      <a href="#" class="nav-logo">Sumit Ranjan</a>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="#about">About</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#publications">Research</a></li>
-        <li><a href="#owasp">OWASP</a></li>
-        <li><a href="#achievements">Awards</a></li>
-        <li><a href="#media">Media</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
-    </div>
-  </nav>
+<nav>
+  <div class="nav-in">
+    <a href="#home" class="nav-logo"><span class="blink"></span>sumit_ranjan</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#models">Models</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#media">Media</a></li>
+      <li><a href="#speaking">Speaking</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="nav-tg" id="navTg" aria-label="Toggle menu"><i class="fas fa-bars"></i></button>
+  </div>
+</nav>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-ambient"></div>
-    <div class="hero-ambient-2"></div>
-    <div class="hero-inner">
-      <div class="hero-text">
-        <div class="hero-eyebrow">Stealth Mode &nbsp;·&nbsp; Dubai, UAE</div>
-        <h1 class="hero-name">Sumit<br><span>Ranjan</span></h1>
-        <p class="hero-title">Powering the Next Generation of Reliable, Secure, and Cost-Efficient Agentic AI</p>
-        <p class="hero-desc">
-          Researching and building infrastructure for trustworthy Agentic Systems, developing compact Small Language Models (SLMs) that reduce cost without compromising safety. Author of </em>Enterprise Agentic AI</em>, contributor to the OWASP Agentic AI Top 10, and a PhD scholar focused on advancing secure, autonomous AI for real-world deployment.
-        </p>
-        <div class="hero-chips">
-          <span class="chip"><i class="fas fa-microchip"></i> Building SLMs for Agentic AI</span>
-          <span class="chip"><i class="fas fa-book"></i> Author · Enterprise Agentic AI</span>
-          <span class="chip"><i class="fas fa-shield-alt"></i> OWASP Top 10 Contributor</span>
-          <span class="chip"><i class="fas fa-graduation-cap"></i> PhD Scholar · BITS Pilani</span>
-          <span class="chip"><i class="fas fa-microphone-alt"></i> Keynote Speaker</span>
-        </div>
-        <div class="hero-cta">
-          <a href="https://linkedin.com/in/sumit-ranjan-33015b22" target="_blank" class="btn-gold">
-            <i class="fab fa-linkedin"></i> Connect on LinkedIn
-          </a>
-          <a href="#publications" class="btn-ghost">
-            <i class="fas fa-book-open"></i> View Research
-          </a>
-        </div>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid"></div>
+  <div class="hero-in">
+    <div class="hero-text">
+      <div class="status"><span class="live"></span>Currently — Principal Agentic AI &amp; Security Architect · advising across UAE &amp; India</div>
+      <h1 class="hero-name">Sumit <em>Ranjan</em></h1>
+      <p class="hero-role">Principal Agentic AI &amp; Security Architect <span class="sep">/</span> Researcher <span class="sep">/</span> Author</p>
+      <p class="hero-desc">
+        I build agentic AI systems that enterprises can actually trust — <b>reliable, secure, and cost-efficient by design</b>. My work spans compact Small Language Models, LLM &amp; voice security, and the governance standards the industry is still writing. Contributor to the <b>OWASP Agentic AI Top 10</b>, author of <b>Enterprise Agentic AI</b>, and a PhD scholar at BITS Pilani.
+      </p>
+      <div class="hero-cta">
+        <a href="https://huggingface.co/sumitMResult" target="_blank" rel="noopener" class="btn btn-pri"><i class="fas fa-cube"></i> View Open-Source Models</a>
+        <a href="#contact" class="btn btn-gho"><i class="fas fa-paper-plane"></i> Get in Touch</a>
       </div>
-      <div class="hero-photo-wrap">
-        <div class="hero-photo-ring"></div>
-        <img src="https://m.media-amazon.com/images/S/amzn-author-media-prod/po40koefeo50ovvtk0nq7jgggn._SX300_CR0%2C0%2C300%2C300_.jpg" alt="Sumit Ranjan" class="hero-photo">
-        <div class="hero-stats">
-          <div class="stat"><div class="stat-num">10+</div><div class="stat-label">Years</div></div>
-          <div class="stat"><div class="stat-num">2</div><div class="stat-label">Books</div></div>
-          <div class="stat"><div class="stat-num">OWASP</div><div class="stat-label">Contributor</div></div>
-        </div>
+      <div class="hero-meta">
+        <div class="hm"><span class="hm-num">12+</span><span class="hm-lab">Years in AI</span></div>
+        <div class="hm"><span class="hm-num">3</span><span class="hm-lab">OSS Models</span></div>
+        <div class="hm"><span class="hm-num">2</span><span class="hm-lab">Books</span></div>
+        <div class="hm"><span class="hm-num">OWASP</span><span class="hm-lab">Contributor</span></div>
       </div>
     </div>
-  </section>
+    <div class="portrait-wrap">
+      <div class="portrait-frame"></div>
+      <img class="portrait" src="https://m.media-amazon.com/images/S/amzn-author-media-prod/po40koefeo50ovvtk0nq7jgggn._SX300_CR0%2C0%2C300%2C300_.jpg" alt="Sumit Ranjan">
+      <div class="portrait-tag"><i class="fas fa-location-dot"></i> Dubai, UAE &amp; India</div>
+    </div>
+  </div>
+</section>
 
-  <!-- ABOUT -->
-  <section class="section" id="about" style="background:var(--ink)">
-    <div class="section-inner">
-      <div class="section-label">Who I Am</div>
-      <h2 class="section-title">Researcher. Builder. Author.</h2>
-      <div class="about-grid reveal">
-        <div class="about-text">
-          <p>I'm <strong>Sumit Ranjan</strong> — currently in stealth, focused on a single hard problem: <strong>making agentic AI systems reliable, secure, and cheaper to run</strong>. That means building compact <strong>Small Language Models (SLMs)</strong> that are domain-trained, verifiable, and enterprise-ready — without the cost and opacity of large general-purpose models.</p>
-          <p>My research at <strong>BITS Pilani (PhD)</strong> sits at the intersection of agentic system architecture and AI security — exploring how autonomous agents fail, how they can be exploited, and how to build them so they don't. I contribute to the <strong>OWASP Agentic AI Top 10</strong>, helping define the security standards the industry will build upon.</p>
-          <p>I'm also the author of <strong><em>Enterprise Agentic AI</em></strong> (Packt) — a practical guide to deploying autonomous AI in production. As a <strong>Responsible AI Leader</strong> and keynote speaker, I bring this research into boardrooms, conferences, and classrooms globally.</p>
-          <div class="mission-block">
-            <h4>Core Focus</h4>
-            <p>"Agentic AI that enterprises can trust — reliable, secure, and cost-efficient by design."</p>
-          </div>
-        </div>
-        <div class="about-highlights">
-          <div class="highlight-pill">
-            <div class="highlight-pill-icon"><i class="fas fa-microchip"></i></div>
-            <div class="highlight-pill-text"><h4>Building SLMs for Agentic AI</h4><p>Reliable, secure &amp; cost-efficient agentic systems</p></div>
-          </div>
-          <div class="highlight-pill">
-            <div class="highlight-pill-icon"><i class="fas fa-book"></i></div>
-            <div class="highlight-pill-text"><h4>Author — Enterprise Agentic AI</h4><p>Packt Publications · Practical enterprise deployment guide</p></div>
-          </div>
-          <div class="highlight-pill">
-            <div class="highlight-pill-icon"><i class="fas fa-balance-scale"></i></div>
-            <div class="highlight-pill-text"><h4>Responsible AI Leader</h4><p>Ethics, governance &amp; trust in AI systems</p></div>
-          </div>
-          <div class="highlight-pill">
-            <div class="highlight-pill-icon"><i class="fas fa-shield-alt"></i></div>
-            <div class="highlight-pill-text"><h4>OWASP Agentic AI Top 10</h4><p>Contributor · Global AI security standards</p></div>
-          </div>
-          <div class="highlight-pill">
-            <div class="highlight-pill-icon"><i class="fas fa-graduation-cap"></i></div>
-            <div class="highlight-pill-text"><h4>PhD Scholar</h4><p>Agentic AI Security · BITS Pilani</p></div>
-          </div>
-          <div class="highlight-pill">
-            <div class="highlight-pill-icon"><i class="fas fa-microphone-alt"></i></div>
-            <div class="highlight-pill-text"><h4>Keynote Speaker</h4><p>AI governance, security &amp; agentic systems</p></div>
-          </div>
-        </div>
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="sec-in">
+    <div class="eyebrow">About</div>
+    <h2 class="sec-title">Builder first. Researcher always.</h2>
+    <div class="about rv">
+      <div class="about-body">
+        <p>I'm <b>Sumit Ranjan</b> — an AI architect and researcher with <b>12+ years</b> designing and shipping production AI systems across healthcare, retail, finance, automotive, and semiconductor. Today my focus is narrow and deliberate: making <b>agentic AI systems reliable, secure, and cheaper to run</b>.</p>
+        <p>That means building compact <b>Small Language Models (SLMs)</b> that are domain-trained and verifiable, hardening LLM and voice pipelines against real adversarial attacks, and shaping the governance standards enterprises will depend on. My PhD research at <b>BITS Pilani</b> sits exactly at this intersection — how autonomous agents fail, how they're exploited, and how to build them so they don't.</p>
+        <div class="pull">"The most useful AI isn't the largest model — it's the one you can trust, afford, and explain."</div>
+        <p>I contribute to the <a href="https://genai.owasp.org/resource/state-of-agentic-ai-security-and-governance/" target="_blank" rel="noopener">OWASP Agentic AI security standards</a>, authored <b>Enterprise Agentic AI</b> (Apress/Springer) and a bestselling book on self-driving cars (Packt), and teach agentic AI at universities across the UAE and India. I advise startups and enterprises as a fractional architect, turning AI proofs-of-concept into production systems that hold up under scrutiny.</p>
+      </div>
+      <div class="facts">
+        <div class="fact"><div class="fact-ico"><i class="fas fa-microchip"></i></div><div class="fact-tx"><h4>Small Language Models</h4><p>Domain-trained, verifiable, cost-efficient agentic systems</p></div></div>
+        <div class="fact"><div class="fact-ico"><i class="fas fa-shield-halved"></i></div><div class="fact-tx"><h4>AI &amp; LLM Security</h4><p>Red teaming, guardrails, prompt-injection &amp; voice defense</p></div></div>
+        <div class="fact"><div class="fact-ico"><i class="fas fa-scale-balanced"></i></div><div class="fact-tx"><h4>Responsible AI &amp; Governance</h4><p>NIST AI RMF · ISO 42001 · EU AI Act alignment</p></div></div>
+        <div class="fact"><div class="fact-ico"><i class="fas fa-graduation-cap"></i></div><div class="fact-tx"><h4>PhD Scholar — BITS Pilani</h4><p>Responsible &amp; secure agentic AI systems</p></div></div>
+        <div class="fact"><div class="fact-ico"><i class="fas fa-book-open"></i></div><div class="fact-tx"><h4>Author &amp; Speaker</h4><p>2 books · keynotes at STEP, World Energy Summit, DIFC</p></div></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <hr class="divider">
-
-  <!-- EXPERIENCE -->
-  <section class="section exp-bg" id="experience">
-    <div class="section-inner">
-      <div class="section-label">Career</div>
-      <h2 class="section-title">Work Experience</h2>
-      <p class="section-sub">A decade of building, researching, and leading AI across enterprise, academia, and advisory.</p>
-      <div class="exp-grid reveal">
-
-        <div class="exp-card accent-blue">
-          <div class="exp-dot"><i class="fas fa-chalkboard-teacher"></i></div>
-          <div class="exp-info">
-            <div class="exp-role">Adjunct Professor – AI &amp; Digital Transformation</div>
-            <div class="exp-company">Symbiosis International University Dubai</div>
-            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Sep 2025 – Present</div>
-          </div>
-          <span class="exp-tag tag-academic">Academic</span>
-        </div>
-
-        <div class="exp-card accent-blue">
-          <div class="exp-dot"><i class="fas fa-shield-alt"></i></div>
-          <div class="exp-info">
-            <div class="exp-role">Advisor – AI Security &amp; Responsible Innovation</div>
-            <div class="exp-company">Protect Neuron · Dubai</div>
-            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Aug 2025 – Present</div>
-          </div>
-          <span class="exp-tag tag-advisory">Advisory</span>
-        </div>
-
-        <div class="exp-card">
-          <div class="exp-dot"><i class="fas fa-building"></i></div>
-          <div class="exp-info">
-            <div class="exp-role">Co-Founder &amp; CTO</div>
-            <div class="exp-company">Emvo · Dubai</div>
-            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Sep – Oct 2025</div>
-          </div>
-          <span class="exp-tag tag-past">Ex-CTO</span>
-        </div>
-
-        <div class="exp-card">
-          <div class="exp-dot"><i class="fas fa-balance-scale"></i></div>
-          <div class="exp-info">
-            <div class="exp-role">Head – Responsible AI</div>
-            <div class="exp-company">Forcespot · Dubai</div>
-            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Nov 2024 – Present</div>
-          </div>
-          <span class="exp-tag tag-past">Past</span>
-        </div>
-
-        <div class="exp-card">
-          <div class="exp-dot"><i class="fas fa-university"></i></div>
-          <div class="exp-info">
-            <div class="exp-role">Visiting Professor – Generative AI &amp; NLP</div>
-            <div class="exp-company">Manipal University Dubai</div>
-            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Feb – Oct 2024</div>
-          </div>
-          <span class="exp-tag tag-academic">Academic</span>
-        </div>
-
-        <div class="exp-card">
-          <div class="exp-dot"><i class="fas fa-chart-line"></i></div>
-          <div class="exp-info">
-            <div class="exp-role">Manager – Data Science &amp; AI</div>
-            <div class="exp-company">Majid Al Futtaim · Carrefour</div>
-            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Dec 2022 – Nov 2024</div>
-          </div>
-          <span class="exp-tag tag-past">Enterprise</span>
-        </div>
-
-        <div class="exp-card">
-          <div class="exp-dot"><i class="fas fa-heartbeat"></i></div>
-          <div class="exp-info">
-            <div class="exp-role">Principal Data Scientist</div>
-            <div class="exp-company">MResult Corp · Bengaluru</div>
-            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Feb 2021 – Dec 2022</div>
-          </div>
-          <span class="exp-tag tag-past">Healthcare AI</span>
-        </div>
-
-        <div class="exp-card">
-          <div class="exp-dot"><i class="fas fa-cloud"></i></div>
-          <div class="exp-info">
-            <div class="exp-role">Sr. Data Scientist</div>
-            <div class="exp-company">VMware · Bengaluru</div>
-            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Mar 2019 – Jan 2021</div>
-          </div>
-          <span class="exp-tag tag-past">Enterprise</span>
-        </div>
-
-        <div class="exp-card">
-          <div class="exp-dot"><i class="fas fa-eye"></i></div>
-          <div class="exp-info">
-            <div class="exp-role">Data Scientist</div>
-            <div class="exp-company">Affine Analytics · Bengaluru</div>
-            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Jun 2018 – Feb 2019</div>
-          </div>
-          <span class="exp-tag tag-past">Computer Vision</span>
-        </div>
-
-        <div class="exp-card">
-          <div class="exp-dot"><i class="fas fa-code"></i></div>
-          <div class="exp-info">
-            <div class="exp-role">Software Consultant</div>
-            <div class="exp-company">KPIT Technologies · Bengaluru</div>
-            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Mar 2017 – May 2018</div>
-          </div>
-          <span class="exp-tag tag-past">Risk Modeling</span>
-        </div>
-
-        <div class="exp-card">
-          <div class="exp-dot"><i class="fas fa-microchip"></i></div>
-          <div class="exp-info">
-            <div class="exp-role">Software Consultant</div>
-            <div class="exp-company">Oak Systems · Bengaluru</div>
-            <div class="exp-date"><i class="fas fa-calendar-alt"></i> Jul 2014 – Dec 2016</div>
-          </div>
-          <span class="exp-tag tag-past">Semiconductor</span>
-        </div>
-
-      </div>
+<!-- MODELS (signature) -->
+<section class="sec sec-bg" id="models">
+  <div class="sec-in">
+    <div class="eyebrow">Open Source · Hugging Face</div>
+    <h2 class="sec-title">Models I've shipped</h2>
+    <p class="sec-sub">Three open-source models, built for the parts of the AI stack most people leave undefended — voice, prompts, and financial signal.</p>
+    <div class="models rv">
+      <a href="https://huggingface.co/sumitMResult" target="_blank" rel="noopener" class="model">
+        <i class="fas fa-arrow-up-right-from-square model-link"></i>
+        <div class="model-idx">model.01</div>
+        <div class="model-name">VoiceShield</div>
+        <div class="model-kind">Voice AI Security</div>
+        <p class="model-desc">The world's first open-source voice security model — detects adversarial and malicious voice inputs in real-time speech-to-text pipelines where latency can't be sacrificed.</p>
+        <span class="model-stat"><i class="fas fa-bolt"></i> <b>World-first</b> · real-time</span>
+      </a>
+      <a href="https://huggingface.co/sumitMResult" target="_blank" rel="noopener" class="model">
+        <i class="fas fa-arrow-up-right-from-square model-link"></i>
+        <div class="model-idx">model.02</div>
+        <div class="model-name">PromptShield</div>
+        <div class="model-kind">Prompt Injection Defense</div>
+        <p class="model-desc">An XLM-RoBERTa classifier that flags unsafe, adversarial, and prompt-injection inputs before they reach your LLM. Built for enterprise security pipelines.</p>
+        <span class="model-stat"><i class="fas fa-bullseye"></i> <b>99.33%</b> accuracy</span>
+      </a>
+      <a href="https://huggingface.co/sumitMResult" target="_blank" rel="noopener" class="model">
+        <i class="fas fa-arrow-up-right-from-square model-link"></i>
+        <div class="model-idx">model.03</div>
+        <div class="model-name">Earnings Classifier</div>
+        <div class="model-kind">Financial NLP</div>
+        <p class="model-desc">A RoBERTa multi-label model that classifies earnings-call sentences as Negative, Positive, Litigious, Constraining, or Uncertain — enabling automated profit-warning analysis.</p>
+        <span class="model-stat"><i class="fas fa-chart-line"></i> <b>5-label</b> sentiment</span>
+      </a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <hr class="divider">
+<!-- EXPERIENCE -->
+<section class="sec" id="work">
+  <div class="sec-in">
+    <div class="eyebrow">Career</div>
+    <h2 class="sec-title">Where I've worked</h2>
+    <p class="sec-sub">A decade-plus building, researching, and leading AI — from semiconductor fabs to enterprise GenAI platforms to the security standards that govern them.</p>
+    <div class="exp rv">
 
-  <!-- SKILLS -->
-  <section class="section" id="skills" style="background:var(--ink)">
-    <div class="section-inner">
-      <div class="section-label">Expertise</div>
-      <h2 class="section-title">Technical Skills</h2>
-      <p class="section-sub">Deep specialisation across the AI research and deployment lifecycle.</p>
-      <div class="skills-grid reveal">
-        <div class="skill-card">
-          <div class="skill-card-header">
-            <div class="skill-card-icon"><i class="fas fa-brain"></i></div>
-            <div class="skill-card-title">AI Specialisations</div>
-          </div>
-          <div class="skill-tags">
-            <span class="skill-tag">Agentic AI</span><span class="skill-tag">LLM Security</span>
-            <span class="skill-tag">AI Governance</span><span class="skill-tag">Responsible AI</span>
-            <span class="skill-tag">Computer Vision</span><span class="skill-tag">Generative AI</span>
-            <span class="skill-tag">AI Red Teaming</span><span class="skill-tag">Model Evaluation</span>
-            <span class="skill-tag">Copilot Security</span>
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-card-header">
-            <div class="skill-card-icon"><i class="fas fa-code"></i></div>
-            <div class="skill-card-title">Languages &amp; Libraries</div>
-          </div>
-          <div class="skill-tags">
-            <span class="skill-tag">Python</span><span class="skill-tag">SQL</span>
-            <span class="skill-tag">R</span><span class="skill-tag">OpenAI SDK</span>
-            <span class="skill-tag">LangChain</span><span class="skill-tag">LlamaIndex</span>
-            <span class="skill-tag">PyTorch</span><span class="skill-tag">FastAI</span>
-          </div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-card-header">
-            <div class="skill-card-icon"><i class="fas fa-robot"></i></div>
-            <div class="skill-card-title">Agent Frameworks</div>
-          </div>
-          <div class="skill-tags">
-            <span class="skill-tag">CrewAI</span><span class="skill-tag">LangGraph</span>
-            <span class="skill-tag">LangFlow</span><span class="skill-tag">AutoGen</span>
-            <span class="skill-tag">n8n</span><span class="skill-tag">MS Copilot Studio</span>
-            <span class="skill-tag">MindPal</span>
-          </div>
+      <div class="exp-row">
+        <div class="exp-when"><span class="now">2025 — Now</span></div>
+        <div class="exp-main">
+          <div class="exp-role">Principal Agentic AI &amp; Security Architect · Fractional CTO</div>
+          <div class="exp-org">Independent · UAE &amp; India</div>
+          <p class="exp-note">Advising startups and enterprises on agentic AI architecture, LLM deployment strategy, and AI security. Building real-time voice AI systems with integrated security; turning PoCs into production-grade systems.</p>
+          <div class="exp-pills"><span class="pill">Agentic AI</span><span class="pill">Voice AI</span><span class="pill">LLM Security</span><span class="pill">Advisory</span></div>
         </div>
       </div>
+
+      <div class="exp-row">
+        <div class="exp-when"><span class="now">2025 — Now</span></div>
+        <div class="exp-main">
+          <div class="exp-role">Advisor — AI Security &amp; Responsible Innovation</div>
+          <div class="exp-org">Protect Neuron · Dubai</div>
+          <p class="exp-note">Guiding UAE enterprises on AI model security, governance, and compliance aligned with NIST AI RMF, ISO 42001, and the EU AI Act. Partnering with CISOs, data leaders, and regulators on secure AI adoption.</p>
+          <div class="exp-pills"><span class="pill">Governance</span><span class="pill">ISO 42001</span><span class="pill">EU AI Act</span></div>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-when"><span class="now">2025 — Now</span></div>
+        <div class="exp-main">
+          <div class="exp-role">Contributor — OWASP GenAI Security Project</div>
+          <div class="exp-org">OWASP · Global</div>
+          <p class="exp-note">Contributing to agentic AI threat modeling and the OWASP Agentic AI Top 10. Co-authored "The State of Agentic AI Security and Governance" with global security experts.</p>
+          <div class="exp-pills"><span class="pill">Threat Modeling</span><span class="pill">Standards</span></div>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-when">2024 — 2025</div>
+        <div class="exp-main">
+          <div class="exp-role">Head — Responsible AI</div>
+          <div class="exp-org">Forcespot DMCC · Dubai</div>
+          <p class="exp-note">Led enterprise Responsible AI and security programs with UAE government and semi-government entities. Deployed security controls for Microsoft Copilot, ChatGPT Enterprise, and custom RAG applications.</p>
+          <div class="exp-pills"><span class="pill">Copilot Security</span><span class="pill">RAG</span></div>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-when">2022 — 2024</div>
+        <div class="exp-main">
+          <div class="exp-role">Manager — Data Science &amp; AI</div>
+          <div class="exp-org">Majid Al Futtaim (Carrefour) · Dubai</div>
+          <p class="exp-note">Led GenAI innovation across retail. Built a Llama-based recruitment assistant that cut hiring time ~60%, a multimodal RAG pricing-intelligence system, and deployed an internal LLM platform (RaceGPT) on Llama &amp; Mixtral.</p>
+          <div class="exp-pills"><span class="pill">GenAI</span><span class="pill">Multimodal RAG</span><span class="pill">Llama · Mixtral</span></div>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-when">2021 — 2022</div>
+        <div class="exp-main">
+          <div class="exp-role">Principal Data Scientist</div>
+          <div class="exp-org">MResult Corp · Bengaluru</div>
+          <p class="exp-note">Partnered with Pfizer Oncology on production document classification — saving 180 man-hours/month and cutting SageMaker costs 50%. Built a CV model for cell-outgrowth measurement (60% → 88% accuracy); led a team of 5.</p>
+          <div class="exp-pills"><span class="pill">Healthcare AI</span><span class="pill">Transformers</span><span class="pill">Computer Vision</span></div>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-when">2019 — 2021</div>
+        <div class="exp-main">
+          <div class="exp-role">Senior Data Scientist</div>
+          <div class="exp-org">VMware · Bengaluru</div>
+          <p class="exp-note">Led SEO analytics using NLP &amp; ML, reducing P2/P3 service requests 30% with a $240K/year profit impact. Built and deployed a custom Python analytics package on VMware's DeepThought platform.</p>
+          <div class="exp-pills"><span class="pill">NLP</span><span class="pill">MLOps</span></div>
+        </div>
+      </div>
+
+      <div class="exp-row">
+        <div class="exp-when">2014 — 2019</div>
+        <div class="exp-main">
+          <div class="exp-role">Data Scientist → Software Consultant</div>
+          <div class="exp-org">Affine · KPIT · Oak Systems (Lam Research) · Bengaluru</div>
+          <p class="exp-note">Early career across computer vision (Mercedes-Benz R&amp;D), insurance risk modeling (Chubb), and semiconductor failure analysis (Lam Research). Awarded a Self-Driving Car scholarship by KPIT.</p>
+          <div class="exp-pills"><span class="pill">Computer Vision</span><span class="pill">Risk Modeling</span><span class="pill">Semiconductor</span></div>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
-  <hr class="divider">
-
-  <!-- PUBLICATIONS -->
-  <section class="section pub-bg" id="publications">
-    <div class="section-inner">
-      <div class="section-label">Research &amp; Writing</div>
-      <h2 class="section-title">Publications</h2>
-      <p class="section-sub">Books, research papers, and conference contributions across AI, security, and healthcare.</p>
-      <div class="pub-grid reveal">
-
-        <div class="pub-card">
-          <div class="pub-thumb book" style="background-image:url('https://m.media-amazon.com/images/I/71Jwlf6WAIL._SY522_.jpg')">
-            <span class="pub-type-badge">Bestseller</span>
-          </div>
-          <div class="pub-body">
-            <div class="pub-title">Applied Deep Learning and Computer Vision for Self-Driving Cars</div>
-            <div class="pub-meta">A comprehensive guide to autonomous vehicles using deep learning and computer vision. Packt Publications.</div>
-            <a href="https://www.amazon.com/Applied-Learning-Computer-Vision-Self-Driving/dp/1838646302" target="_blank" class="pub-publisher"><i class="fab fa-amazon"></i> View on Amazon</a>
-          </div>
-        </div>
-
-        <div class="pub-card">
-          <div class="pub-thumb book" style="background-image:url('https://m.media-amazon.com/images/I/41+FqDTUzOL._AC_UY436_FMwebp_QL65_.jpg')">
-            <span class="pub-type-badge">Upcoming</span>
-          </div>
-          <div class="pub-body">
-            <div class="pub-title">Enterprise Agentic AI: Harnessing AI Transformation</div>
-            <div class="pub-meta">A practical guide to secure agentic AI deployment in enterprise environments. Packt Publications.</div>
-            <a href="https://www.amazon.com/Agentic-AI-Enterprise-Harnessing-Transformation/dp/B0F44VF26B" target="_blank" class="pub-publisher"><i class="fab fa-amazon"></i> Pre-order</a>
-          </div>
-        </div>
-
-        <div class="pub-card">
-          <div class="pub-thumb" style="background:linear-gradient(135deg,#6c8ff5,#2563eb)">
-            <span class="pub-type-badge">Journal</span>
-            <i class="fas fa-pills pub-thumb-icon" style="color:rgba(255,255,255,0.65);font-size:3rem"></i>
-          </div>
-          <div class="pub-body">
-            <div class="pub-title">Text Summarization for Pharmaceutical Sciences Using Hierarchical Clustering</div>
-            <div class="pub-meta">A novel NLP approach for pharmaceutical text summarisation via hierarchical clustering.</div>
-            <a href="https://pubmed.ncbi.nlm.nih.gov/39209906/" target="_blank" class="pub-publisher"><i class="fas fa-external-link-alt"></i> Nature Springer</a>
-          </div>
-        </div>
-
-        <div class="pub-card">
-          <div class="pub-thumb" style="background:linear-gradient(135deg,#10b981,#047857)">
-            <span class="pub-type-badge">Conference</span>
-            <i class="fas fa-home pub-thumb-icon" style="color:rgba(255,255,255,0.65);font-size:3rem"></i>
-          </div>
-          <div class="pub-body">
-            <div class="pub-title">LLM-Powered Generative AI for Enhanced Real Estate Property Search</div>
-            <div class="pub-meta">AI-driven personalised property search using LLMs and generative AI.</div>
-            <span class="pub-publisher"><i class="fas fa-university"></i> IIM Bangalore</span>
-          </div>
-        </div>
-
-        <div class="pub-card">
-          <div class="pub-thumb" style="background:linear-gradient(135deg,#f59e0b,#b45309)">
-            <span class="pub-type-badge">Conference</span>
-            <i class="fas fa-robot pub-thumb-icon" style="color:rgba(255,255,255,0.65);font-size:3rem"></i>
-          </div>
-          <div class="pub-body">
-            <div class="pub-title">UI Automation Test Element Search Using Machine Learning</div>
-            <div class="pub-meta">Advanced ML techniques for UI automation testing and element identification.</div>
-            <span class="pub-publisher"><i class="fas fa-university"></i> IIM Bangalore</span>
-          </div>
-        </div>
-
-        <div class="pub-card">
-          <div class="pub-thumb" style="background:linear-gradient(135deg,#ef4444,#991b1b)">
-            <span class="pub-type-badge">Journal</span>
-            <i class="fas fa-shield-alt pub-thumb-icon" style="color:rgba(255,255,255,0.65);font-size:3rem"></i>
-          </div>
-          <div class="pub-body">
-            <div class="pub-title">SecuregenAI: A Lifecycle Framework for Securing LLMs in Healthcare</div>
-            <div class="pub-meta">A framework for healthcare LLM security via AI red teaming and federated learning.</div>
-            <span class="pub-publisher"><i class="fas fa-book-open"></i> Springer Nature</span>
-          </div>
-        </div>
-
+<!-- TEACHING -->
+<section class="sec sec-bg" id="teaching">
+  <div class="sec-in">
+    <div class="eyebrow">Teaching · Faculty</div>
+    <h2 class="sec-title">Where I teach</h2>
+    <p class="sec-sub">Adjunct &amp; visiting faculty teaching Agentic AI, Generative AI, and AI security to the next generation of builders across the UAE and India.</p>
+    <div class="teach-grid rv">
+      <div class="teach">
+        <div class="teach-logo"><img src="https://logo.clearbit.com/birmingham.ac.uk" alt="University of Birmingham" onerror="this.parentNode.textContent='UoB'"></div>
+        <div class="teach-name">University of Birmingham, Dubai</div>
+        <div class="teach-meta"><span class="subj">Developing AI Agents</span> · Workshop</div>
+      </div>
+      <div class="teach">
+        <div class="teach-logo"><img src="https://logo.clearbit.com/iitgn.ac.in" alt="IIT Gandhinagar" onerror="this.parentNode.textContent='IITGN'"></div>
+        <div class="teach-name">IIT Gandhinagar</div>
+        <div class="teach-meta"><span class="subj">Agentic AI &amp; Security</span> · Guest Faculty</div>
+      </div>
+      <div class="teach">
+        <div class="teach-logo"><img src="https://logo.clearbit.com/iitr.ac.in" alt="IIT Roorkee" onerror="this.parentNode.textContent='IITR'"></div>
+        <div class="teach-name">IIT Roorkee</div>
+        <div class="teach-meta"><span class="subj">Agentic AI</span> · Guest Faculty</div>
+      </div>
+      <div class="teach">
+        <div class="teach-logo"><img src="https://logo.clearbit.com/manipaldubai.com" alt="Manipal University Dubai" onerror="this.parentNode.textContent='MUD'"></div>
+        <div class="teach-name">Manipal University, Dubai</div>
+        <div class="teach-meta"><span class="subj">Generative AI &amp; NLP</span> · Adjunct Prof.</div>
+      </div>
+      <div class="teach">
+        <div class="teach-logo"><img src="https://logo.clearbit.com/symbiosis.ac.in" alt="Symbiosis International University" onerror="this.parentNode.textContent='SIU'"></div>
+        <div class="teach-name">Symbiosis International, Dubai</div>
+        <div class="teach-meta"><span class="subj">AI &amp; Digital Transformation</span> · Adjunct Prof.</div>
+      </div>
+      <div class="teach">
+        <div class="teach-logo"><img src="https://logo.clearbit.com/bits-pilani.ac.in" alt="BITS Pilani" onerror="this.parentNode.textContent='BITS'"></div>
+        <div class="teach-name">BITS Pilani, Dubai</div>
+        <div class="teach-meta"><span class="subj">Agentic AI &amp; Prompt Security</span> · Workshops</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <hr class="divider">
-
-  <!-- OWASP CONTRIBUTIONS -->
-  <section class="section" id="owasp" style="background:var(--ink)">
-    <div class="section-inner">
-      <div class="section-label">Open Standards</div>
-      <h2 class="section-title">OWASP Contributions</h2>
-      <p class="section-sub">Contributing to the global standards shaping the security and governance of agentic AI systems.</p>
-      <div class="owasp-grid reveal">
-
-        <a href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/" target="_blank" class="owasp-card">
-          <div class="owasp-card-top">
-            <div class="owasp-icon"><i class="fas fa-list-ol"></i></div>
-            <div class="owasp-card-meta">
-              <div class="owasp-badge"><i class="fas fa-shield-alt"></i> OWASP · 2026</div>
-              <div class="owasp-title">OWASP Top 10 for Agentic Applications 2026</div>
-            </div>
-          </div>
-          <div class="owasp-desc">
-            The definitive industry reference for identifying and mitigating the ten most critical security risks in agentic AI applications. This publication establishes the security baseline for autonomous AI systems entering production environments worldwide — and Sumit is a named contributor to this landmark document.
-          </div>
-          <div class="owasp-link-label">Read the Paper <i class="fas fa-arrow-right"></i></div>
-        </a>
-
-        <a href="https://genai.owasp.org/resource/state-of-agentic-ai-security-and-governance-1-0/" target="_blank" class="owasp-card">
-          <div class="owasp-card-top">
-            <div class="owasp-icon"><i class="fas fa-globe-americas"></i></div>
-            <div class="owasp-card-meta">
-              <div class="owasp-badge"><i class="fas fa-shield-alt"></i> OWASP · v1.0</div>
-              <div class="owasp-title">The State of Agentic AI Security and Governance</div>
-            </div>
-          </div>
-          <div class="owasp-desc">
-            A comprehensive landscape analysis of where agentic AI security and governance stands today — covering threat models, organisational readiness, policy gaps, and the road ahead for enterprises deploying autonomous AI at scale.
-          </div>
-          <div class="owasp-link-label">Read the Paper <i class="fas fa-arrow-right"></i></div>
-        </a>
-
-      </div>
+<!-- RESEARCH / OWASP -->
+<section class="sec" id="research">
+  <div class="sec-in">
+    <div class="eyebrow">Open Standards &amp; Research</div>
+    <h2 class="sec-title">Defining how agentic AI stays safe</h2>
+    <p class="sec-sub">Named contributor to the global OWASP standards that enterprises use to secure autonomous AI systems.</p>
+    <div class="owasp-grid rv">
+      <a href="https://genai.owasp.org/resource/state-of-agentic-ai-security-and-governance/" target="_blank" rel="noopener" class="owasp">
+        <div class="owasp-top">
+          <span class="owasp-badge"><i class="fas fa-shield-halved"></i> OWASP · v2.01</span>
+          <span class="owasp-new">New · Jun 2026</span>
+        </div>
+        <div class="owasp-title">State of Agentic AI Security &amp; Governance 2.01</div>
+        <p class="owasp-desc">The latest comprehensive view of securing and governing autonomous AI — frameworks, governance models, and global regulatory standards for responsible agentic AI adoption.</p>
+        <span class="owasp-go">Read the report <i class="fas fa-arrow-right"></i></span>
+      </a>
+      <a href="https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/" target="_blank" rel="noopener" class="owasp">
+        <div class="owasp-top">
+          <span class="owasp-badge"><i class="fas fa-list-ol"></i> OWASP · 2026</span>
+        </div>
+        <div class="owasp-title">OWASP Top 10 for Agentic Applications 2026</div>
+        <p class="owasp-desc">The definitive industry reference for the ten most critical security risks in agentic AI applications — the security baseline for autonomous systems entering production worldwide.</p>
+        <span class="owasp-go">Read the paper <i class="fas fa-arrow-right"></i></span>
+      </a>
     </div>
-  </section>
 
-  <hr class="divider">
-
-  <!-- ACHIEVEMENTS -->
-  <section class="section exp-bg" id="achievements">
-    <div class="section-inner">
-      <div class="section-label">Recognition</div>
-      <h2 class="section-title">Achievements &amp; Awards</h2>
-      <p class="section-sub">Recognition for research contributions, innovation, and thought leadership in AI.</p>
-      <div class="ach-grid reveal">
-        <div class="ach-card">
-          <div class="ach-icon"><i class="fas fa-globe"></i></div>
-          <div class="ach-title">AI Universal Council Ambassador</div>
-          <div class="ach-desc">Recognised ambassador promoting responsible AI practices globally.</div>
+    <div class="pub-grid rv">
+      <a href="https://www.amazon.com/Agentic-AI-Enterprise-Harnessing-Transformation/dp/B0F44VF26B" target="_blank" rel="noopener" class="pub">
+        <div class="pub-thumb" style="background-image:url('https://m.media-amazon.com/images/I/41+FqDTUzOL._AC_UY436_FMwebp_QL65_.jpg')"><span class="pub-tag">Book</span></div>
+        <div class="pub-bd">
+          <div class="pub-ti">Enterprise Agentic AI: Harnessing AI Transformation</div>
+          <div class="pub-me">A practical guide to secure agentic AI deployment in enterprise environments.</div>
+          <span class="pub-pub"><i class="fab fa-amazon"></i> Apress / Springer</span>
         </div>
-        <div class="ach-card">
-          <div class="ach-icon"><i class="fas fa-award"></i></div>
-          <div class="ach-title">Einstein Award – Best Mind of the Year</div>
-          <div class="ach-desc">Awarded by the Institute of Engineering &amp; Technology, United Kingdom.</div>
+      </a>
+      <a href="https://www.amazon.com/Applied-Learning-Computer-Vision-Self-Driving/dp/1838646302" target="_blank" rel="noopener" class="pub">
+        <div class="pub-thumb" style="background-image:url('https://m.media-amazon.com/images/I/71Jwlf6WAIL._SY522_.jpg')"><span class="pub-tag">Bestseller</span></div>
+        <div class="pub-bd">
+          <div class="pub-ti">Applied Deep Learning &amp; Computer Vision for Self-Driving Cars</div>
+          <div class="pub-me">A comprehensive guide to autonomous vehicles using deep learning &amp; computer vision.</div>
+          <span class="pub-pub"><i class="fab fa-amazon"></i> Packt</span>
         </div>
-        <div class="ach-card">
-          <div class="ach-icon"><i class="fas fa-microphone-alt"></i></div>
-          <div class="ach-title">Keynote Speaker – GSDC 2025</div>
-          <div class="ach-desc">Global Generative AI Advanced Prompt Engineering Webinar, Singapore.</div>
+      </a>
+      <a href="https://pubmed.ncbi.nlm.nih.gov/39209906/" target="_blank" rel="noopener" class="pub">
+        <div class="pub-thumb" style="background:linear-gradient(135deg,#3a4a6b,#222a3f)"><span class="pub-tag">Journal</span><i class="fas fa-flask-vial pub-ico"></i></div>
+        <div class="pub-bd">
+          <div class="pub-ti">Text Summarization for Pharma Sciences via Hierarchical Clustering</div>
+          <div class="pub-me">A novel NLP approach for pharmaceutical text summarisation.</div>
+          <span class="pub-pub"><i class="fas fa-external-link-alt"></i> Nature Springer</span>
         </div>
-        <div class="ach-card">
-          <div class="ach-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-          <div class="ach-title">Workshop – University of Birmingham</div>
-          <div class="ach-desc">"Developing AI Agents" — Birmingham Dubai Campus, Feb 2025.</div>
+      </a>
+      <div class="pub">
+        <div class="pub-thumb" style="background:linear-gradient(135deg,#5a3a2a,#33231a)"><span class="pub-tag">Journal</span><i class="fas fa-shield-halved pub-ico"></i></div>
+        <div class="pub-bd">
+          <div class="pub-ti">SecureGenAI: A Lifecycle Framework for Securing LLMs in Healthcare</div>
+          <div class="pub-me">Healthcare LLM security via red teaming &amp; federated learning.</div>
+          <span class="pub-pub"><i class="fas fa-book-open"></i> Springer Nature</span>
         </div>
-        <div class="ach-card">
-          <div class="ach-icon"><i class="fas fa-file-contract"></i></div>
-          <div class="ach-title">Patent Published</div>
-          <div class="ach-desc">XPath identification using computer vision &amp; localisation. App No. 202231060501.</div>
+      </div>
+      <div class="pub">
+        <div class="pub-thumb" style="background:linear-gradient(135deg,#2f5044,#1d3329)"><span class="pub-tag">Conference</span><i class="fas fa-house pub-ico"></i></div>
+        <div class="pub-bd">
+          <div class="pub-ti">LLM-Powered Generative AI for Real Estate Property Search</div>
+          <div class="pub-me">AI-driven personalised property search using LLMs.</div>
+          <span class="pub-pub"><i class="fas fa-university"></i> IIM Bangalore</span>
         </div>
-        <div class="ach-card">
-          <div class="ach-icon"><i class="fas fa-lightbulb"></i></div>
-          <div class="ach-title">Innovator Award 2022</div>
-          <div class="ach-desc">Awarded for driving multiple AI/ML innovations at MResult Corp.</div>
-        </div>
-        <div class="ach-card">
-          <div class="ach-icon"><i class="fas fa-medal"></i></div>
-          <div class="ach-title">Synergy Award 2022</div>
-          <div class="ach-desc">Oncology Document Classification Project at MResult Corp.</div>
-        </div>
-        <div class="ach-card">
-          <div class="ach-icon"><i class="fas fa-users"></i></div>
-          <div class="ach-title">VMware Analytics Hackathon – 2nd Place</div>
-          <div class="ach-desc">Marketing Analytics Hackathon 2020 — solution ranked 2nd globally.</div>
+      </div>
+      <div class="pub">
+        <div class="pub-thumb" style="background:linear-gradient(135deg,#5a4a23,#332a18)"><span class="pub-tag">Patent</span><i class="fas fa-fingerprint pub-ico"></i></div>
+        <div class="pub-bd">
+          <div class="pub-ti">XPath Identification via Computer Vision &amp; Localization</div>
+          <div class="pub-me">Published patent · Government of India. App No. 202231060501.</div>
+          <span class="pub-pub"><i class="fas fa-certificate"></i> Patent · India</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <hr class="divider">
+<!-- MEDIA -->
+<section class="sec sec-bg" id="media">
+  <div class="sec-in">
+    <div class="eyebrow">Media &amp; Podcast</div>
+    <h2 class="sec-title">In conversation</h2>
+    <p class="sec-sub">Podcasts, interviews, and press on AI security, agentic systems, and responsible innovation.</p>
+    <div class="media-grid rv">
 
-  <!-- MEDIA COVERAGE -->
-  <section class="section media-bg" id="media">
-    <div class="section-inner">
-      <div class="section-label">Media</div>
-      <h2 class="section-title">Media Coverage &amp; Podcast</h2>
-      <p class="section-sub">Featured interviews, podcasts, and press coverage on AI leadership, agentic systems, and responsible innovation.</p>
-      <div class="media-grid reveal">
+      <!-- Podcast FIRST (per request) -->
+      <a href="https://www.youtube.com/watch?v=320Ze0ZSS7M&t=139s" target="_blank" rel="noopener" class="media">
+        <div class="media-thumb">
+          <img src="https://img.youtube.com/vi/320Ze0ZSS7M/maxresdefault.jpg" alt="SharafDG AI Podcast">
+          <div class="media-play"><i class="fas fa-play"></i></div>
+          <div class="media-outlet">SharafDG Podcast</div>
+          <div class="media-dur">39 min</div>
+        </div>
+        <div class="media-bd">
+          <div class="media-kind"><i class="fas fa-headphones"></i> AI Podcast</div>
+          <div class="media-ti">Cybersecurity, Human Brains &amp; Responsible AI</div>
+          <div class="media-sub">A deep conversation on the intersection of cybersecurity, human cognition, and what the next generation of AI governance must look like.</div>
+          <div class="media-ft"><span class="media-date">Jun 2025</span><span class="media-watch"><i class="fas fa-play-circle"></i> Watch episode</span></div>
+        </div>
+      </a>
 
-        <!-- Entrepreneur ME – STEP 2026 -->
-        <a href="https://www.youtube.com/watch?v=f6mwFXW-mV4" target="_blank" class="media-card">
-          <div class="media-thumb">
-            <img src="https://img.youtube.com/vi/f6mwFXW-mV4/maxresdefault.jpg" alt="Entrepreneur ME – STEP 2026 Interview">
-            <div class="media-play-btn"><i class="fas fa-play"></i></div>
-            <div class="media-outlet-badge">Entrepreneur ME</div>
-            <div class="media-duration">2 min</div>
-          </div>
-          <div class="media-body">
-            <div class="media-event-tag"><i class="fas fa-star"></i> STEP 2026</div>
-            <div class="media-title">Sovereign AI, Build vs Buy &amp; the Future of AI Agents</div>
-            <div class="media-sub">An exclusive interview at STEP 2026 — the Middle East's premier tech conference — covering the geopolitics of sovereign AI, the strategic build-versus-buy decision for enterprises, and where agentic AI is headed next.</div>
-            <div class="media-footer">
-              <div class="media-date"><i class="fas fa-calendar"></i> 2026</div>
-              <div class="media-watch"><i class="fas fa-play-circle"></i> Watch Interview</div>
-            </div>
-          </div>
-        </a>
+      <!-- Interview SECOND -->
+      <a href="https://www.youtube.com/watch?v=f6mwFXW-mV4" target="_blank" rel="noopener" class="media">
+        <div class="media-thumb">
+          <img src="https://img.youtube.com/vi/f6mwFXW-mV4/maxresdefault.jpg" alt="Entrepreneur ME STEP 2026 Interview">
+          <div class="media-play"><i class="fas fa-play"></i></div>
+          <div class="media-outlet">Entrepreneur ME</div>
+          <div class="media-dur">2 min</div>
+        </div>
+        <div class="media-bd">
+          <div class="media-kind"><i class="fas fa-star"></i> STEP 2026 Interview</div>
+          <div class="media-ti">Sovereign AI, Build vs Buy &amp; the Future of AI Agents</div>
+          <div class="media-sub">An exclusive interview at STEP 2026 on the geopolitics of sovereign AI, the build-versus-buy decision for enterprises, and where agentic AI heads next.</div>
+          <div class="media-ft"><span class="media-date">2026</span><span class="media-watch"><i class="fas fa-play-circle"></i> Watch interview</span></div>
+        </div>
+      </a>
 
-        <!-- SharafDG Podcast -->
-        <a href="https://www.youtube.com/watch?v=320Ze0ZSS7M&t=139s" target="_blank" class="media-card">
-          <div class="media-thumb">
-            <img src="https://img.youtube.com/vi/320Ze0ZSS7M/maxresdefault.jpg" alt="SharafDG AI Podcast">
-            <div class="media-play-btn"><i class="fas fa-play"></i></div>
-            <div class="media-outlet-badge">SharafDG Podcast</div>
-            <div class="media-duration">39 min</div>
-          </div>
-          <div class="media-body">
-            <div class="media-event-tag"><i class="fas fa-headphones"></i> AI Podcast</div>
-            <div class="media-title">Cybersecurity, Human Brains &amp; Responsible AI</div>
-            <div class="media-sub">Invited by the SharafDG AI Group to explore the critical intersection of cybersecurity, human cognition, and responsible AI — and what the next generation of AI governance must look like.</div>
-            <div class="media-footer">
-              <div class="media-date"><i class="fas fa-calendar"></i> June 2025</div>
-              <div class="media-watch"><i class="fas fa-play-circle"></i> Watch Episode</div>
-            </div>
-          </div>
-        </a>
+    </div>
+  </div>
+</section>
 
+<!-- SPEAKING -->
+<section class="sec" id="speaking">
+  <div class="sec-in">
+    <div class="eyebrow">Keynotes &amp; Panels</div>
+    <h2 class="sec-title">On stage</h2>
+    <p class="sec-sub">Keynotes, panels, and workshops at the conferences shaping AI in the Middle East and beyond.</p>
+    <div class="speak-grid rv">
+      <div class="speak"><span class="speak-yr">2026</span><div class="speak-tx"><h4>Agentic AI Security · AI Policing</h4><p>Keynote — DIFC, Dubai</p></div></div>
+      <div class="speak"><span class="speak-yr">2026</span><div class="speak-tx"><h4>Future of Agentic AI</h4><p>Panel Moderator — World Energy Summit, Abu Dhabi</p></div></div>
+      <div class="speak"><span class="speak-yr">2026</span><div class="speak-tx"><h4>Sovereign AI: Build vs Buy</h4><p>Panel Moderator — STEP Conference, Dubai</p></div></div>
+      <div class="speak"><span class="speak-yr">2026</span><div class="speak-tx"><h4>Responsible AI in the Agentic Era</h4><p>Panelist — Dubai Data Science Week</p></div></div>
+      <div class="speak"><span class="speak-yr">2026</span><div class="speak-tx"><h4>Prompt Engineering &amp; Security</h4><p>Workshop — BITS Pilani, Dubai</p></div></div>
+      <div class="speak"><span class="speak-yr">2025</span><div class="speak-tx"><h4>Global GenAI Advanced Prompt Engineering</h4><p>Keynote — GSDC, Singapore</p></div></div>
+      <div class="speak"><span class="speak-yr">2025</span><div class="speak-tx"><h4>Decoding AI Agents &amp; Security</h4><p>Bootcamp — DDS Community, Dubai</p></div></div>
+      <div class="speak"><span class="speak-yr">2025</span><div class="speak-tx"><h4>Developing AI Agents</h4><p>Workshop — University of Birmingham, Dubai</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section class="sec sec-bg" id="awards">
+  <div class="sec-in">
+    <div class="eyebrow">Recognition</div>
+    <h2 class="sec-title">Selected honors</h2>
+    <div class="aw-grid rv">
+      <div class="aw"><div class="aw-ico"><i class="fas fa-award"></i></div><h4>Einstein Award — Best Mind of the Year</h4><p>Institute of Engineering &amp; Technology, UK</p></div>
+      <div class="aw"><div class="aw-ico"><i class="fas fa-globe"></i></div><h4>AI Universal Council Ambassador</h4><p>Global responsible-AI advocacy</p></div>
+      <div class="aw"><div class="aw-ico"><i class="fas fa-graduation-cap"></i></div><h4>Geoffrey Hinton Scholarship</h4><p>Best Project — NLP/LLM research, UNIV.AI</p></div>
+      <div class="aw"><div class="aw-ico"><i class="fas fa-medal"></i></div><h4>MIT Professional Education</h4><p>Machine Learning — CGPA 10.0</p></div>
+      <div class="aw"><div class="aw-ico"><i class="fas fa-trophy"></i></div><h4>VMware Analytics Hackathon</h4><p>2nd Place — Global, 2020</p></div>
+      <div class="aw"><div class="aw-ico"><i class="fas fa-star"></i></div><h4>Silver Medalist — B.Tech</h4><p>Electronics &amp; Telecommunication</p></div>
+      <div class="aw"><div class="aw-ico"><i class="fas fa-lightbulb"></i></div><h4>Innovator &amp; Synergy Awards</h4><p>MResult Corp · 2021, 2022</p></div>
+      <div class="aw"><div class="aw-ico"><i class="fas fa-file-contract"></i></div><h4>Published Patent</h4><p>Computer vision &amp; localization, Govt. of India</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="ft-in">
+    <div class="ft-cta rv">
+      <h2>Let's build something <em>trustworthy</em>.</h2>
+      <p>Advising on agentic AI architecture, LLM &amp; voice security, and responsible AI governance. Open to select advisory, speaking, and research collaborations.</p>
+      <div class="ft-social">
+        <a href="https://www.linkedin.com/in/sumit-ranjan-33015b22/" target="_blank" rel="noopener" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/ranjan-sumit" target="_blank" rel="noopener" title="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://huggingface.co/sumitMResult" target="_blank" rel="noopener" title="Hugging Face"><i class="fas fa-cube"></i></a>
+        <a href="https://neuralnetwork.guru" target="_blank" rel="noopener" title="Website"><i class="fas fa-globe"></i></a>
+        <a href="mailto:sumit.ranjan819@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
       </div>
     </div>
-  </section>
-
-  <hr class="divider">
-
-  <!-- HIGHLIGHTS -->
-  <section class="section" style="background:var(--ink)">
-    <div class="section-inner">
-      <div class="section-label">More</div>
-      <h2 class="section-title">Highlights</h2>
-      <div class="hlt-grid reveal">
-        <div class="hlt-card">
-          <div class="hlt-card-header">
-            <div class="hlt-card-icon"><i class="fas fa-certificate"></i></div>
-            <div class="hlt-card-title">Certifications</div>
-          </div>
-          <ul class="hlt-list">
-            <li class="hlt-item"><i class="fas fa-check"></i> AI Security – Nullcon Goa 2025</li>
-            <li class="hlt-item"><i class="fas fa-check"></i> MLSecOps – ProtectAI 2024</li>
-            <li class="hlt-item"><i class="fas fa-check"></i> Deep Learning – Queensland University, AU</li>
-            <li class="hlt-item"><i class="fas fa-check"></i> Deep Learning Nanodegree – Udacity</li>
-            <li class="hlt-item"><i class="fas fa-check"></i> AWS MLOps Certification 2022</li>
-          </ul>
-        </div>
-        <div class="hlt-card">
-          <div class="hlt-card-header">
-            <div class="hlt-card-icon"><i class="fas fa-trophy"></i></div>
-            <div class="hlt-card-title">Hackathons</div>
-          </div>
-          <ul class="hlt-list">
-            <li class="hlt-item"><i class="fas fa-medal"></i> VMware Sentiment Hackathon 2020 – 9th</li>
-            <li class="hlt-item"><i class="fas fa-medal"></i> NLP News Classification MachineHack – 3rd</li>
-            <li class="hlt-item"><i class="fas fa-medal"></i> Solar Power Challenge by Wipro – Top 5%</li>
-            <li class="hlt-item"><i class="fas fa-medal"></i> Ugam Sentiment Analysis – Top 1%</li>
-            <li class="hlt-item"><i class="fas fa-medal"></i> Trident Hackathon 2022 – Top 9%</li>
-          </ul>
-        </div>
-        <div class="hlt-card">
-          <div class="hlt-card-header">
-            <div class="hlt-card-icon"><i class="fas fa-microphone"></i></div>
-            <div class="hlt-card-title">Talks &amp; Workshops</div>
-          </div>
-          <ul class="hlt-list">
-            <li class="hlt-item"><i class="fas fa-chalkboard"></i> "Agentic AI in Industry" – BITS Pilani Dubai, May 2025</li>
-            <li class="hlt-item"><i class="fas fa-chalkboard"></i> "Decoding AI Agents" Bootcamp – DDS Dubai, Jun 2025</li>
-            <li class="hlt-item"><i class="fas fa-chalkboard"></i> GenAI in Industry – Manipal University, Jul 2024</li>
-            <li class="hlt-item"><i class="fas fa-chalkboard"></i> Deep Learning for CV – Faculty Development Program 2020</li>
-          </ul>
-        </div>
+    <div class="ft-bottom">
+      <p>© 2026 Sumit Ranjan · Built in Dubai</p>
+      <div class="ft-nav">
+        <a href="#about">About</a>
+        <a href="#models">Models</a>
+        <a href="#research">Research</a>
+        <a href="#speaking">Speaking</a>
+        <a href="https://neuralnetwork.guru" target="_blank" rel="noopener">NeuralNetwork.Guru</a>
       </div>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- FOOTER -->
-  <footer id="contact">
-    <div class="footer-inner">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <h3>Sumit Ranjan</h3>
-          <p>Researcher · Author · Responsible AI Leader<br>Making agentic AI reliable, secure, and cost-efficient. Currently in stealth.</p>
-          <div class="social-row">
-            <a href="https://linkedin.com/in/sumit-ranjan-33015b22" target="_blank" class="social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://github.com/ranjan-sumit" target="_blank" class="social-btn" title="GitHub"><i class="fab fa-github"></i></a>
-            <a href="https://neuralnetwork.guru" target="_blank" class="social-btn" title="Website"><i class="fas fa-globe"></i></a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <h4>Navigate</h4>
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#publications">Publications</a></li>
-            <li><a href="#owasp">OWASP</a></li>
-            <li><a href="#achievements">Awards</a></li>
-            <li><a href="#media">Media</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Projects</h4>
-          <ul>
-            <li><a href="https://neuralnetwork.guru" target="_blank">NeuralNetwork.Guru</a></li>
-            <li><a href="https://aiucouncil.org/sumit-ranjan/" target="_blank">AI Universal Council</a></li>
-            <li><a href="https://www.amazon.com/Applied-Learning-Computer-Vision-Self-Driving/dp/1838646302" target="_blank">Book – Self-Driving AI</a></li>
-            <li><a href="https://www.amazon.com/Agentic-AI-Enterprise-Harnessing-Transformation/dp/B0F44VF26B" target="_blank">Book – Enterprise Agentic AI</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>&copy; 2025 Sumit Ranjan · All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    const navToggle = document.getElementById('navToggle');
-    const navLinks = document.getElementById('navLinks');
-    navToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
-    document.querySelectorAll('#navLinks a').forEach(a => {
-      a.addEventListener('click', () => navLinks.classList.remove('open'));
+<script>
+  const tg=document.getElementById('navTg'),nl=document.getElementById('navLinks');
+  tg.addEventListener('click',()=>nl.classList.toggle('open'));
+  nl.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nl.classList.remove('open')));
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
     });
-    document.querySelectorAll('a[href^="#"]').forEach(a => {
-      a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
-      });
-    });
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-    }, { threshold: 0.07 });
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-  </script>
+  });
+  const ob=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in');});
+  },{threshold:0.08});
+  document.querySelectorAll('.rv').forEach(el=>ob.observe(el));
+</script>
 </body>
 </html>
